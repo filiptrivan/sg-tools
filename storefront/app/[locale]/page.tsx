@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import Companies from "@/components/companies";
 import Features from "@/components/features";
+import Stats from "@/components/stats";
 import { setRequestLocale } from "next-intl/server";
 
 type Props = {
@@ -16,6 +17,7 @@ const HomePage = async ({ params }: Props) => {
       <Hero />
       <Companies />
       <Features />
+      <Stats />
     </div>
   );
 };
