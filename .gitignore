@@ -3,6 +3,7 @@ node_modules/
 *.pem
 .env*
 *.tsbuildinfo
+.claude/settings.local.json
 
 # Next.js
 storefront/.next/
