@@ -1,7 +1,7 @@
+import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
 import Container from "./container";
 import Wrapper from "./wrapper";
-import { Marquee } from "@/components/ui/marquee";
 
 const companies = [
   { src: "/companies/coligoars.png", alt: "Coligoars" },
@@ -32,7 +32,7 @@ const Companies = () => {
         </Container>
 
         <Container delay={0.1}>
-          <div className="mt-10 w-full relative overflow-hidden">
+          <div className="mt-10 w-full relative overflow-hidden opacity-80 rounded-md">
             <Marquee pauseOnHover className="[--duration:30s]">
               {companies.map((company) => (
                 <Image
@@ -41,7 +41,7 @@ const Companies = () => {
                   alt={company.alt}
                   width={1024}
                   height={1024}
-                  className="w-24 h-8"
+                  className="w-40 h-20 object-contain transition-opacity duration-300"
                 />
               ))}
             </Marquee>
