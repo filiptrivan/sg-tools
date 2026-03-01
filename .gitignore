@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+*.pem
+.env*
+*.tsbuildinfo
+
+# Next.js
+storefront/.next/
+storefront/out/
+storefront/build/
+storefront/next-env.d.ts

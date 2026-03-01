@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "title": "SGTools - Isporučite projekte enterprise kvaliteta",
+    "description": "Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima"
+  },
+  "nav": {
+    "about": "O nama",
+    "integrations": "Integracije",
+    "pricing": "Cene",
+    "blog": "Blog",
+    "contactSales": "Kontaktirajte prodaju",
+    "menu": "Meni"
+  },
+  "hero": {
+    "titleLine1": "Isporučite enterprise",
+    "titleLine2": "kvalitet projekta za par minuta",
+    "description": "Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima — bez složenog podešavanja",
+    "ctaPrimary": "Kupi online",
+    "ctaSecondary": "Preuzmi katalog"
+  },
+  "footer": {
+    "taglineLine1": "Bez napora pokrenite robusne,",
+    "taglineLine2": "projekte spremne za produkciju",
+    "product": "Proizvod",
+    "resources": "Resursi",
+    "about": "O nama",
+    "integrations": "Integracije",
+    "pricing": "Cene",
+    "demo": "Demo",
+    "blog": "Blog",
+    "helpCenter": "Centar za pomoć",
+    "apiDocs": "API dokumentacija",
+    "contactUs": "Kontaktirajte nas",
+    "copyright": "© {year} Verve. Sva prava zadržana."
+  },
+  "languageSwitcher": {
+    "en": "English",
+    "sr": "Srpski",
+    "switchTo": "Promeni jezik na {language}"
+  }
+}
