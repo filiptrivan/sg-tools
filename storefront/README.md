@@ -1,4 +1,4 @@
-# SG Tools (sg-tools.rs)
+# SG Tools (sgtools.rs)
 
 Marketing and product showcase site for the SG Tools brand by Stridon Group DOO.
 
@@ -13,11 +13,11 @@ Marketing and product showcase site for the SG Tools brand by Stridon Group DOO.
 
 ```mermaid
 graph LR
-    A[sg-tools.rs<br/>Storefront] -->|REST API<br/>fetch products| B[prodavnicaalata.rs<br/>API]
+    A[sgtools.rs<br/>Storefront] -->|REST API<br/>fetch products| B[prodavnicaalata.rs<br/>API]
     A -->|"Kupi" link| C[prodavnicaalata.rs<br/>Product Page]
 ```
 
-SG Tools products are fetched server-side from the prodavnicaalata.rs REST API and displayed on sg-tools.rs. Each product page links to prodavnicaalata.rs for purchasing — this site has no cart or checkout.
+SG Tools products are fetched server-side from the prodavnicaalata.rs REST API and displayed on sgtools.rs. Each product page links to prodavnicaalata.rs for purchasing — this site has no cart or checkout.
 
 ## Getting Started
 
@@ -32,8 +32,8 @@ npm run lint     # Run ESLint
 
 ## Domain Map
 
-| Domain | Purpose |
-|---|---|
-| **sg-tools.rs** | This project — SG Tools brand site |
-| **stridon.rs** | Parent company (Stridon Group DOO) |
+| Domain                 | Purpose                                |
+| ---------------------- | -------------------------------------- |
+| **sgtools.rs**         | This project — SG Tools brand site     |
+| **stridon.rs**         | Parent company (Stridon Group DOO)     |
 | **prodavnicaalata.rs** | Online shop — where users buy products |

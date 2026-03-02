@@ -25,7 +25,6 @@
       "Bash(grep *)",
       "Bash(npx playwright test)",
       "WebFetch(domain:www.spiderly.dev)",
-
       "WebFetch(domain:nextjs.org)",
       "WebFetch(domain:react.dev)",
       "WebFetch(domain:tailwindcss.com)",
@@ -44,12 +43,10 @@
       "WebFetch(domain:www.typescriptlang.org)",
       "WebFetch(domain:vitest.dev)",
       "WebFetch(domain:zustand-demo.pmnd.rs)",
-
       "WebFetch(domain:angular.dev)",
       "WebFetch(domain:primeng.org)",
       "WebFetch(domain:rxjs.dev)",
       "WebFetch(domain:quilljs.com)",
-
       "WebFetch(domain:learn.microsoft.com)",
       "WebFetch(domain:www.hangfire.io)",
       "WebFetch(domain:docs.hangfire.io)",
@@ -60,7 +57,6 @@
       "WebFetch(domain:swagger.io)",
       "WebFetch(domain:docs.aws.amazon.com)",
       "WebFetch(domain:www.npgsql.org)",
-
       "WebFetch(domain:mapperly.riok.app)",
       "WebFetch(domain:cloudinary.com)",
       "WebFetch(domain:docs.sixlabors.com)",
@@ -68,12 +64,14 @@
       "WebFetch(domain:www.newtonsoft.com)",
       "WebFetch(domain:developers.google.com)",
       "WebFetch(domain:closedxml.io)",
-
       "WebFetch(domain:www.fumadocs.dev)",
       "WebFetch(domain:fumadocs.dev)",
       "WebFetch(domain:www.npmjs.com)",
       "WebFetch(domain:www.lightinject.net)"
     ],
     "defaultMode": "plan"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
   }
 }
