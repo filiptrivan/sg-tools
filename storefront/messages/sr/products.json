@@ -1,0 +1,26 @@
+{
+  "productsPage": {
+    "title": "Kategorije proizvoda",
+    "description": "Pregledaj kompletnu ponudu profesionalnog alata po kategorijama."
+  },
+  "categoryPage": {
+    "productsFound": "{count, plural, =0 {Nema proizvoda} one {# proizvod} few {# proizvoda} other {# proizvoda}}",
+    "noProducts": "Još nema proizvoda u ovoj kategoriji.",
+    "noProductsDescription": "Proveri ponovo uskoro ili pogledaj druge kategorije.",
+    "backToCategories": "Sve kategorije",
+    "buyOnline": "Kupi online",
+    "outOfStock": "Nema na stanju",
+    "discount": "-{percent}%",
+    "currency": "RSD"
+  },
+  "categoriesList": {
+    "heading": "Kategorije proizvoda",
+    "description": "Istraži naš širok izbor profesionalnog alata za svaku potrebu.",
+    "items": [
+      { "title": "Električni alati", "desc": "Širok izbor profesionalnih električnih alata za svaku potrebu." },
+      { "title": "Ručni alati", "desc": "Kvalitetni ručni alati za precizne i svakodnevne radove." },
+      { "title": "Brusilice", "desc": "Profesionalne brusilice za brušenje, sečenje i poliranje." },
+      { "title": "Dijamantski alati", "desc": "Dijamantski diskovi i alati za najtvrđe materijale." }
+    ]
+  }
+}

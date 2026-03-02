@@ -11,6 +11,13 @@
     "email": "E-mail",
     "website": "Sajt",
     "noResults": "Nema rezultata za izabrane filtere.",
-    "dealersCount": "{count} prodavaca"
+    "dealersCount": "{count} prodavaca",
+    "findNearest": "Pronađi najbliže",
+    "locating": "Lociranje...",
+    "locationDenied": "Pristup lokaciji je odbijen. Pretraži po gradu.",
+    "locationUnavailable": "Lokacija nije dostupna u tvom pretraživaču. Pretraži po gradu.",
+    "distanceAway": "{distance} km",
+    "nearest": "Najbliži",
+    "clearLocation": "Obriši"
   }
 }

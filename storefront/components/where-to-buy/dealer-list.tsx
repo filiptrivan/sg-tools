@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink, Navigation } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { Dealer, DealerCategory } from "@/types/dealers";
@@ -10,6 +10,8 @@ interface DealerListProps {
   dealers: Dealer[];
   selectedDealerId: string | null;
   onSelectDealer: (id: string | null) => void;
+  distances?: Map<string, number> | null;
+  nearestDealerId?: string | null;
 }
 
 const categoryColors: Record<DealerCategory, string> = {
@@ -43,6 +45,8 @@ export default function DealerList({
   dealers,
   selectedDealerId,
   onSelectDealer,
+  distances,
+  nearestDealerId,
 }: DealerListProps) {
   const t = useTranslations("whereToBuy");
   const listRef = useRef<HTMLDivElement>(null);
@@ -69,6 +73,8 @@ export default function DealerList({
     <div ref={listRef} className="flex flex-col gap-3">
       {dealers.map((dealer) => {
         const isSelected = dealer.id === selectedDealerId;
+        const isNearest = dealer.id === nearestDealerId;
+        const distance = distances?.get(dealer.id);
 
         return (
           <div
@@ -79,6 +85,7 @@ export default function DealerList({
             onClick={() => onSelectDealer(isSelected ? null : dealer.id)}
             className={cn(
               "cursor-pointer rounded-lg border p-4 transition-colors",
+              isNearest && "border-l-2 border-l-primary",
               isSelected
                 ? "border-primary bg-primary/5"
                 : "border-border bg-card hover:border-muted-foreground/30"
@@ -88,7 +95,20 @@ export default function DealerList({
               <h3 className="font-semibold text-sm text-foreground leading-tight">
                 {dealer.name}
               </h3>
-              <CategoryBadge category={dealer.category} />
+              <div className="flex items-center gap-1.5 shrink-0">
+                {isNearest && (
+                  <span className="inline-block rounded-full px-2 py-0.5 text-xs font-medium bg-primary/20 text-primary">
+                    {t("nearest")}
+                  </span>
+                )}
+                {distance != null && !isNearest && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-muted/50 text-muted-foreground text-xs px-2 py-0.5 font-mono">
+                    <Navigation className="size-3" />
+                    {t("distanceAway", { distance })}
+                  </span>
+                )}
+                <CategoryBadge category={dealer.category} />
+              </div>
             </div>
 
             {(dealer.address || dealer.city) && (

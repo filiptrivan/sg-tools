@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { useTransition } from "react";
 import { Button } from "./ui/button";
 
@@ -12,6 +13,7 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
   const [isPending, startTransition] = useTransition();
 
   const nextLocale =
@@ -19,7 +21,11 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
 
   const handleSwitch = () => {
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      router.replace(
+        // @ts-expect-error -- pathname includes dynamic segments resolved by params
+        { pathname, params },
+        { locale: nextLocale }
+      );
     });
   };
 

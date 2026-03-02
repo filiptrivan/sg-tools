@@ -1,19 +1,13 @@
 import Container from "@/components/container";
+import CategoryCard from "@/components/products/category-card";
 import Wrapper from "@/components/wrapper";
-import Image from "next/image";
-import Link from "next/link";
+import { getCategories } from "@/lib/categories";
 import { getTranslations } from "next-intl/server";
-
-const CATEGORY_DATA = [
-  { image: "/categories/electric.jpg", slug: "elektricni-alati" },
-  { image: "/categories/hand-tools.jpg", slug: "rucni-alati" },
-  { image: "/categories/grinder.jpg", slug: "brusilice" },
-  { image: "/categories/diamond.jpg", slug: "dijamantski-alati" },
-];
 
 const Categories = async () => {
   const t = await getTranslations("categories");
   const items = t.raw("items") as Array<{ title: string; desc: string }>;
+  const categories = await getCategories();
 
   return (
     <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24">
@@ -31,29 +25,14 @@ const Categories = async () => {
 
         <div className="w-full mt-10">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
-            {items.map((item, index) => (
-              <Container key={index}>
-                <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
-                  <Image
-                    src={CATEGORY_DATA[index].image}
-                    alt={item.title}
-                    width={500}
-                    height={1000}
-                    className="object-contain w-full"
-                  />
-                  <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 flex flex-col mt-auto pt-4">
-                    <Link
-                      href={`/proizvodi/kategorije/${CATEGORY_DATA[index].slug}`}
-                      className="text-base lg:text-xl font-semibold"
-                    >
-                      {item.title}
-                    </Link>
-                    <p className="text-muted-foreground text-xs sm:text-sm mt-1">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </Container>
+            {categories.map((category, index) => (
+              <CategoryCard
+                key={category.slug}
+                category={category}
+                title={items[index].title}
+                description={items[index].desc}
+                index={index}
+              />
             ))}
           </div>
         </div>

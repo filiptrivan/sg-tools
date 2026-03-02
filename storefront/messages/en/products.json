@@ -1,0 +1,26 @@
+{
+  "productsPage": {
+    "title": "Product Categories",
+    "description": "Browse our complete range of professional tools organized by category."
+  },
+  "categoryPage": {
+    "productsFound": "{count, plural, =0 {No products found} one {# product} other {# products}}",
+    "noProducts": "No products in this category yet.",
+    "noProductsDescription": "Check back soon or browse other categories.",
+    "backToCategories": "All Categories",
+    "buyOnline": "Buy Online",
+    "outOfStock": "Out of Stock",
+    "discount": "-{percent}%",
+    "currency": "RSD"
+  },
+  "categoriesList": {
+    "heading": "Product Categories",
+    "description": "Explore our wide selection of professional tools for every need.",
+    "items": [
+      { "title": "Electric Tools", "desc": "A wide range of professional electric tools for every need." },
+      { "title": "Hand Tools", "desc": "Quality hand tools for precise and everyday work." },
+      { "title": "Grinders", "desc": "Professional grinders for grinding, cutting, and polishing." },
+      { "title": "Diamond Tools", "desc": "Diamond discs and tools for the hardest materials." }
+    ]
+  }
+}

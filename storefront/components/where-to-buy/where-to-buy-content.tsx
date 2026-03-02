@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { Search } from "lucide-react";
+import { Search, LocateFixed, X, ShieldAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { getDistanceKm } from "@/lib/geo";
 import Wrapper from "@/components/wrapper";
 import Container from "@/components/container";
+import { Button } from "@/components/ui/button";
 import DealerList from "./dealer-list";
 import { DEALERS } from "@/constants/dealers";
 import type { DealerCategory } from "@/types/dealers";
@@ -21,12 +23,19 @@ const DealerMap = dynamic(() => import("./dealer-map"), {
 });
 
 type CategoryFilter = "all" | DealerCategory;
+type LocationStatus = "idle" | "loading" | "granted" | "denied" | "unavailable";
 
 export default function WhereToBuyContent() {
   const t = useTranslations("whereToBuy");
   const [selectedDealerId, setSelectedDealerId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [userLocation, setUserLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+  const [locationStatus, setLocationStatus] = useState<LocationStatus>("idle");
+  const [locationError, setLocationError] = useState<string | null>(null);
 
   const categories: { key: CategoryFilter; label: string }[] = [
     { key: "all", label: t("categoryAll") },
@@ -35,8 +44,26 @@ export default function WhereToBuyContent() {
     { key: "outOfWarranty", label: t("categoryOutOfWarranty") },
   ];
 
+  // Compute distances when user location is available
+  const distances = useMemo(() => {
+    if (!userLocation) return null;
+    const map = new Map<string, number>();
+    for (const dealer of DEALERS) {
+      map.set(
+        dealer.id,
+        getDistanceKm(
+          userLocation.lat,
+          userLocation.lng,
+          dealer.coordinates.lat,
+          dealer.coordinates.lng
+        )
+      );
+    }
+    return map;
+  }, [userLocation]);
+
   const filteredDealers = useMemo(() => {
-    return DEALERS.filter((dealer) => {
+    const filtered = DEALERS.filter((dealer) => {
       if (activeCategory !== "all" && dealer.category !== activeCategory) {
         return false;
       }
@@ -49,27 +76,151 @@ export default function WhereToBuyContent() {
       }
       return true;
     });
-  }, [activeCategory, searchQuery]);
+
+    // Sort by distance when user location is available
+    if (distances) {
+      filtered.sort(
+        (a, b) => (distances.get(a.id) ?? Infinity) - (distances.get(b.id) ?? Infinity)
+      );
+    }
+
+    return filtered;
+  }, [activeCategory, searchQuery, distances]);
+
+  // Find the nearest dealer among filtered results
+  const nearestDealerId = useMemo(() => {
+    if (!distances || filteredDealers.length === 0) return null;
+    return filteredDealers[0].id; // Already sorted by distance
+  }, [distances, filteredDealers]);
 
   function handleCategoryChange(category: CategoryFilter) {
     setActiveCategory(category);
     setSelectedDealerId(null);
+    dismissError();
   }
+
+  const dismissError = useCallback(() => {
+    setLocationError(null);
+  }, []);
+
+  // Auto-dismiss error after 5 seconds
+  useEffect(() => {
+    if (!locationError) return;
+    const timer = setTimeout(dismissError, 5000);
+    return () => clearTimeout(timer);
+  }, [locationError, dismissError]);
+
+  function handleFindNearest() {
+    if (!navigator.geolocation) {
+      setLocationStatus("unavailable");
+      setLocationError(t("locationUnavailable"));
+      return;
+    }
+
+    setLocationStatus("loading");
+    setLocationError(null);
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const loc = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        setUserLocation(loc);
+        setLocationStatus("granted");
+
+        // Auto-select nearest dealer after we get location
+        // We need to compute nearest here since state updates are async
+        let nearestId: string | null = null;
+        let minDist = Infinity;
+        for (const dealer of DEALERS) {
+          const dist = getDistanceKm(
+            loc.lat,
+            loc.lng,
+            dealer.coordinates.lat,
+            dealer.coordinates.lng
+          );
+          if (dist < minDist) {
+            minDist = dist;
+            nearestId = dealer.id;
+          }
+        }
+        if (nearestId) {
+          setSelectedDealerId(nearestId);
+        }
+      },
+      (error) => {
+        if (error.code === error.PERMISSION_DENIED) {
+          setLocationStatus("denied");
+          setLocationError(t("locationDenied"));
+        } else {
+          setLocationStatus("unavailable");
+          setLocationError(t("locationUnavailable"));
+        }
+      },
+      { enableHighAccuracy: false, timeout: 10000 }
+    );
+  }
+
+  function handleClearLocation() {
+    setUserLocation(null);
+    setLocationStatus("idle");
+    setLocationError(null);
+    setSelectedDealerId(null);
+  }
+
+  const isLocationActive = locationStatus === "granted" && userLocation !== null;
 
   return (
     <Wrapper className="py-6 sm:py-8">
       <Container delay={0.2}>
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-4 mb-6">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder={t("searchPlaceholder")}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-lg border border-border bg-card pl-10 pr-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
-            />
+          <div className="flex flex-1 gap-2">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder={t("searchPlaceholder")}
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  dismissError();
+                }}
+                className="w-full rounded-lg border border-border bg-card pl-10 pr-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+              />
+            </div>
+            {isLocationActive ? (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleClearLocation}
+                className="shrink-0 h-[42px]"
+              >
+                <X className="size-4" />
+                <span className="hidden sm:inline">{t("clearLocation")}</span>
+              </Button>
+            ) : (
+              <Button
+                variant="default"
+                size="sm"
+                onClick={handleFindNearest}
+                disabled={locationStatus === "loading"}
+                className="shrink-0 h-[42px]"
+              >
+                <LocateFixed
+                  className={cn(
+                    "size-4",
+                    locationStatus === "loading" && "animate-pulse"
+                  )}
+                />
+                <span className="hidden sm:inline">
+                  {locationStatus === "loading"
+                    ? t("locating")
+                    : t("findNearest")}
+                </span>
+              </Button>
+            )}
           </div>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
@@ -89,6 +240,14 @@ export default function WhereToBuyContent() {
           </div>
         </div>
 
+        {/* Location error */}
+        {locationError && (
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+            <ShieldAlert className="size-4 shrink-0" />
+            <span>{locationError}</span>
+          </div>
+        )}
+
         {/* Dealer count */}
         <p className="text-sm text-muted-foreground mb-4">
           {t("dealersCount", { count: filteredDealers.length })}
@@ -102,6 +261,7 @@ export default function WhereToBuyContent() {
               dealers={filteredDealers}
               selectedDealerId={selectedDealerId}
               onSelectDealer={setSelectedDealerId}
+              userLocation={userLocation}
             />
           </div>
 
@@ -111,6 +271,8 @@ export default function WhereToBuyContent() {
               dealers={filteredDealers}
               selectedDealerId={selectedDealerId}
               onSelectDealer={setSelectedDealerId}
+              distances={distances}
+              nearestDealerId={nearestDealerId}
             />
           </div>
         </div>

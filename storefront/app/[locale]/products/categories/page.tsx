@@ -1,0 +1,44 @@
+import CTA from "@/components/cta";
+import HeroHeader from "@/components/hero-header";
+import CategoryCard from "@/components/products/category-card";
+import Wrapper from "@/components/wrapper";
+import { getCategories } from "@/lib/categories";
+import { setRequestLocale, getTranslations } from "next-intl/server";
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+const CategoriesPage = async ({ params }: Props) => {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("productsPage");
+  const tList = await getTranslations("categoriesList");
+  const items = tList.raw("items") as Array<{ title: string; desc: string }>;
+  const categories = await getCategories();
+
+  return (
+    <div className="w-full relative flex flex-col pt-16">
+      <HeroHeader title={t("title")} description={t("description")} />
+
+      <Wrapper className="pb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
+          {categories.map((category, index) => (
+            <CategoryCard
+              key={category.slug}
+              category={category}
+              title={items[index].title}
+              description={items[index].desc}
+              index={index}
+            />
+          ))}
+        </div>
+      </Wrapper>
+
+      <CTA />
+    </div>
+  );
+};
+
+export default CategoriesPage;

@@ -29,5 +29,13 @@ export const routing = defineRouting({
       en: "/where-to-buy",
       sr: "/gde-kupiti",
     },
+    "/products/categories": {
+      en: "/products/categories",
+      sr: "/proizvodi/kategorije",
+    },
+    "/products/categories/[slug]": {
+      en: "/products/categories/[slug]",
+      sr: "/proizvodi/kategorije/[slug]",
+    },
   },
 });

@@ -16,6 +16,7 @@ interface DealerMapProps {
   dealers: Dealer[];
   selectedDealerId: string | null;
   onSelectDealer: (id: string | null) => void;
+  userLocation?: { lat: number; lng: number } | null;
 }
 
 function createMarkerIcon(isSelected: boolean) {
@@ -33,6 +34,41 @@ function createMarkerIcon(isSelected: boolean) {
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [0, -14],
+  });
+}
+
+function createUserLocationIcon() {
+  return L.divIcon({
+    className: "user-location-marker",
+    html: `
+      <style>
+        @keyframes user-loc-pulse {
+          0% { transform: scale(1); opacity: 0.6; }
+          100% { transform: scale(2.5); opacity: 0; }
+        }
+      </style>
+      <div style="position: relative; width: 18px; height: 18px;">
+        <div style="
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          background: #3b82f6;
+          border: 2.5px solid #fff;
+          box-shadow: 0 0 8px rgba(59,130,246,0.5);
+          z-index: 2;
+        "></div>
+        <div style="
+          position: absolute;
+          inset: -4px;
+          border-radius: 50%;
+          border: 2px solid #3b82f6;
+          animation: user-loc-pulse 1.5s ease-out infinite;
+          z-index: 1;
+        "></div>
+      </div>
+    `,
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
   });
 }
 
@@ -54,10 +90,33 @@ function MapController({
   return null;
 }
 
+function UserLocationMarker({
+  location,
+}: {
+  location: { lat: number; lng: number };
+}) {
+  const map = useMap();
+
+  useEffect(() => {
+    const marker = L.marker([location.lat, location.lng], {
+      icon: createUserLocationIcon(),
+      interactive: false,
+      zIndexOffset: 1000,
+    }).addTo(map);
+
+    return () => {
+      marker.remove();
+    };
+  }, [map, location]);
+
+  return null;
+}
+
 export default function DealerMap({
   dealers,
   selectedDealerId,
   onSelectDealer,
+  userLocation,
 }: DealerMapProps) {
   const selectedDealer = dealers.find((d) => d.id === selectedDealerId);
 
@@ -72,6 +131,7 @@ export default function DealerMap({
         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
       />
       <MapController dealer={selectedDealer} />
+      {userLocation && <UserLocationMarker location={userLocation} />}
       {dealers.map((dealer) => (
         <Marker
           key={dealer.id}
