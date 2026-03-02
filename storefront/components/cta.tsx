@@ -1,8 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
-import Image from "next/image";
 import Container from "./container";
-import Wrapper from "./wrapper";
 import { Button } from "./ui/button";
+import Wrapper from "./wrapper";
 
 const CTA = () => {
   return (
@@ -31,16 +30,7 @@ const CTA = () => {
             </Container>
           </div>
           <div className="flex flex-col justify-center w-full mt-8 lg:mt-0">
-            <Container className="w-max mx-auto">
-              <div className="flex size-20">
-                <Image
-                  src="/icons/heart.svg"
-                  alt="Heart"
-                  width={1024}
-                  height={1024}
-                  className="object-cover size-full"
-                />
-              </div>
+            <Container className="w-max mx-auto mb-0">
               <div className="flex items-center gap-4 mt-6">
                 <Button size="lg">Get Started</Button>
                 <div className="flex flex-col">

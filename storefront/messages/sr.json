@@ -5,10 +5,8 @@
   },
   "nav": {
     "about": "O nama",
-    "integrations": "Integracije",
-    "pricing": "Cene",
-    "blog": "Blog",
-    "contactSales": "Kontaktirajte prodaju",
+    "faq": "Česta pitanja",
+    "contactSales": "Kontakt",
     "menu": "Meni"
   },
   "hero": {
@@ -24,14 +22,12 @@
     "product": "Proizvod",
     "resources": "Resursi",
     "about": "O nama",
-    "integrations": "Integracije",
-    "pricing": "Cene",
+    "faq": "Česta pitanja",
     "demo": "Demo",
-    "blog": "Blog",
     "helpCenter": "Centar za pomoć",
     "apiDocs": "API dokumentacija",
-    "contactUs": "Kontaktirajte nas",
-    "copyright": "© {year} Verve. Sva prava zadržana."
+    "contactUs": "Kontaktiraj nas",
+    "copyright": "© {year} SG Tools. Sva prava zadržana."
   },
   "languageSwitcher": {
     "en": "English",

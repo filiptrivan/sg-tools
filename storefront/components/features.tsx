@@ -56,7 +56,7 @@ const Features = () => {
         </Container>
 
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mt-10">
             {FEATURES.map((feature, index) => (
               <Feature
                 key={index}
@@ -91,14 +91,16 @@ const Feature = ({
   border: string;
 }) => {
   return (
-    <div className="flex flex-col p-4 lg:p-6 border border-border/60 rounded-lg lg:rounded-xl">
+    <div className="flex flex-col justify-between p-3 lg:p-6 border border-border/60 rounded-lg lg:rounded-xl">
       <div
         className={`flex items-center justify-center size-9 lg:size-11 rounded-xl ${bg} ${border} border`}
       >
         <Icon className={`size-5 lg:size-6 ${color}`} strokeWidth={1.5} />
       </div>
-      <h3 className="text-lg font-semibold mt-4">{title}</h3>
-      <p className="text-sm text-muted-foreground mt-1">{desc}</p>
+      <div>
+        <h3 className="text-base sm:text-lg font-semibold mt-4">{title}</h3>
+        <p className="text-xs sm:text-sm text-muted-foreground mt-1">{desc}</p>
+      </div>
     </div>
   );
 };

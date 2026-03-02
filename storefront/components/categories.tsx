@@ -14,7 +14,7 @@ const CATEGORIES: Category[] = [
   {
     title: "Električni alati",
     desc: "Širok izbor profesionalnih električnih alata za svaku potrebu.",
-    image: "/categories/category-1.jpg",
+    image: "/categories/electric.jpg",
     slug: "elektricni-alati",
   },
   {
@@ -39,7 +39,7 @@ const CATEGORIES: Category[] = [
 
 const Categories = () => {
   return (
-    <div className="flex flex-col items-center justify-center relative w-full pb-16 lg:pb-24">
+    <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24">
       <Wrapper>
         <Container>
           <div className="flex flex-col items-start justify-start lg:items-center lg:justify-center">
@@ -54,7 +54,7 @@ const Categories = () => {
         </Container>
 
         <div className="w-full mt-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
             {CATEGORIES.map((item, index) => (
               <Item key={index} item={item} index={index} />
             ))}
@@ -78,11 +78,13 @@ const Item = ({ item, index }: { item: Category; index: number }) => (
       <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 flex flex-col mt-auto pt-4">
         <Link
           href={`/proizvodi/kategorije/${item.slug}`}
-          className="text-lg lg:text-xl font-semibold"
+          className="text-base lg:text-xl font-semibold"
         >
           {item.title}
         </Link>
-        <p className="text-muted-foreground text-sm mt-1">{item.desc}</p>
+        <p className="text-muted-foreground text-xs sm:text-sm mt-1">
+          {item.desc}
+        </p>
       </div>
     </div>
   </Container>

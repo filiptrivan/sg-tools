@@ -1,5 +1,6 @@
 import Categories from "@/components/categories";
 import Companies from "@/components/companies";
+import CTA from "@/components/cta";
 import Features from "@/components/features";
 import Hero from "@/components/hero";
 import Stats from "@/components/stats";
@@ -20,6 +21,7 @@ const HomePage = async ({ params }: Props) => {
       <Categories />
       <Features />
       <Stats />
+      <CTA />
     </div>
   );
 };

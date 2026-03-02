@@ -5,9 +5,7 @@
   },
   "nav": {
     "about": "About",
-    "integrations": "Integrations",
-    "pricing": "Pricing",
-    "blog": "Blog",
+    "faq": "FAQ",
     "contactSales": "Contact Sales",
     "menu": "Menu"
   },
@@ -24,10 +22,8 @@
     "product": "Product",
     "resources": "Resources",
     "about": "About",
-    "integrations": "Integrations",
-    "pricing": "Pricing",
+    "faq": "FAQ",
     "demo": "Demo",
-    "blog": "Blog",
     "helpCenter": "Help Center",
     "apiDocs": "API Docs",
     "contactUs": "Contact Us",

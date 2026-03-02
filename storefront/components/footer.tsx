@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
-import { PRODUCT_LINKS, RESOURCES_LINKS } from "../constants/links";
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { PRODUCT_LINKS, RESOURCES_LINKS } from "../constants/links";
 import Container from "./container";
 import Wrapper from "./wrapper";
 
@@ -20,13 +20,13 @@ const Footer = async () => {
             <div className="flex flex-col items-start justify-start md:max-w-75">
               <div className="flex items-center gap-2">
                 <Image
-                  src="/icons/icon.svg"
-                  alt="Verve"
+                  src="/sg-tools-logo.svg"
+                  alt="SG Tools Logo"
                   width={32}
                   height={32}
-                  className="size-6"
+                  className="w-24 h-12"
                 />
-                <span className="text-lg lg:text-xl font-medium">Verve</span>
+                {/* <span className="text-lg lg:text-xl font-medium">SG Tools</span> */}
               </div>
               <p className="text-muted-foreground mt-4 text-sm">
                 {t("taglineLine1")}
@@ -87,7 +87,7 @@ const Footer = async () => {
         </div>
 
         <Container animation="fadeUp" delay={1}>
-          <div className="mt-16 border-t border-border/80 pt-8 flex flex-col md:flex-row items-center justify-center">
+          <div className="mt-16 border-t border-border/80 p-8 flex flex-col md:flex-row items-center justify-center">
             <p className="text-sm text-muted-foreground">
               {t("copyright", { year: new Date().getFullYear() })}
             </p>

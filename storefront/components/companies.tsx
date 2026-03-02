@@ -21,12 +21,12 @@ const companies = [
 
 const Companies = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full py-16 lg:py-24">
+    <div className="flex flex-col items-center justify-center w-full">
       <Wrapper>
         <Container>
           <div className="flex flex-col items-center justify-center px-2 md:px-0">
             <h4 className="text-xl lg:text-2xl font-semibold text-center tracking-tight">
-              Companies that trust Verve
+              Companies that trust SG Tools
             </h4>
           </div>
         </Container>
