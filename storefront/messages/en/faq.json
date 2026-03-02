@@ -1,48 +1,4 @@
 {
-  "metadata": {
-    "title": "SGTools - Deliver Enterprise Quality Projects",
-    "description": "Effortlessly launch robust, production-ready projects with best-in-class tools and seamless workflows"
-  },
-  "nav": {
-    "about": "About",
-    "faq": "FAQ",
-    "contactSales": "Contact Sales",
-    "menu": "Menu"
-  },
-  "hero": {
-    "titleLine1": "Deliver an Enterprise",
-    "titleLine2": "Quality Project in Minutes",
-    "description": "Effortlessly launch robust, production-ready projects with best-in-class tools and seamless workflows—no complex setup required",
-    "ctaPrimary": "Buy Online",
-    "ctaSecondary": "Download Catalog"
-  },
-  "footer": {
-    "taglineLine1": "Effortlessly launch robust,",
-    "taglineLine2": "production-ready projects",
-    "product": "Product",
-    "resources": "Resources",
-    "about": "About",
-    "faq": "FAQ",
-    "demo": "Demo",
-    "helpCenter": "Help Center",
-    "apiDocs": "API Docs",
-    "contactUs": "Contact Us",
-    "copyright": "© {year} Verve. All rights reserved."
-  },
-  "cta": {
-    "title": "Find the Right Tool",
-    "titleLine2": "for Every Job",
-    "featureDelivery": "Fast delivery",
-    "featureQuality": "Proven quality",
-    "button": "Browse Products",
-    "rating": "4.8/5",
-    "reviews": "From 300+ customer reviews"
-  },
-  "languageSwitcher": {
-    "en": "English",
-    "sr": "Srpski",
-    "switchTo": "Switch language to {language}"
-  },
   "faqPage": {
     "title": "Frequently Asked Questions",
     "description": "Find answers to the most common questions about purchasing, delivery, and warranty. Can't find an answer? Contact our team."
@@ -94,53 +50,5 @@
         "answer": "Yes, in-person pickup is available at our store. When ordering, select the in-person pickup option and wait for confirmation that your order is ready."
       }
     ]
-  },
-  "features": {
-    "heading": "Why Buy From Us?",
-    "items": [
-      { "title": "Free Delivery", "desc": "For purchases over 15,000 RSD" },
-      { "title": "Fast Shipping", "desc": "Delivery in 1-5 business days" },
-      { "title": "Secure Purchase", "desc": "Warranty on purchased machines" },
-      { "title": "Installment Payments", "desc": "4 installments, interest-free" }
-    ]
-  },
-  "categories": {
-    "heading": "Product Range",
-    "description": "Explore our wide selection of professional tools for every need.",
-    "items": [
-      { "title": "Electric Tools", "desc": "A wide range of professional electric tools for every need." },
-      { "title": "Hand Tools", "desc": "Quality hand tools for precise and everyday work." },
-      { "title": "Grinders", "desc": "Professional grinders for grinding, cutting, and polishing." },
-      { "title": "Diamond Tools", "desc": "Diamond discs and tools for the hardest materials." }
-    ]
-  },
-  "stats": {
-    "items": [
-      { "value": "10,630+", "label": "Wholesale Customers" },
-      { "value": "120+", "label": "Dealers Across Serbia" },
-      { "value": "100%", "label": "Service Satisfaction" }
-    ]
-  },
-  "companies": {
-    "heading": "Companies That Trust SG Tools"
-  },
-  "contact": {
-    "heroTitle": "Let's Start a Conversation",
-    "heroDescription": "Have questions or want to learn more? We're here to help. Reach out to our team and let's discuss how we can support your needs.",
-    "cardEmail": "Email",
-    "cardPhone": "Phone",
-    "cardLocation": "Location",
-    "formHeading": "Contact Us",
-    "firstName": "First Name*",
-    "firstNamePlaceholder": "John",
-    "lastName": "Last Name*",
-    "lastNamePlaceholder": "Doe",
-    "subject": "Subject*",
-    "subjectPlaceholder": "Type your subject here",
-    "email": "Email*",
-    "emailPlaceholder": "johndoe@example.com",
-    "message": "How can we help you?*",
-    "messagePlaceholder": "Type your message here...",
-    "submit": "Submit"
   }
 }

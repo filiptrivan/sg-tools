@@ -1,0 +1,16 @@
+{
+  "whereToBuy": {
+    "title": "Gde kupiti",
+    "description": "Pronađi ovlašćene distributere, servisne centre i servise van garancije širom Srbije.",
+    "searchPlaceholder": "Pretraži po imenu ili gradu...",
+    "categoryAll": "Sve",
+    "categoryOnline": "Online distributeri",
+    "categoryService": "Ovlašćeni servis",
+    "categoryOutOfWarranty": "Servis van garancije",
+    "phone": "Telefon",
+    "email": "E-mail",
+    "website": "Sajt",
+    "noResults": "Nema rezultata za izabrane filtere.",
+    "dealersCount": "{count} prodavaca"
+  }
+}

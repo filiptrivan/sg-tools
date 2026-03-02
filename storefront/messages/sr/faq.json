@@ -1,48 +1,4 @@
 {
-  "metadata": {
-    "title": "SGTools - Isporučite projekte enterprise kvaliteta",
-    "description": "Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima"
-  },
-  "nav": {
-    "about": "O nama",
-    "faq": "Česta pitanja",
-    "contactSales": "Kontakt",
-    "menu": "Meni"
-  },
-  "hero": {
-    "titleLine1": "Isporučite enterprise",
-    "titleLine2": "kvalitet projekta za par minuta",
-    "description": "Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima — bez složenog podešavanja",
-    "ctaPrimary": "Kupi online",
-    "ctaSecondary": "Preuzmi katalog"
-  },
-  "footer": {
-    "taglineLine1": "Bez napora pokrenite robusne,",
-    "taglineLine2": "projekte spremne za produkciju",
-    "product": "Proizvod",
-    "resources": "Resursi",
-    "about": "O nama",
-    "faq": "Česta pitanja",
-    "demo": "Demo",
-    "helpCenter": "Centar za pomoć",
-    "apiDocs": "API dokumentacija",
-    "contactUs": "Kontaktiraj nas",
-    "copyright": "© {year} SG Tools. Sva prava zadržana."
-  },
-  "cta": {
-    "title": "Pronađi pravi alat",
-    "titleLine2": "za svaki posao",
-    "featureDelivery": "Brza dostava",
-    "featureQuality": "Proveren kvalitet",
-    "button": "Pogledaj ponudu",
-    "rating": "4.8/5",
-    "reviews": "Na osnovu 300+ recenzija kupaca"
-  },
-  "languageSwitcher": {
-    "en": "English",
-    "sr": "Srpski",
-    "switchTo": "Promeni jezik na {language}"
-  },
   "faqPage": {
     "title": "Česta pitanja",
     "description": "Pronađi odgovore na najčešća pitanja o kupovini, isporuci i garanciji. Ne možeš da pronađeš odgovor? Kontaktiraj naš tim."
@@ -94,53 +50,5 @@
         "answer": "Da, lično preuzimanje je moguće u našoj prodavnici. Prilikom poručivanja izaberi opciju ličnog preuzimanja i sačekaj potvrdu da je tvoja porudžbina spremna."
       }
     ]
-  },
-  "features": {
-    "heading": "Zašto kupovati kod nas?",
-    "items": [
-      { "title": "Besplatna dostava", "desc": "Za kupovinu preko 15.000 RSD" },
-      { "title": "Brza isporuka", "desc": "Isporuka 1-5 radnih dana" },
-      { "title": "Sigurna kupovina", "desc": "Garancija na kupljene mašine" },
-      { "title": "Čekovima građana", "desc": "Na 4 rate bez kamate" }
-    ]
-  },
-  "categories": {
-    "heading": "Asortiman",
-    "description": "Istraži naš širok izbor profesionalnog alata za svaku potrebu.",
-    "items": [
-      { "title": "Električni alati", "desc": "Širok izbor profesionalnih električnih alata za svaku potrebu." },
-      { "title": "Ručni alati", "desc": "Kvalitetni ručni alati za precizne i svakodnevne radove." },
-      { "title": "Brusilice", "desc": "Profesionalne brusilice za brušenje, sečenje i poliranje." },
-      { "title": "Dijamantski alati", "desc": "Dijamantski diskovi i alati za najtvrđe materijale." }
-    ]
-  },
-  "stats": {
-    "items": [
-      { "value": "10,630+", "label": "Veleprodajnih kupaca" },
-      { "value": "120+", "label": "Dilera širom Srbije" },
-      { "value": "100%", "label": "Zadovoljstvo uslugom" }
-    ]
-  },
-  "companies": {
-    "heading": "Kompanije koje veruju SG Tools-u"
-  },
-  "contact": {
-    "heroTitle": "Započnimo razgovor",
-    "heroDescription": "Imaš pitanja ili želiš da saznaš više? Tu smo da pomognemo. Obrati nam se i hajde da razgovaramo o tome kako možemo da ti pomognemo.",
-    "cardEmail": "E-mail",
-    "cardPhone": "Telefon",
-    "cardLocation": "Lokacija",
-    "formHeading": "Kontaktiraj nas",
-    "firstName": "Ime*",
-    "firstNamePlaceholder": "Petar",
-    "lastName": "Prezime*",
-    "lastNamePlaceholder": "Petrović",
-    "subject": "Naslov*",
-    "subjectPlaceholder": "Unesi naslov poruke",
-    "email": "E-mail*",
-    "emailPlaceholder": "petar@primer.rs",
-    "message": "Kako možemo da ti pomognemo?*",
-    "messagePlaceholder": "Unesi svoju poruku ovde...",
-    "submit": "Pošalji"
   }
 }

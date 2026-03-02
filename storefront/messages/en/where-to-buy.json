@@ -1,0 +1,16 @@
+{
+  "whereToBuy": {
+    "title": "Where to Buy",
+    "description": "Find authorized dealers, service centers, and out-of-warranty repair shops across Serbia.",
+    "searchPlaceholder": "Search by name or city...",
+    "categoryAll": "All",
+    "categoryOnline": "Online Distributors",
+    "categoryService": "Authorized Service",
+    "categoryOutOfWarranty": "Out-of-Warranty Service",
+    "phone": "Phone",
+    "email": "Email",
+    "website": "Website",
+    "noResults": "No dealers found for the selected filters.",
+    "dealersCount": "{count} dealers"
+  }
+}

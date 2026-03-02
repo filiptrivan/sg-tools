@@ -2,10 +2,11 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { base, heading } from "@/constants/fonts";
 import { routing } from "@/i18n/routing";
+import { pick } from "@/lib/pick";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import "../globals.css";
 
@@ -37,6 +38,8 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
     <html lang={locale}>
       <body
@@ -46,7 +49,9 @@ export default async function LocaleLayout({ children, params }: Props) {
           heading.variable,
         )}
       >
-        <NextIntlClientProvider>
+        <NextIntlClientProvider
+          messages={pick(messages, ["nav", "languageSwitcher"])}
+        >
           <Navbar />
           <main>{children}</main>
           <Footer />
