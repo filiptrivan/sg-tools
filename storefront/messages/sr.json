@@ -29,6 +29,15 @@
     "contactUs": "Kontaktiraj nas",
     "copyright": "© {year} SG Tools. Sva prava zadržana."
   },
+  "cta": {
+    "title": "Pronađi pravi alat",
+    "titleLine2": "za svaki posao",
+    "featureDelivery": "Brza dostava",
+    "featureQuality": "Proveren kvalitet",
+    "button": "Pogledaj ponudu",
+    "rating": "4.8/5",
+    "reviews": "Na osnovu 300+ recenzija kupaca"
+  },
   "languageSwitcher": {
     "en": "English",
     "sr": "Srpski",

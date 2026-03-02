@@ -29,6 +29,15 @@
     "contactUs": "Contact Us",
     "copyright": "© {year} Verve. All rights reserved."
   },
+  "cta": {
+    "title": "Find the Right Tool",
+    "titleLine2": "for Every Job",
+    "featureDelivery": "Fast delivery",
+    "featureQuality": "Proven quality",
+    "button": "Browse Products",
+    "rating": "4.8/5",
+    "reviews": "From 300+ customer reviews"
+  },
   "languageSwitcher": {
     "en": "English",
     "sr": "Srpski",
