@@ -1,8 +1,5 @@
 "use client";
 
-import { NAV_LINKS } from "@/constants/links";
-import { Link, useRouter } from "@/i18n/navigation";
-import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,9 +8,11 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { NAV_LINKS } from "@/constants/links";
+import { Link, useRouter } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
 import Container from "./container";
 import LanguageSwitcher from "./language-switcher";
 import Wrapper from "./wrapper";
@@ -22,29 +21,11 @@ const MobileMenu = dynamic(() => import("./mobile-menu"), { ssr: false });
 const Navbar = () => {
   const t = useTranslations("nav");
   const router = useRouter();
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 w-full h-16 transition-all duration-300",
-        isScrolled ? "bg-[#050505]/50 backdrop-blur-md" : "bg-transparent",
+        "fixed top-0 inset-x-0 z-50 w-full h-16 transition-all duration-300 backdrop-blur-md border-b border-border",
       )}
     >
       <Wrapper className="flex items-center justify-between">
@@ -84,7 +65,9 @@ const Navbar = () => {
                                     }}
                                     className="flex select-none rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                                   >
-                                    {t(child.labelKey as Parameters<typeof t>[0])}
+                                    {t(
+                                      child.labelKey as Parameters<typeof t>[0],
+                                    )}
                                   </Link>
                                 </NavigationMenuLink>
                               </li>
@@ -106,7 +89,9 @@ const Navbar = () => {
                     ) : (
                       <NavigationMenuLink asChild>
                         <Link
-                          href={link.href as "/about" | "/faq" | "/where-to-buy"}
+                          href={
+                            link.href as "/about" | "/faq" | "/where-to-buy"
+                          }
                           className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
                         >
                           {t(link.labelKey as Parameters<typeof t>[0])}

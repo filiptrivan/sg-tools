@@ -2,6 +2,17 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
+      "Bash(cd * && git log *)",
+      "Bash(cd * && git show *)",
+      "Bash(cd * && git status)",
+      "Bash(cd * && git status *)",
+      "Bash(cd * && git diff *)",
+      "Bash(cd * && git branch *)",
+      "Bash(cd * && git rev-list *)",
+      "Bash(cd * && git rev-parse *)",
+      "Bash(cd * && git fetch *)",
+      "Bash(cd * && git remote *)",
+      "Bash(cd * && git config *)",
       "Bash(git log *)",
       "Bash(git show *)",
       "Bash(git status)",
@@ -14,6 +25,7 @@
       "Bash(git remote *)",
       "Bash(git config *)",
       "Bash(gh label list *)",
+      "Bash(gh issue view *)",
       "Bash(ls *)",
       "Bash(cat *)",
       "Bash(head *)",
@@ -73,6 +85,13 @@
     "defaultMode": "plan"
   },
   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true
   }
 }

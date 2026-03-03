@@ -6,7 +6,11 @@ import { pick } from "@/lib/pick";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { notFound } from "next/navigation";
 import "../globals.css";
 
@@ -44,7 +48,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale}>
       <body
         className={cn(
-          "min-h-screen bg-[#050505] text-foreground font-base antialiased dark",
+          "min-h-screen text-foreground font-base antialiased dark",
           base.variable,
           heading.variable,
         )}
