@@ -40,6 +40,7 @@ export interface Product {
   sale_price: number | null;
   sku: string | null;
   stock: number;
+  aooso: boolean;
   status: string;
   manufacturer: ApiManufacturer | null;
   category: string;

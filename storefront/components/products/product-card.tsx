@@ -13,7 +13,7 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
   const t = await getTranslations("categoryPage");
   const hasDiscount =
     product.sale_price !== null && product.sale_price < product.price;
-  const isOutOfStock = product.stock <= 0;
+  const isOutOfStock = product.stock <= 0 && !product.aooso;
   const displayPrice = hasDiscount ? product.sale_price! : product.price;
   const discountPercent = hasDiscount
     ? Math.round(((product.price - product.sale_price!) / product.price) * 100)
@@ -64,9 +64,10 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
           </h3>
 
           {product.description && (
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2">
-              {product.description}
-            </p>
+            <p
+              className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2"
+              dangerouslySetInnerHTML={{ __html: product.description }}
+            />
           )}
 
           <div className="flex items-baseline gap-2 mt-auto pt-3">

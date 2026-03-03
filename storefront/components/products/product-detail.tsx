@@ -2,7 +2,7 @@ import Container from "@/components/container";
 import Wrapper from "@/components/wrapper";
 import { Link } from "@/i18n/navigation";
 import type { Product } from "@/types/products";
-import { ArrowLeft, ChevronRight, ExternalLink, Package } from "lucide-react";
+import { ChevronRight, ExternalLink, Package } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import ProductCard from "./product-card";
 import ProductGallery from "./product-gallery";
@@ -12,13 +12,15 @@ interface ProductDetailProps {
   relatedProducts: Product[];
 }
 
-const ProductDetail = async ({ product, relatedProducts }: ProductDetailProps) => {
+const ProductDetail = async ({
+  product,
+  relatedProducts,
+}: ProductDetailProps) => {
   const t = await getTranslations("productPage");
-
 
   const hasDiscount =
     product.sale_price !== null && product.sale_price < product.price;
-  const isOutOfStock = product.stock <= 0;
+  const isOutOfStock = product.stock <= 0 && !product.aooso;
   const displayPrice = hasDiscount ? product.sale_price! : product.price;
   const discountPercent = hasDiscount
     ? Math.round(((product.price - product.sale_price!) / product.price) * 100)
@@ -44,7 +46,10 @@ const ProductDetail = async ({ product, relatedProducts }: ProductDetailProps) =
             <>
               <ChevronRight className="size-3.5" />
               <Link
-                href={{ pathname: "/products/categories/[slug]", params: { slug: categorySlug } }}
+                href={{
+                  pathname: "/products/categories/[slug]",
+                  params: { slug: categorySlug },
+                }}
                 className="hover:text-foreground transition-colors"
               >
                 {categoryName}
@@ -81,9 +86,10 @@ const ProductDetail = async ({ product, relatedProducts }: ProductDetailProps) =
             </h1>
 
             {product.description && (
-              <p className="text-muted-foreground mt-3 leading-relaxed">
-                {product.description}
-              </p>
+              <p
+                className="text-muted-foreground mt-3 leading-relaxed whitespace-pre-line"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+              />
             )}
 
             {/* Price */}
@@ -142,9 +148,14 @@ const ProductDetail = async ({ product, relatedProducts }: ProductDetailProps) =
               )}
               {categorySlug && (
                 <div className="flex gap-2">
-                  <span className="text-muted-foreground">{t("category")}:</span>
+                  <span className="text-muted-foreground">
+                    {t("category")}:
+                  </span>
                   <Link
-                    href={{ pathname: "/products/categories/[slug]", params: { slug: categorySlug } }}
+                    href={{
+                      pathname: "/products/categories/[slug]",
+                      params: { slug: categorySlug },
+                    }}
                     className="text-primary hover:underline"
                   >
                     {categoryName}
@@ -173,11 +184,7 @@ const ProductDetail = async ({ product, relatedProducts }: ProductDetailProps) =
           <h2 className="text-xl font-bold mb-6">{t("relatedProducts")}</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
             {relatedProducts.map((related, index) => (
-              <ProductCard
-                key={related.id}
-                product={related}
-                index={index}
-              />
+              <ProductCard key={related.id} product={related} index={index} />
             ))}
           </div>
         </Container>
