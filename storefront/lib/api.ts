@@ -23,7 +23,7 @@ async function apiFetch<T>(path: string, locale?: string): Promise<T> {
 
   const res = await fetch(`${API_URL}${path}`, {
     headers,
-    next: { revalidate: 60 },
+    next: { revalidate: 3600 },
   });
 
   if (!res.ok) {

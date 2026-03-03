@@ -13,6 +13,8 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   try {
     const products = await getProducts();
