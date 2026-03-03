@@ -28,6 +28,7 @@ type LocationStatus = "idle" | "loading" | "granted" | "denied" | "unavailable";
 export default function WhereToBuyContent() {
   const t = useTranslations("whereToBuy");
   const [selectedDealerId, setSelectedDealerId] = useState<string | null>(null);
+  const [showBottomShadow, setShowBottomShadow] = useState(true);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [userLocation, setUserLocation] = useState<{
@@ -102,6 +103,13 @@ export default function WhereToBuyContent() {
   const dismissError = useCallback(() => {
     setLocationError(null);
   }, []);
+
+  // Handle scroll to show/hide bottom shadow
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const target = e.currentTarget;
+    const isAtBottom = target.scrollHeight - target.scrollTop - target.clientHeight <= 50;
+    setShowBottomShadow(!isAtBottom);
+  };
 
   // Auto-dismiss error after 5 seconds
   useEffect(() => {
@@ -266,13 +274,23 @@ export default function WhereToBuyContent() {
           </div>
 
           {/* List */}
-          <div className="order-2 lg:order-1 lg:max-h-[560px] lg:overflow-y-auto">
+          <div 
+            className="order-2 lg:order-1 lg:max-h-[560px] lg:overflow-y-auto relative"
+            onScroll={handleScroll}
+          >
             <DealerList
               dealers={filteredDealers}
               selectedDealerId={selectedDealerId}
               onSelectDealer={setSelectedDealerId}
               distances={distances}
               nearestDealerId={nearestDealerId}
+            />
+            {/* Bottom shadow for scroll affordance */}
+            <div 
+              className={cn(
+                "absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none transition-opacity duration-200",
+                showBottomShadow ? "opacity-100" : "opacity-0"
+              )} 
             />
           </div>
         </div>
