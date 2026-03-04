@@ -18,7 +18,7 @@ type Testimonial = {
 
 const Testimonials = () => {
   return (
-    <div className="flex flex-col items-center justify-center relative w-full pb-16 lg:pb-24">
+    <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24">
       <Wrapper>
         <div className="relative flex flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:80s] gap-8">

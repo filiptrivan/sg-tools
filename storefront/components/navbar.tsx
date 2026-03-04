@@ -35,86 +35,92 @@ const Navbar = () => {
           />
         </Link>
 
-        <div className="hidden lg:flex flex-row flex-1 absolute inset-0 items-center justify-center w-max mx-auto">
-          <NavigationMenu>
-            <NavigationMenuList className="gap-x-1">
-              {NAV_LINKS.map((link, index) => (
-                <Container key={index} animation="fadeDown" delay={0.1 * index}>
-                  <NavigationMenuItem>
-                    {link.children ? (
-                      <>
-                        <NavigationMenuTrigger
-                          className="text-sm font-medium cursor-pointer"
-                          onClick={() => {
-                            router.push("/proizvodi/kategorije");
-                          }}
-                        >
-                          {link.label}
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent className="min-w-[200px]">
-                          <ul className="flex flex-col gap-0.5 p-1">
-                            {link.children.map((child) => (
-                              <li key={child.slug}>
+        <div>
+          <div className="hidden md:flex">
+            <NavigationMenu>
+              <NavigationMenuList className="gap-x-1">
+                {NAV_LINKS.map((link, index) => (
+                  <Container
+                    key={index}
+                    animation="fadeDown"
+                    delay={0.1 * index}
+                  >
+                    <NavigationMenuItem>
+                      {link.children ? (
+                        <>
+                          <NavigationMenuTrigger
+                            className="text-sm font-medium cursor-pointer"
+                            onClick={() => {
+                              router.push("/proizvodi/kategorije");
+                            }}
+                          >
+                            {link.label}
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent className="min-w-[200px]">
+                            <ul className="flex flex-col gap-0.5 p-1">
+                              {link.children.map((child) => (
+                                <li key={child.slug}>
+                                  <NavigationMenuLink asChild>
+                                    <Link
+                                      href={`/proizvodi/kategorije/${child.slug}`}
+                                      className="flex select-none rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                                    >
+                                      {child.label}
+                                    </Link>
+                                  </NavigationMenuLink>
+                                </li>
+                              ))}
+                              <li>
+                                <hr className="my-1 border-border" />
                                 <NavigationMenuLink asChild>
                                   <Link
-                                    href={`/proizvodi/kategorije/${child.slug}`}
-                                    className="flex select-none rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                                    href="/proizvodi/kategorije"
+                                    className="flex select-none rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                                   >
-                                    {child.label}
+                                    Sve kategorije
                                   </Link>
                                 </NavigationMenuLink>
                               </li>
-                            ))}
-                            <li>
-                              <hr className="my-1 border-border" />
-                              <NavigationMenuLink asChild>
-                                <Link
-                                  href="/proizvodi/kategorije"
-                                  className="flex select-none rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                                >
-                                  Sve kategorije
-                                </Link>
-                              </NavigationMenuLink>
-                            </li>
-                          </ul>
-                        </NavigationMenuContent>
-                      </>
-                    ) : (
-                      <NavigationMenuLink asChild>
-                        <Link
-                          href={link.href}
-                          className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
-                        >
-                          {link.label}
-                        </Link>
-                      </NavigationMenuLink>
-                    )}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={link.href}
+                            className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
+                          >
+                            {link.label}
+                          </Link>
+                        </NavigationMenuLink>
+                      )}
+                    </NavigationMenuItem>
+                  </Container>
+                ))}
+                <Container animation="fadeDown" delay={0.1 * NAV_LINKS.length}>
+                  <NavigationMenuItem>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/kontakt"
+                        className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
+                      >
+                        Kontakt
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 </Container>
-              ))}
-              <Container animation="fadeDown" delay={0.1 * NAV_LINKS.length}>
-                <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href="/kontakt"
-                      className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
-                    >
-                      Kontakt
-                    </Link>
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              </Container>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
-        <Container animation="fadeLeft" delay={0.1}>
-          <div className="flex items-center gap-x-4">
-            <div className="lg:hidden">
-              <MobileMenu />
-            </div>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
-        </Container>
+
+          <Container animation="fadeLeft" delay={0.1}>
+            <div className="flex items-center gap-x-4">
+              <div className="md:hidden">
+                <MobileMenu />
+              </div>
+            </div>
+          </Container>
+        </div>
       </Wrapper>
     </header>
   );
