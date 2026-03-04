@@ -35,10 +35,22 @@
     "heading": "Product Categories",
     "description": "Explore our wide selection of professional tools for every need.",
     "items": [
-      { "title": "Electric Tools", "desc": "A wide range of professional electric tools for every need." },
-      { "title": "Hand Tools", "desc": "Quality hand tools for precise and everyday work." },
-      { "title": "Grinders", "desc": "Professional grinders for grinding, cutting, and polishing." },
-      { "title": "Diamond Tools", "desc": "Diamond discs and tools for the hardest materials." }
+      {
+        "title": "Electric Tools",
+        "desc": "A wide range of professional electric tools for every need."
+      },
+      {
+        "title": "Hand Tools",
+        "desc": "Quality hand tools for precise and everyday work."
+      },
+      {
+        "title": "Grinders",
+        "desc": "Professional grinders for grinding, cutting, and polishing."
+      },
+      {
+        "title": "Diamond Tools",
+        "desc": "Diamond discs and tools for the hardest materials."
+      }
     ]
   }
 }

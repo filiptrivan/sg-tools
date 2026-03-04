@@ -3,7 +3,11 @@ import HeroHeader from "@/components/hero-header";
 import ProductGrid from "@/components/products/product-grid";
 import Wrapper from "@/components/wrapper";
 import { getProductsByCategory } from "@/lib/api";
-import { getCategories, getCategoryBySlug, getCategorySlugs } from "@/lib/categories";
+import {
+  getCategories,
+  getCategoryBySlug,
+  getCategorySlugs,
+} from "@/lib/categories";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 

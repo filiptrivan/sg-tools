@@ -1,6 +1,10 @@
 import CTA from "@/components/cta";
 import ProductDetail from "@/components/products/product-detail";
-import { getProductBySlug, getProducts, getProductsByCategory } from "@/lib/api";
+import {
+  getProductBySlug,
+  getProducts,
+  getProductsByCategory,
+} from "@/lib/api";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";

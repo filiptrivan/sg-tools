@@ -21,7 +21,9 @@ const CTA = async () => {
               <div className="flex items-center gap-4 mt-6">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="size-4 text-primary" />
-                  <span className="text-sm font-medium">{t("featureDelivery")}</span>
+                  <span className="text-sm font-medium">
+                    {t("featureDelivery")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="size-4 text-primary" />
@@ -35,7 +37,11 @@ const CTA = async () => {
           <div className="flex flex-col justify-center w-full mt-8 lg:mt-0">
             <Container className="w-max mx-auto mb-0">
               <div className="flex items-center gap-4 mt-6">
-                <a href="https://prodavnicaalata.rs" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://prodavnicaalata.rs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Button size="lg">{t("button")}</Button>
                 </a>
                 <div className="flex flex-col">

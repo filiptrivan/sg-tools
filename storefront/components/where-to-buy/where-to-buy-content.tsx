@@ -55,8 +55,8 @@ export default function WhereToBuyContent() {
           userLocation.lat,
           userLocation.lng,
           dealer.coordinates.lat,
-          dealer.coordinates.lng
-        )
+          dealer.coordinates.lng,
+        ),
       );
     }
     return map;
@@ -80,7 +80,8 @@ export default function WhereToBuyContent() {
     // Sort by distance when user location is available
     if (distances) {
       filtered.sort(
-        (a, b) => (distances.get(a.id) ?? Infinity) - (distances.get(b.id) ?? Infinity)
+        (a, b) =>
+          (distances.get(a.id) ?? Infinity) - (distances.get(b.id) ?? Infinity),
       );
     }
 
@@ -138,7 +139,7 @@ export default function WhereToBuyContent() {
             loc.lat,
             loc.lng,
             dealer.coordinates.lat,
-            dealer.coordinates.lng
+            dealer.coordinates.lng,
           );
           if (dist < minDist) {
             minDist = dist;
@@ -158,7 +159,7 @@ export default function WhereToBuyContent() {
           setLocationError(t("locationUnavailable"));
         }
       },
-      { enableHighAccuracy: false, timeout: 10000 }
+      { enableHighAccuracy: false, timeout: 10000 },
     );
   }
 
@@ -169,7 +170,8 @@ export default function WhereToBuyContent() {
     setSelectedDealerId(null);
   }
 
-  const isLocationActive = locationStatus === "granted" && userLocation !== null;
+  const isLocationActive =
+    locationStatus === "granted" && userLocation !== null;
 
   return (
     <Wrapper className="py-6 sm:py-8">
@@ -211,7 +213,7 @@ export default function WhereToBuyContent() {
                 <LocateFixed
                   className={cn(
                     "size-4",
-                    locationStatus === "loading" && "animate-pulse"
+                    locationStatus === "loading" && "animate-pulse",
                   )}
                 />
                 <span className="hidden sm:inline">
@@ -231,7 +233,7 @@ export default function WhereToBuyContent() {
                   "rounded-lg px-4 py-2 text-sm font-medium transition-colors",
                   activeCategory === cat.key
                     ? "bg-primary text-primary-foreground"
-                    : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-muted-foreground/30"
+                    : "bg-card border border-border text-muted-foreground hover:text-foreground hover:border-muted-foreground/30",
                 )}
               >
                 {cat.label}

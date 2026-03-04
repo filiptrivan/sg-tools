@@ -15,10 +15,7 @@ const WhereToBuyPage = async ({ params }: Props) => {
 
   return (
     <div className="w-full relative flex flex-col pt-16">
-      <HeroHeader
-        title={t("title")}
-        description={t("description")}
-      />
+      <HeroHeader title={t("title")} description={t("description")} />
       <WhereToBuyContent />
       <CTA />
     </div>

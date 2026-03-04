@@ -10,7 +10,11 @@ interface ProductGalleryProps {
   title: string;
 }
 
-const ProductGallery = ({ posterUrl, imageUrls, title }: ProductGalleryProps) => {
+const ProductGallery = ({
+  posterUrl,
+  imageUrls,
+  title,
+}: ProductGalleryProps) => {
   const allImages = [posterUrl, ...imageUrls].filter(Boolean);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -45,7 +49,7 @@ const ProductGallery = ({ posterUrl, imageUrls, title }: ProductGalleryProps) =>
                 "relative size-16 sm:size-20 shrink-0 rounded-md overflow-hidden border-2 transition-colors",
                 index === selectedIndex
                   ? "border-primary"
-                  : "border-border/20 hover:border-border/50"
+                  : "border-border/20 hover:border-border/50",
               )}
             >
               <Image

@@ -1,13 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { Dealer } from "@/types/dealers";
@@ -72,11 +66,7 @@ function createUserLocationIcon() {
   });
 }
 
-function MapController({
-  dealer,
-}: {
-  dealer: Dealer | undefined;
-}) {
+function MapController({ dealer }: { dealer: Dealer | undefined }) {
   const map = useMap();
 
   useEffect(() => {
@@ -139,9 +129,7 @@ export default function DealerMap({
           icon={createMarkerIcon(dealer.id === selectedDealerId)}
           eventHandlers={{
             click: () => {
-              onSelectDealer(
-                dealer.id === selectedDealerId ? null : dealer.id
-              );
+              onSelectDealer(dealer.id === selectedDealerId ? null : dealer.id);
             },
           }}
         >
