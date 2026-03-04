@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { ImageResponse } from "next/og";
 
 // Image metadata
@@ -12,19 +13,22 @@ export const contentType = "image/png";
 // Image generation
 export default async function OpenGraphImage() {
   // Font loading, process.cwd() is Next.js project directory
-
+  const t = await getTranslations("hero");
   return new ImageResponse(
     // ImageResponse JSX element
     <div
       style={{
         fontSize: 128,
+
         backgroundColor: "#0a0a0a",
         width: "100%",
         height: "100%",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "column",
+        padding: "60px 60px",
         position: "relative",
+        alignItems: "flex-start",
+        justifyContent: "space-between",
       }}
     >
       <svg
@@ -34,11 +38,6 @@ export default async function OpenGraphImage() {
         viewBox="0 0 967.36267 112.49487"
         className="absolute top-6 left-6"
         width={300}
-        style={{
-          position: "absolute",
-          top: "100px",
-          left: "100px",
-        }}
       >
         <defs></defs>
         <g id="Layer_1-2" data-name="Layer 1">
@@ -74,6 +73,52 @@ export default async function OpenGraphImage() {
           </g>
         </g>
       </svg>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "80%",
+        }}
+      >
+        <h1
+          style={{
+            color: "#ffffff",
+            fontSize: "60px",
+            textAlign: "left",
+
+            marginBottom: "0",
+            marginTop: "40px",
+          }}
+        >
+          {t("titleLine1")}. {t("titleLine2")}
+        </h1>
+        <p
+          style={{
+            color: "#ffffff",
+            fontSize: "24px",
+            textAlign: "left",
+
+            marginTop: "20px",
+          }}
+        >
+          {t("description")}
+        </p>
+      </div>
+      <button
+        style={{
+          fontSize: "35px",
+          padding: "30px 40px",
+          backgroundColor: "#ffffff",
+          display: "flex",
+          alignItems: "center",
+          justifyItems: "center",
+          borderRadius: "30px",
+        }}
+      >
+        {t("ctaPrimary")}
+      </button>
     </div>,
     // ImageResponse options
     {
