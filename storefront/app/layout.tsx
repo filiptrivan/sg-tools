@@ -7,9 +7,9 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SGTools - Isporučite projekte enterprise kvaliteta",
+  title: "SG Tools — Profesionalni alati sa 30 godina iskustva",
   description:
-    "Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima",
+    "Električni alati, ručni alati, brusilice i dijamantski alati nastali iz decenija praktičnog znanja. Profesionalni kvalitet po cenama koje imaju smisla.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

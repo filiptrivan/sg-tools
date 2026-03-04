@@ -4,6 +4,7 @@ import CTA from "@/components/cta";
 import Features from "@/components/features";
 import Hero from "@/components/hero";
 import Stats from "@/components/stats";
+import Testimonials from "@/components/testimonials";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Categories />
       <Features />
       <Stats />
+      <Testimonials />
       <CTA />
     </div>
   );

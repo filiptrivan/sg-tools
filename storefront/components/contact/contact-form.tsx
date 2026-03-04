@@ -42,7 +42,7 @@ const ContactForm = () => {
               <Label htmlFor="subject">Naslov*</Label>
               <Input
                 id="subject"
-                placeholder="Unesi naslov poruke"
+                placeholder="npr. Pitanje o proizvodu, upit za dilere..."
                 className="bg-[#0A0A0A] border-border/50"
               />
             </div>
@@ -61,12 +61,12 @@ const ContactForm = () => {
               <Label htmlFor="message">Kako možemo da ti pomognemo?*</Label>
               <Textarea
                 id="message"
-                placeholder="Unesi svoju poruku ovde..."
+                placeholder="Reci nam šta ti treba..."
                 className="min-h-[150px] bg-[#0A0A0A] border-border/50 resize-none"
               />
             </div>
 
-            <Button className="w-full">Pošalji</Button>
+            <Button className="w-full">Pošalji poruku</Button>
           </form>
         </Container>
       </Wrapper>

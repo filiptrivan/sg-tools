@@ -10,11 +10,12 @@ const Hero = () => {
     <HeroHeader
       title={
         <>
-          Isporučite enterprise <br className="hidden lg:inline-block" />{" "}
-          kvalitet projekta za par minuta
+          Profesionalni alati nastali iz{" "}
+          <br className="hidden lg:inline-block" />
+          30 godina iskustva
         </>
       }
-      description="Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima — bez složenog podešavanja"
+      description="Nastali iza pulta, oblikovani stvarnim potrebama majstora i tehničara. SG Tools donosi pouzdanost, trajnost i ergonomiju — po cenama koje imaju smisla."
       showSvgGrid={true}
     >
       <Container delay={0.3}>

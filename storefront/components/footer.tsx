@@ -27,13 +27,13 @@ const Footer = () => {
                 />
               </div>
               <p className="text-muted-foreground mt-4 text-sm">
-                Bez napora pokrenite robusne,
+                Profesionalni alati nastali iz
                 <br />
-                projekte spremne za produkciju
+                30 godina praktičnog iskustva.
               </p>
               <div className="mt-4 text-sm text-muted-foreground px-4 py-2 cursor-pointer rounded-full border border-border/40 bg-foreground/5 hover:bg-foreground/10 transition-colors duration-300">
-                <a href="tel:+11234567890">
-                  <p>+1 (123) 456-7890</p>
+                <a href="tel:+381111234567">
+                  <p>+381 11 123 4567</p>
                 </a>
               </div>
             </div>
@@ -42,7 +42,7 @@ const Footer = () => {
           <div className="grid grid-cols-2 md:place-items-end w-full">
             <Container animation="fadeUp" delay={0.5}>
               <div>
-                <h3 className="text-base font-medium">Proizvod</h3>
+                <h3 className="text-base font-medium">Kompanija</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   {PRODUCT_LINKS.map((link, index) => (
                     <li key={index}>
@@ -60,7 +60,7 @@ const Footer = () => {
 
             <Container animation="fadeUp" delay={0.5}>
               <div>
-                <h3 className="text-base font-medium">Resursi</h3>
+                <h3 className="text-base font-medium">Podrška</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   {RESOURCES_LINKS.map((link, index) => (
                     <Container

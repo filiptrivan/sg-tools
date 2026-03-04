@@ -52,8 +52,12 @@ const Item = ({ item }: { item: Testimonial }) => (
         <div className="flex flex-col">
           <h4 className="font-semibold">{item.name}</h4>
           <div className="text-muted-foreground text-sm">
-            {item.role}{" "}
-            <span className="text-primary ml-1">@{item.company}</span>
+            {item.role}
+            {item.companyUrl ? (
+              <span className="text-primary ml-1">@{item.company}</span>
+            ) : (
+              <span className="ml-1">· {item.company}</span>
+            )}
           </div>
         </div>
       </div>

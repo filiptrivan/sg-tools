@@ -8,24 +8,24 @@ export const FEATURES = [
 export const CATEGORIES = [
   {
     title: "Električni alati",
-    desc: "Širok izbor profesionalnih električnih alata za svaku potrebu.",
+    desc: "Bušilice, testere i udarni zavrtnji za svakodnevnu profesionalnu upotrebu.",
   },
   {
     title: "Ručni alati",
-    desc: "Kvalitetni ručni alati za precizne i svakodnevne radove.",
+    desc: "Ključevi, klešta i odvijači dizajnirani za siguran hvat i dug vek.",
   },
   {
     title: "Brusilice",
-    desc: "Profesionalne brusilice za brušenje, sečenje i poliranje.",
+    desc: "Ugaone brusilice za sečenje, brušenje i poliranje — snažne i balansirane.",
   },
   {
     title: "Dijamantski alati",
-    desc: "Dijamantski diskovi i alati za najtvrđe materijale.",
+    desc: "Dijamantski diskovi i ploče koji precizno seku i najtvrđe materijale.",
   },
 ];
 
 export const STATS = [
-  { value: "10,630+", label: "Veleprodajnih kupaca" },
+  { value: "10.630+", label: "Veleprodajnih kupaca" },
   { value: "120+", label: "Dilera širom Srbije" },
   { value: "100%", label: "Zadovoljstvo uslugom" },
 ];

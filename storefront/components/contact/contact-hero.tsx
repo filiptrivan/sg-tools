@@ -5,8 +5,8 @@ import HeroHeader from "../hero-header";
 const ContactHero = () => {
   return (
     <HeroHeader
-      title="Započnimo razgovor"
-      description="Imaš pitanja ili želiš da saznaš više? Tu smo da pomognemo. Obrati nam se i hajde da razgovaramo o tome kako možemo da ti pomognemo."
+      title="Javi nam se"
+      description="Imaš pitanje o našim alatima, treba ti pomoć da nađeš pravi proizvod, ili želiš da postaneš diler? Rado ćemo ti pomoći."
     >
       <Container delay={0.3} className="w-full">
         <div className="flex flex-col md:flex-row justify-center gap-6 w-full mt-10">
