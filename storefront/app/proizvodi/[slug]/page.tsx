@@ -6,36 +6,34 @@ import {
   getProductsByCategory,
 } from "@/lib/api";
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 };
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   try {
-    const products = await getProducts();
-    return products.map((p) => ({ slug: p.slug }));
+    const allProducts = await getProducts();
+    return allProducts.map((p) => ({ slug: p.slug }));
   } catch {
     return [];
   }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const product = await getProductBySlug(slug, locale);
+  const { slug } = await params;
+  const product = await getProductBySlug(slug, "sr");
 
   if (!product) {
     return {};
   }
 
-  const t = await getTranslations({ locale, namespace: "productPage" });
-
   return {
-    title: product.seo?.title_tag || t("metaTitle", { product: product.title }),
+    title:
+      product.seo?.title_tag || `${product.title} | SG Tools`,
     description: product.seo?.description || product.description,
     openGraph: {
       title: product.seo?.title || product.title,
@@ -48,16 +46,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const ProductPage = async ({ params }: Props) => {
-  const { locale, slug } = await params;
-  setRequestLocale(locale);
+  const { slug } = await params;
 
-  const product = await getProductBySlug(slug, locale);
+  const product = await getProductBySlug(slug, "sr");
   if (!product) notFound();
 
-  // Fetch related products from same category (up to 4, excluding current)
   const categorySlug = product.categories?.[0]?.slug || product.category;
   let relatedProducts = categorySlug
-    ? await getProductsByCategory(categorySlug, locale)
+    ? await getProductsByCategory(categorySlug, "sr")
     : [];
   relatedProducts = relatedProducts
     .filter((p) => p.id !== product.id)

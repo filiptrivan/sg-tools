@@ -5,9 +5,9 @@ import {
   Truck,
   type LucideIcon,
 } from "lucide-react";
+import { FEATURES } from "@/constants/content";
 import Container from "./container";
 import Wrapper from "./wrapper";
-import { getTranslations } from "next-intl/server";
 
 const FEATURE_STYLES = [
   {
@@ -36,24 +36,21 @@ const FEATURE_STYLES = [
   },
 ];
 
-const Features = async () => {
-  const t = await getTranslations("features");
-  const items = t.raw("items") as Array<{ title: string; desc: string }>;
-
+const Features = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full py-16 lg:py-24">
       <Wrapper>
         <Container>
           <div className="flex flex-col items-start justify-start lg:items-center lg:justify-center">
             <h2 className="text-3xl lg:text-4xl font-semibold text-left lg:text-center tracking-tight">
-              {t("heading")}
+              Zašto kupovati kod nas?
             </h2>
           </div>
         </Container>
 
         <Container>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mt-10">
-            {items.map((item, index) => (
+            {FEATURES.map((item, index) => (
               <Feature
                 key={index}
                 title={item.title}

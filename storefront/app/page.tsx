@@ -4,16 +4,8 @@ import CTA from "@/components/cta";
 import Features from "@/components/features";
 import Hero from "@/components/hero";
 import Stats from "@/components/stats";
-import { setRequestLocale } from "next-intl/server";
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-const HomePage = async ({ params }: Props) => {
-  const { locale } = await params;
-  setRequestLocale(locale);
-
+const HomePage = () => {
   return (
     <div className="w-full relative flex flex-col pt-16">
       <Hero />

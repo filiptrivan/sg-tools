@@ -15,15 +15,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { NAV_LINKS, type NavLink } from "@/constants/links";
-import { Link } from "@/i18n/navigation";
+import { NAV_LINKS } from "@/constants/links";
 import { MenuIcon } from "lucide-react";
-import { useTranslations } from "next-intl";
-import LanguageSwitcher from "./language-switcher";
+import Link from "next/link";
 
 const MobileMenu = () => {
-  const t = useTranslations("nav");
-
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -33,7 +29,7 @@ const MobileMenu = () => {
       </SheetTrigger>
       <SheetContent side="right" className="p-4">
         <SheetHeader className="sr-only">
-          <SheetTitle>{t("menu")}</SheetTitle>
+          <SheetTitle>Meni</SheetTitle>
         </SheetHeader>
         <div className="flex flex-col gap-2 mt-8">
           {NAV_LINKS.map((link, index) =>
@@ -41,28 +37,25 @@ const MobileMenu = () => {
               <Accordion key={index} type="single" collapsible>
                 <AccordionItem value="categories" className="border-b-0">
                   <AccordionTrigger className="py-2 text-lg font-medium hover:no-underline">
-                    {t(link.labelKey as Parameters<typeof t>[0])}
+                    {link.label}
                   </AccordionTrigger>
                   <AccordionContent className="pb-2">
                     <div className="flex flex-col gap-1 pl-2">
                       <SheetClose asChild>
                         <Link
-                          href="/products/categories"
+                          href="/proizvodi/kategorije"
                           className="py-2 text-base text-muted-foreground hover:text-foreground transition-colors"
                         >
-                          {t("allCategories")}
+                          Sve kategorije
                         </Link>
                       </SheetClose>
                       {link.children.map((child) => (
                         <SheetClose asChild key={child.slug}>
                           <Link
-                            href={{
-                              pathname: "/products/categories/[slug]",
-                              params: { slug: child.slug },
-                            }}
+                            href={`/proizvodi/kategorije/${child.slug}`}
                             className="py-2 text-base text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            {t(child.labelKey as Parameters<typeof t>[0])}
+                            {child.label}
                           </Link>
                         </SheetClose>
                       ))}
@@ -73,20 +66,19 @@ const MobileMenu = () => {
             ) : (
               <SheetClose asChild key={index}>
                 <Link
-                  href={link.href as "/about" | "/faq" | "/where-to-buy"}
+                  href={link.href}
                   className="text-lg font-medium w-full py-2"
                 >
-                  {t(link.labelKey as Parameters<typeof t>[0])}
+                  {link.label}
                 </Link>
               </SheetClose>
             ),
           )}
           <SheetClose asChild>
-            <Link href="/contact" className="text-lg font-medium w-full py-2">
-              {t("contactSales")}
+            <Link href="/kontakt" className="text-lg font-medium w-full py-2">
+              Kontakt
             </Link>
           </SheetClose>
-          <LanguageSwitcher />
         </div>
       </SheetContent>
     </Sheet>

@@ -3,17 +3,17 @@ import { Mail, Phone, MapPin } from "lucide-react";
 export const CONTACT_CARDS = [
   {
     icon: Mail,
-    titleKey: "cardEmail" as const,
+    title: "E-mail",
     value: "contact@sgtools.rs",
   },
   {
     icon: Phone,
-    titleKey: "cardPhone" as const,
+    title: "Telefon",
     value: "+381 11 123 4567",
   },
   {
     icon: MapPin,
-    titleKey: "cardLocation" as const,
+    title: "Lokacija",
     value: "Belgrade, Serbia",
   },
 ];

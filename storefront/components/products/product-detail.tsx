@@ -1,9 +1,8 @@
 import Container from "@/components/container";
 import Wrapper from "@/components/wrapper";
-import { Link } from "@/i18n/navigation";
 import type { Product } from "@/types/products";
 import { ChevronRight, ExternalLink, Package } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 import ProductCard from "./product-card";
 import ProductGallery from "./product-gallery";
 
@@ -12,12 +11,10 @@ interface ProductDetailProps {
   relatedProducts: Product[];
 }
 
-const ProductDetail = async ({
+const ProductDetail = ({
   product,
   relatedProducts,
 }: ProductDetailProps) => {
-  const t = await getTranslations("productPage");
-
   const hasDiscount =
     product.sale_price !== null && product.sale_price < product.price;
   const isOutOfStock = product.stock <= 0 && !product.aooso;
@@ -26,7 +23,6 @@ const ProductDetail = async ({
     ? Math.round(((product.price - product.sale_price!) / product.price) * 100)
     : 0;
 
-  // Extract first category for breadcrumb linking
   const firstCategory = product.categories?.[0];
   const categorySlug = firstCategory?.slug || product.category;
   const categoryName = firstCategory?.name || product.category;
@@ -37,19 +33,16 @@ const ProductDetail = async ({
       <Container>
         <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8 flex-wrap">
           <Link
-            href="/products/categories"
+            href="/proizvodi/kategorije"
             className="hover:text-foreground transition-colors"
           >
-            {t("backToProducts")}
+            Svi proizvodi
           </Link>
           {categorySlug && (
             <>
               <ChevronRight className="size-3.5" />
               <Link
-                href={{
-                  pathname: "/products/categories/[slug]",
-                  params: { slug: categorySlug },
-                }}
+                href={`/proizvodi/kategorije/${categorySlug}`}
                 className="hover:text-foreground transition-colors"
               >
                 {categoryName}
@@ -95,15 +88,15 @@ const ProductDetail = async ({
             {/* Price */}
             <div className="flex items-baseline gap-3 mt-6">
               <span className="text-2xl sm:text-3xl font-bold">
-                {displayPrice.toLocaleString("sr-RS")} {t("currency")}
+                {displayPrice.toLocaleString("sr-RS")} RSD
               </span>
               {hasDiscount && (
                 <>
                   <span className="text-lg text-muted-foreground line-through">
-                    {product.price.toLocaleString("sr-RS")} {t("currency")}
+                    {product.price.toLocaleString("sr-RS")} RSD
                   </span>
                   <span className="bg-primary text-primary-foreground text-xs font-semibold px-2 py-1 rounded">
-                    {t("discount", { percent: discountPercent })}
+                    {`-${discountPercent}%`}
                   </span>
                 </>
               )}
@@ -119,7 +112,7 @@ const ProductDetail = async ({
                     : "text-sm text-green-500"
                 }
               >
-                {isOutOfStock ? t("outOfStock") : t("inStock")}
+                {isOutOfStock ? "Nema na stanju" : "Na stanju"}
               </span>
             </div>
 
@@ -134,7 +127,7 @@ const ProductDetail = async ({
                   : "bg-primary text-primary-foreground hover:bg-primary/90"
               }`}
             >
-              {isOutOfStock ? t("outOfStock") : t("buyOnline")}
+              {isOutOfStock ? "Nema na stanju" : "Kupi online"}
               {!isOutOfStock && <ExternalLink className="size-4" />}
             </a>
 
@@ -142,20 +135,15 @@ const ProductDetail = async ({
             <div className="mt-8 pt-6 border-t border-border/20 space-y-2 text-sm">
               {product.sku && (
                 <div className="flex gap-2">
-                  <span className="text-muted-foreground">{t("sku")}:</span>
+                  <span className="text-muted-foreground">Šifra:</span>
                   <span>{product.sku}</span>
                 </div>
               )}
               {categorySlug && (
                 <div className="flex gap-2">
-                  <span className="text-muted-foreground">
-                    {t("category")}:
-                  </span>
+                  <span className="text-muted-foreground">Kategorija:</span>
                   <Link
-                    href={{
-                      pathname: "/products/categories/[slug]",
-                      params: { slug: categorySlug },
-                    }}
+                    href={`/proizvodi/kategorije/${categorySlug}`}
                     className="text-primary hover:underline"
                   >
                     {categoryName}
@@ -170,7 +158,7 @@ const ProductDetail = async ({
       {/* Product details / HTML content */}
       {product.text && (
         <Container delay={2} className="mt-12 lg:mt-16">
-          <h2 className="text-xl font-bold mb-6">{t("details")}</h2>
+          <h2 className="text-xl font-bold mb-6">Detalji</h2>
           <div
             className="product-text"
             dangerouslySetInnerHTML={{ __html: product.text }}
@@ -181,7 +169,7 @@ const ProductDetail = async ({
       {/* Related products */}
       {relatedProducts.length > 0 && (
         <Container delay={3} className="mt-12 lg:mt-16">
-          <h2 className="text-xl font-bold mb-6">{t("relatedProducts")}</h2>
+          <h2 className="text-xl font-bold mb-6">Slični proizvodi</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
             {relatedProducts.map((related, index) => (
               <ProductCard key={related.id} product={related} index={index} />

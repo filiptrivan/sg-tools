@@ -1,38 +1,38 @@
 export interface NavLinkChild {
-  labelKey: string;
+  label: string;
   slug: string;
 }
 
 export interface NavLink {
-  labelKey: string;
+  label: string;
   href: string;
   children?: readonly NavLinkChild[];
 }
 
 export const NAV_LINKS: readonly NavLink[] = [
   {
-    labelKey: "products",
-    href: "/products/categories",
+    label: "Proizvodi",
+    href: "/proizvodi/kategorije",
     children: [
-      { labelKey: "electricTools", slug: "elektricni-alati" },
-      { labelKey: "handTools", slug: "rucni-alati" },
-      { labelKey: "grinders", slug: "brusilice" },
-      { labelKey: "diamondTools", slug: "dijamantske-ploce-za-keramiku" },
+      { label: "Električni alati", slug: "elektricni-alati" },
+      { label: "Ručni alati", slug: "rucni-alati" },
+      { label: "Brusilice", slug: "brusilice" },
+      { label: "Dijamantski alati", slug: "dijamantske-ploce-za-keramiku" },
     ],
   },
-  { labelKey: "about", href: "/about" },
-  { labelKey: "faq", href: "/faq" },
-  { labelKey: "whereToBuy", href: "/where-to-buy" },
+  { label: "O nama", href: "/o-nama" },
+  { label: "Česta pitanja", href: "/cesta-pitanja" },
+  { label: "Gde kupiti", href: "/gde-kupiti" },
 ];
 
 export const PRODUCT_LINKS = [
-  { labelKey: "about", href: "/about" },
-  { labelKey: "faq", href: "/faq" },
-  { labelKey: "demo", href: "/contact" },
+  { label: "O nama", href: "/o-nama" },
+  { label: "Česta pitanja", href: "/cesta-pitanja" },
+  { label: "Demo", href: "/kontakt" },
 ] as const;
 
 export const RESOURCES_LINKS = [
-  { labelKey: "helpCenter", href: "/help" },
-  { labelKey: "apiDocs", href: "/docs" },
-  { labelKey: "contactUs", href: "/contact" },
+  { label: "Centar za pomoć", href: "/pomoc" },
+  { label: "API dokumentacija", href: "/dokumentacija" },
+  { label: "Kontaktiraj nas", href: "/kontakt" },
 ] as const;

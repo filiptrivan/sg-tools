@@ -1,16 +1,14 @@
 import Container from "@/components/container";
-import { Link } from "@/i18n/navigation";
 import type { Product } from "@/types/products";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
   index: number;
 }
 
-const ProductCard = async ({ product, index }: ProductCardProps) => {
-  const t = await getTranslations("categoryPage");
+const ProductCard = ({ product, index }: ProductCardProps) => {
   const hasDiscount =
     product.sale_price !== null && product.sale_price < product.price;
   const isOutOfStock = product.stock <= 0 && !product.aooso;
@@ -23,10 +21,7 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
     <Container delay={index * 0.05}>
       <div className="relative flex flex-col bg-foreground/5 border border-border/20 hover:border-border transition-all rounded-lg lg:rounded-xl overflow-hidden h-full">
         <Link
-          href={{
-            pathname: "/products/[slug]",
-            params: { slug: product.slug },
-          }}
+          href={`/proizvodi/${product.slug}`}
           className="absolute inset-0 z-10"
         >
           <span className="sr-only">{product.title}</span>
@@ -44,13 +39,13 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
 
           {hasDiscount && (
             <span className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs font-semibold px-2 py-1 rounded">
-              {t("discount", { percent: discountPercent })}
+              {`-${discountPercent}%`}
             </span>
           )}
 
           {isOutOfStock && (
             <span className="absolute top-2 right-2 bg-muted text-muted-foreground text-xs font-semibold px-2 py-1 rounded">
-              {t("outOfStock")}
+              Nema na stanju
             </span>
           )}
         </div>
@@ -75,11 +70,11 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
 
           <div className="flex items-baseline gap-2 mt-auto pt-3">
             <span className="text-base sm:text-lg font-bold">
-              {displayPrice.toLocaleString("sr-RS")} {t("currency")}
+              {displayPrice.toLocaleString("sr-RS")} RSD
             </span>
             {hasDiscount && (
               <span className="text-xs sm:text-sm text-muted-foreground line-through">
-                {product.price.toLocaleString("sr-RS")} {t("currency")}
+                {product.price.toLocaleString("sr-RS")} RSD
               </span>
             )}
           </div>
@@ -94,7 +89,7 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
                 : "bg-primary text-primary-foreground hover:bg-primary/90"
             } transition-colors`}
           >
-            {isOutOfStock ? t("outOfStock") : t("buyOnline")}
+            {isOutOfStock ? "Nema na stanju" : "Kupi online"}
           </a>
         </div>
       </div>

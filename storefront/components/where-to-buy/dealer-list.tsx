@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { MapPin, Phone, Mail, ExternalLink, Navigation } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { Dealer, DealerCategory } from "@/types/dealers";
 
@@ -20,15 +19,13 @@ const categoryColors: Record<DealerCategory, string> = {
   outOfWarranty: "bg-amber-500/20 text-amber-400",
 };
 
+const categoryLabels: Record<DealerCategory, string> = {
+  online: "Online distributeri",
+  service: "Ovlašćeni servis",
+  outOfWarranty: "Servis van garancije",
+};
+
 function CategoryBadge({ category }: { category: DealerCategory }) {
-  const t = useTranslations("whereToBuy");
-
-  const labels: Record<DealerCategory, string> = {
-    online: t("categoryOnline"),
-    service: t("categoryService"),
-    outOfWarranty: t("categoryOutOfWarranty"),
-  };
-
   return (
     <span
       className={cn(
@@ -36,7 +33,7 @@ function CategoryBadge({ category }: { category: DealerCategory }) {
         categoryColors[category],
       )}
     >
-      {labels[category]}
+      {categoryLabels[category]}
     </span>
   );
 }
@@ -48,7 +45,6 @@ export default function DealerList({
   distances,
   nearestDealerId,
 }: DealerListProps) {
-  const t = useTranslations("whereToBuy");
   const listRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
@@ -64,7 +60,7 @@ export default function DealerList({
   if (dealers.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-muted-foreground py-12">
-        <p>{t("noResults")}</p>
+        <p>Nema rezultata za izabrane filtere.</p>
       </div>
     );
   }
@@ -98,13 +94,13 @@ export default function DealerList({
               <div className="flex items-center gap-1.5 shrink-0">
                 {isNearest && (
                   <span className="inline-block rounded-full px-2 py-0.5 text-xs font-medium bg-primary/20 text-primary">
-                    {t("nearest")}
+                    Najbliži
                   </span>
                 )}
                 {distance != null && !isNearest && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-muted/50 text-muted-foreground text-xs px-2 py-0.5 font-mono">
                     <Navigation className="size-3" />
-                    {t("distanceAway", { distance })}
+                    {`${distance} km`}
                   </span>
                 )}
                 <CategoryBadge category={dealer.category} />

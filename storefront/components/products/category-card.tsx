@@ -1,7 +1,7 @@
 import Container from "@/components/container";
-import { Link } from "@/i18n/navigation";
 import type { Category } from "@/types/categories";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CategoryCardProps {
   category: Category;
@@ -18,12 +18,7 @@ const CategoryCard = ({
 }: CategoryCardProps) => {
   return (
     <Container delay={index * 0.1}>
-      <Link
-        href={{
-          pathname: "/products/categories/[slug]",
-          params: { slug: category.slug },
-        }}
-      >
+      <Link href={`/proizvodi/kategorije/${category.slug}`}>
         <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
           <Image
             src={category.image}

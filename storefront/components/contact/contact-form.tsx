@@ -4,18 +4,15 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import Wrapper from "../wrapper";
-import { getTranslations } from "next-intl/server";
 
-const ContactForm = async () => {
-  const t = await getTranslations("contact");
-
+const ContactForm = () => {
   return (
     <div className="w-full pb-16 lg:pb-24">
       <Wrapper>
         <Container delay={0.1}>
           <div className="flex flex-col lg:items-center lg:justify-center">
             <h2 className="text-2xl lg:text-3xl font-semibold text-left lg:text-center">
-              {t("formHeading")}
+              Kontaktiraj nas
             </h2>
           </div>
         </Container>
@@ -24,52 +21,52 @@ const ContactForm = async () => {
           <form className="max-w-3xl mx-auto w-full mt-10 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="firstName">{t("firstName")}</Label>
+                <Label htmlFor="firstName">Ime*</Label>
                 <Input
                   id="firstName"
-                  placeholder={t("firstNamePlaceholder")}
+                  placeholder="Petar"
                   className="bg-[#0A0A0A] border-border/50"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lastName">{t("lastName")}</Label>
+                <Label htmlFor="lastName">Prezime*</Label>
                 <Input
                   id="lastName"
-                  placeholder={t("lastNamePlaceholder")}
+                  placeholder="Petrović"
                   className="bg-[#0A0A0A] border-border/50"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="subject">{t("subject")}</Label>
+              <Label htmlFor="subject">Naslov*</Label>
               <Input
                 id="subject"
-                placeholder={t("subjectPlaceholder")}
+                placeholder="Unesi naslov poruke"
                 className="bg-[#0A0A0A] border-border/50"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="workEmail">{t("email")}</Label>
+              <Label htmlFor="workEmail">E-mail*</Label>
               <Input
                 id="workEmail"
                 type="email"
-                placeholder={t("emailPlaceholder")}
+                placeholder="petar@primer.rs"
                 className="bg-[#0A0A0A] border-border/50"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="message">{t("message")}</Label>
+              <Label htmlFor="message">Kako možemo da ti pomognemo?*</Label>
               <Textarea
                 id="message"
-                placeholder={t("messagePlaceholder")}
+                placeholder="Unesi svoju poruku ovde..."
                 className="min-h-[150px] bg-[#0A0A0A] border-border/50 resize-none"
               />
             </div>
 
-            <Button className="w-full">{t("submit")}</Button>
+            <Button className="w-full">Pošalji</Button>
           </form>
         </Container>
       </Wrapper>

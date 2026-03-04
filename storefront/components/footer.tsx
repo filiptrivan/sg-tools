@@ -1,12 +1,11 @@
-import { Link } from "@/i18n/navigation";
-import { getTranslations } from "next-intl/server";
 import Image from "next/image";
+import Link from "next/link";
 import { PRODUCT_LINKS, RESOURCES_LINKS } from "../constants/links";
 import Container from "./container";
 import Wrapper from "./wrapper";
 
-const Footer = async () => {
-  const t = await getTranslations("footer");
+const Footer = () => {
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative pt-16 pb-8 md:pb-0 w-full overflow-hidden">
@@ -26,12 +25,11 @@ const Footer = async () => {
                   height={32}
                   className="w-24 h-12"
                 />
-                {/* <span className="text-lg lg:text-xl font-medium">SG Tools</span> */}
               </div>
               <p className="text-muted-foreground mt-4 text-sm">
-                {t("taglineLine1")}
+                Bez napora pokrenite robusne,
                 <br />
-                {t("taglineLine2")}
+                projekte spremne za produkciju
               </p>
               <div className="mt-4 text-sm text-muted-foreground px-4 py-2 cursor-pointer rounded-full border border-border/40 bg-foreground/5 hover:bg-foreground/10 transition-colors duration-300">
                 <a href="tel:+11234567890">
@@ -44,7 +42,7 @@ const Footer = async () => {
           <div className="grid grid-cols-2 md:place-items-end w-full">
             <Container animation="fadeUp" delay={0.5}>
               <div>
-                <h3 className="text-base font-medium">{t("product")}</h3>
+                <h3 className="text-base font-medium">Proizvod</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   {PRODUCT_LINKS.map((link, index) => (
                     <li key={index}>
@@ -52,7 +50,7 @@ const Footer = async () => {
                         href={link.href}
                         className="hover:text-foreground transition-colors"
                       >
-                        {t(link.labelKey)}
+                        {link.label}
                       </Link>
                     </li>
                   ))}
@@ -62,7 +60,7 @@ const Footer = async () => {
 
             <Container animation="fadeUp" delay={0.5}>
               <div>
-                <h3 className="text-base font-medium">{t("resources")}</h3>
+                <h3 className="text-base font-medium">Resursi</h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   {RESOURCES_LINKS.map((link, index) => (
                     <Container
@@ -75,7 +73,7 @@ const Footer = async () => {
                           href={link.href}
                           className="hover:text-foreground transition-colors"
                         >
-                          {t(link.labelKey)}
+                          {link.label}
                         </Link>
                       </li>
                     </Container>
@@ -89,7 +87,7 @@ const Footer = async () => {
         <Container animation="fadeUp" delay={1}>
           <div className="mt-16 border-t border-border/80 p-8 flex flex-col md:flex-row items-center justify-center">
             <p className="text-sm text-muted-foreground">
-              {t("copyright", { year: new Date().getFullYear() })}
+              {`\u00A9 ${year} SG Tools. Sva prava zadržana.`}
             </p>
           </div>
         </Container>

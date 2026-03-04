@@ -9,17 +9,15 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { NAV_LINKS } from "@/constants/links";
-import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Container from "./container";
-import LanguageSwitcher from "./language-switcher";
 import Wrapper from "./wrapper";
 const MobileMenu = dynamic(() => import("./mobile-menu"), { ssr: false });
 
 const Navbar = () => {
-  const t = useTranslations("nav");
   const router = useRouter();
 
   return (
@@ -48,10 +46,10 @@ const Navbar = () => {
                         <NavigationMenuTrigger
                           className="text-sm font-medium cursor-pointer"
                           onClick={() => {
-                            router.push("/products/categories");
+                            router.push("/proizvodi/kategorije");
                           }}
                         >
-                          {t(link.labelKey as Parameters<typeof t>[0])}
+                          {link.label}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent className="min-w-[200px]">
                           <ul className="flex flex-col gap-0.5 p-1">
@@ -59,15 +57,10 @@ const Navbar = () => {
                               <li key={child.slug}>
                                 <NavigationMenuLink asChild>
                                   <Link
-                                    href={{
-                                      pathname: "/products/categories/[slug]",
-                                      params: { slug: child.slug },
-                                    }}
+                                    href={`/proizvodi/kategorije/${child.slug}`}
                                     className="flex select-none rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                                   >
-                                    {t(
-                                      child.labelKey as Parameters<typeof t>[0],
-                                    )}
+                                    {child.label}
                                   </Link>
                                 </NavigationMenuLink>
                               </li>
@@ -76,10 +69,10 @@ const Navbar = () => {
                               <hr className="my-1 border-border" />
                               <NavigationMenuLink asChild>
                                 <Link
-                                  href="/products/categories"
+                                  href="/proizvodi/kategorije"
                                   className="flex select-none rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                                 >
-                                  {t("allCategories")}
+                                  Sve kategorije
                                 </Link>
                               </NavigationMenuLink>
                             </li>
@@ -89,12 +82,10 @@ const Navbar = () => {
                     ) : (
                       <NavigationMenuLink asChild>
                         <Link
-                          href={
-                            link.href as "/about" | "/faq" | "/where-to-buy"
-                          }
+                          href={link.href}
                           className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
                         >
-                          {t(link.labelKey as Parameters<typeof t>[0])}
+                          {link.label}
                         </Link>
                       </NavigationMenuLink>
                     )}
@@ -105,10 +96,10 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link
-                      href="/contact"
+                      href="/kontakt"
                       className="hover:text-foreground transition-all duration-500 px-1.5 text-sm font-medium text-muted-foreground"
                     >
-                      {t("contactSales")}
+                      Kontakt
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -119,7 +110,6 @@ const Navbar = () => {
 
         <Container animation="fadeLeft" delay={0.1}>
           <div className="flex items-center gap-x-4">
-            <LanguageSwitcher className="hidden lg:block" />
             <div className="lg:hidden">
               <MobileMenu />
             </div>

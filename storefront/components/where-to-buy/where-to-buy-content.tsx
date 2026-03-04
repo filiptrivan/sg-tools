@@ -8,7 +8,6 @@ import { getDistanceKm } from "@/lib/geo";
 import { cn } from "@/lib/utils";
 import type { DealerCategory } from "@/types/dealers";
 import { LocateFixed, Search, ShieldAlert, X } from "lucide-react";
-import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import DealerList from "./dealer-list";
@@ -26,7 +25,6 @@ type CategoryFilter = "all" | DealerCategory;
 type LocationStatus = "idle" | "loading" | "granted" | "denied" | "unavailable";
 
 export default function WhereToBuyContent() {
-  const t = useTranslations("whereToBuy");
   const [selectedDealerId, setSelectedDealerId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -38,13 +36,12 @@ export default function WhereToBuyContent() {
   const [locationError, setLocationError] = useState<string | null>(null);
 
   const categories: { key: CategoryFilter; label: string }[] = [
-    { key: "all", label: t("categoryAll") },
-    { key: "online", label: t("categoryOnline") },
-    { key: "service", label: t("categoryService") },
-    { key: "outOfWarranty", label: t("categoryOutOfWarranty") },
+    { key: "all", label: "Sve" },
+    { key: "online", label: "Online distributeri" },
+    { key: "service", label: "Ovlašćeni servis" },
+    { key: "outOfWarranty", label: "Servis van garancije" },
   ];
 
-  // Compute distances when user location is available
   const distances = useMemo(() => {
     if (!userLocation) return null;
     const map = new Map<string, number>();
@@ -77,7 +74,6 @@ export default function WhereToBuyContent() {
       return true;
     });
 
-    // Sort by distance when user location is available
     if (distances) {
       filtered.sort(
         (a, b) =>
@@ -88,10 +84,9 @@ export default function WhereToBuyContent() {
     return filtered;
   }, [activeCategory, searchQuery, distances]);
 
-  // Find the nearest dealer among filtered results
   const nearestDealerId = useMemo(() => {
     if (!distances || filteredDealers.length === 0) return null;
-    return filteredDealers[0].id; // Already sorted by distance
+    return filteredDealers[0].id;
   }, [distances, filteredDealers]);
 
   function handleCategoryChange(category: CategoryFilter) {
@@ -104,7 +99,6 @@ export default function WhereToBuyContent() {
     setLocationError(null);
   }, []);
 
-  // Auto-dismiss error after 5 seconds
   useEffect(() => {
     if (!locationError) return;
     const timer = setTimeout(dismissError, 5000);
@@ -114,7 +108,9 @@ export default function WhereToBuyContent() {
   function handleFindNearest() {
     if (!navigator.geolocation) {
       setLocationStatus("unavailable");
-      setLocationError(t("locationUnavailable"));
+      setLocationError(
+        "Lokacija nije dostupna u tvom pretraživaču. Pretraži po gradu.",
+      );
       return;
     }
 
@@ -130,8 +126,6 @@ export default function WhereToBuyContent() {
         setUserLocation(loc);
         setLocationStatus("granted");
 
-        // Auto-select nearest dealer after we get location
-        // We need to compute nearest here since state updates are async
         let nearestId: string | null = null;
         let minDist = Infinity;
         for (const dealer of DEALERS) {
@@ -153,10 +147,14 @@ export default function WhereToBuyContent() {
       (error) => {
         if (error.code === error.PERMISSION_DENIED) {
           setLocationStatus("denied");
-          setLocationError(t("locationDenied"));
+          setLocationError(
+            "Pristup lokaciji je odbijen. Pretraži po gradu.",
+          );
         } else {
           setLocationStatus("unavailable");
-          setLocationError(t("locationUnavailable"));
+          setLocationError(
+            "Lokacija nije dostupna u tvom pretraživaču. Pretraži po gradu.",
+          );
         }
       },
       { enableHighAccuracy: false, timeout: 10000 },
@@ -183,7 +181,7 @@ export default function WhereToBuyContent() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
                 type="text"
-                placeholder={t("searchPlaceholder")}
+                placeholder="Pretraži po imenu ili gradu..."
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -200,7 +198,7 @@ export default function WhereToBuyContent() {
                 className="shrink-0 h-[42px]"
               >
                 <X className="size-4" />
-                <span className="hidden sm:inline">{t("clearLocation")}</span>
+                <span className="hidden sm:inline">Obriši</span>
               </Button>
             ) : (
               <Button
@@ -218,8 +216,8 @@ export default function WhereToBuyContent() {
                 />
                 <span className="hidden sm:inline">
                   {locationStatus === "loading"
-                    ? t("locating")
-                    : t("findNearest")}
+                    ? "Lociranje..."
+                    : "Pronađi najbliže"}
                 </span>
               </Button>
             )}
@@ -252,7 +250,7 @@ export default function WhereToBuyContent() {
 
         {/* Dealer count */}
         <p className="text-sm text-muted-foreground mb-4">
-          {t("dealersCount", { count: filteredDealers.length })}
+          {`${filteredDealers.length} prodavaca`}
         </p>
 
         {/* Main grid: list left, map right */}

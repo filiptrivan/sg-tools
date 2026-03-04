@@ -6,7 +6,7 @@ const BEARER_TOKEN = process.env.BEARER_TOKEN;
 const HIDE_PARAMS =
   "&hide_seo=true&hide_tags=true&hide_attributes=true&hide_locations=true&hide_variations=true";
 
-async function apiFetch<T>(path: string, locale?: string): Promise<T> {
+async function apiFetch<T>(path: string, locale: string = "sr"): Promise<T> {
   if (!API_URL || !BEARER_TOKEN) {
     throw new Error(
       "API_URL and BEARER_TOKEN environment variables are required",

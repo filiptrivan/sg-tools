@@ -1,23 +1,20 @@
 import { Download, ExternalLinkIcon } from "lucide-react";
-import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "./container";
 import HeroHeader from "./hero-header";
 import { Button } from "./ui/button";
 
-const Hero = async () => {
-  const t = await getTranslations("hero");
-
+const Hero = () => {
   return (
     <HeroHeader
       title={
         <>
-          {t("titleLine1")} <br className="hidden lg:inline-block" />{" "}
-          {t("titleLine2")}
+          Isporučite enterprise <br className="hidden lg:inline-block" />{" "}
+          kvalitet projekta za par minuta
         </>
       }
-      description={t("description")}
+      description="Bez napora pokrenite robusne projekte spremne za produkciju sa najboljim alatima i besprekidnim radnim tokovima — bez složenog podešavanja"
       showSvgGrid={true}
     >
       <Container delay={0.3}>
@@ -27,13 +24,13 @@ const Hero = async () => {
               href="https://www.prodavnicaalata.rs/proizvodjaci/sg-tools/"
               target="_blank"
             >
-              {t("ctaPrimary")}
+              Kupi online
               <ExternalLinkIcon className="size-4" />
             </Link>
           </Button>
           <Button variant="outline" asChild>
             <Link href="#">
-              {t("ctaSecondary")}
+              Preuzmi katalog
               <Download className="size-4" />
             </Link>
           </Button>
