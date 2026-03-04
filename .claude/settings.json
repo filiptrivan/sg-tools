@@ -2,17 +2,6 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash(cd * && git log *)",
-      "Bash(cd * && git show *)",
-      "Bash(cd * && git status)",
-      "Bash(cd * && git status *)",
-      "Bash(cd * && git diff *)",
-      "Bash(cd * && git branch *)",
-      "Bash(cd * && git rev-list *)",
-      "Bash(cd * && git rev-parse *)",
-      "Bash(cd * && git fetch *)",
-      "Bash(cd * && git remote *)",
-      "Bash(cd * && git config *)",
       "Bash(git log *)",
       "Bash(git show *)",
       "Bash(git status)",
@@ -92,18 +81,5 @@
     "playwright@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true
-  },
-  "hooks": {
-    "PermissionRequest": [
-      {
-        "matcher": "Bash(cd * && git *)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo approve"
-          }
-        ]
-      }
-    ]
   }
 }
