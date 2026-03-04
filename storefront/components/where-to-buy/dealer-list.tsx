@@ -33,7 +33,7 @@ function CategoryBadge({ category }: { category: DealerCategory }) {
     <span
       className={cn(
         "inline-block rounded-full px-2.5 py-0.5 text-xs font-medium",
-        categoryColors[category]
+        categoryColors[category],
       )}
     >
       {labels[category]}
@@ -88,7 +88,7 @@ export default function DealerList({
               isNearest && "border-l-2 border-l-primary",
               isSelected
                 ? "border-primary bg-primary/5"
-                : "border-border bg-card hover:border-muted-foreground/30"
+                : "border-border bg-card hover:border-muted-foreground/30",
             )}
           >
             <div className="flex items-start justify-between gap-2 mb-2">
@@ -158,7 +158,9 @@ export default function DealerList({
                   onClick={(e) => e.stopPropagation()}
                   className="hover:text-foreground transition-colors truncate"
                 >
-                  {dealer.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                  {dealer.website
+                    .replace(/^https?:\/\/(www\.)?/, "")
+                    .replace(/\/$/, "")}
                 </a>
               </div>
             )}

@@ -18,7 +18,12 @@ const CategoryCard = ({
 }: CategoryCardProps) => {
   return (
     <Container delay={index * 0.1}>
-      <Link href={{ pathname: "/products/categories/[slug]", params: { slug: category.slug } }}>
+      <Link
+        href={{
+          pathname: "/products/categories/[slug]",
+          params: { slug: category.slug },
+        }}
+      >
         <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
           <Image
             src={category.image}
@@ -28,9 +33,7 @@ const CategoryCard = ({
             className="object-contain w-full"
           />
           <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 flex flex-col mt-auto pt-4">
-            <span className="text-base lg:text-xl font-semibold">
-              {title}
-            </span>
+            <span className="text-base lg:text-xl font-semibold">{title}</span>
             <p className="text-muted-foreground text-xs sm:text-sm mt-1">
               {description}
             </p>

@@ -35,10 +35,22 @@
     "heading": "Kategorije proizvoda",
     "description": "Istraži naš širok izbor profesionalnog alata za svaku potrebu.",
     "items": [
-      { "title": "Električni alati", "desc": "Širok izbor profesionalnih električnih alata za svaku potrebu." },
-      { "title": "Ručni alati", "desc": "Kvalitetni ručni alati za precizne i svakodnevne radove." },
-      { "title": "Brusilice", "desc": "Profesionalne brusilice za brušenje, sečenje i poliranje." },
-      { "title": "Dijamantski alati", "desc": "Dijamantski diskovi i alati za najtvrđe materijale." }
+      {
+        "title": "Električni alati",
+        "desc": "Širok izbor profesionalnih električnih alata za svaku potrebu."
+      },
+      {
+        "title": "Ručni alati",
+        "desc": "Kvalitetni ručni alati za precizne i svakodnevne radove."
+      },
+      {
+        "title": "Brusilice",
+        "desc": "Profesionalne brusilice za brušenje, sečenje i poliranje."
+      },
+      {
+        "title": "Dijamantski alati",
+        "desc": "Dijamantski diskovi i alati za najtvrđe materijale."
+      }
     ]
   }
 }

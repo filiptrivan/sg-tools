@@ -4,19 +4,23 @@ import { routing } from "./routing";
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
-  if (!locale || !routing.locales.includes(locale as (typeof routing.locales)[number])) {
+  if (
+    !locale ||
+    !routing.locales.includes(locale as (typeof routing.locales)[number])
+  ) {
     locale = routing.defaultLocale;
   }
 
-  const [common, home, faq, contact, whereToBuy, about, products] = await Promise.all([
-    import(`../messages/${locale}/common.json`),
-    import(`../messages/${locale}/home.json`),
-    import(`../messages/${locale}/faq.json`),
-    import(`../messages/${locale}/contact.json`),
-    import(`../messages/${locale}/where-to-buy.json`),
-    import(`../messages/${locale}/about.json`),
-    import(`../messages/${locale}/products.json`),
-  ]);
+  const [common, home, faq, contact, whereToBuy, about, products] =
+    await Promise.all([
+      import(`../messages/${locale}/common.json`),
+      import(`../messages/${locale}/home.json`),
+      import(`../messages/${locale}/faq.json`),
+      import(`../messages/${locale}/contact.json`),
+      import(`../messages/${locale}/where-to-buy.json`),
+      import(`../messages/${locale}/about.json`),
+      import(`../messages/${locale}/products.json`),
+    ]);
 
   return {
     locale,

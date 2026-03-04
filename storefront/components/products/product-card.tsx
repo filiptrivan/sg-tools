@@ -23,7 +23,10 @@ const ProductCard = async ({ product, index }: ProductCardProps) => {
     <Container delay={index * 0.05}>
       <div className="relative flex flex-col bg-foreground/5 border border-border/20 hover:border-border transition-all rounded-lg lg:rounded-xl overflow-hidden h-full">
         <Link
-          href={{ pathname: "/products/[slug]", params: { slug: product.slug } }}
+          href={{
+            pathname: "/products/[slug]",
+            params: { slug: product.slug },
+          }}
           className="absolute inset-0 z-10"
         >
           <span className="sr-only">{product.title}</span>

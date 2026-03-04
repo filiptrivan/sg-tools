@@ -24,7 +24,7 @@ const LanguageSwitcher = ({ className }: { className?: string }) => {
       router.replace(
         // @ts-expect-error -- pathname includes dynamic segments resolved by params
         { pathname, params },
-        { locale: nextLocale }
+        { locale: nextLocale },
       );
     });
   };

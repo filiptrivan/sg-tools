@@ -72,7 +72,10 @@ const MobileMenu = () => {
               </Accordion>
             ) : (
               <SheetClose asChild key={index}>
-                <Link href={link.href as "/about" | "/faq" | "/where-to-buy"} className="text-lg font-medium w-full py-2">
+                <Link
+                  href={link.href as "/about" | "/faq" | "/where-to-buy"}
+                  className="text-lg font-medium w-full py-2"
+                >
                   {t(link.labelKey as Parameters<typeof t>[0])}
                 </Link>
               </SheetClose>
