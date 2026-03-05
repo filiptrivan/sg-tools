@@ -1,4 +1,11 @@
 export interface Category {
+  id: number;
+  name: string;
   slug: string;
-  image: string;
+  imageUrl: string;
+  ogImageUrl: string | null;
+  description: string;
+  metaTitle: string;
+  metaDescription: string;
+  subCategories: Category[];
 }

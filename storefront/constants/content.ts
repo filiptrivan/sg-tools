@@ -5,24 +5,6 @@ export const FEATURES = [
   { title: "Čekovima građana", desc: "Na 4 rate bez kamate" },
 ];
 
-export const CATEGORIES = [
-  {
-    title: "Električni alati",
-    desc: "Bušilice, testere i udarni zavrtnji za svakodnevnu profesionalnu upotrebu.",
-  },
-  {
-    title: "Ručni alati",
-    desc: "Ključevi, klešta i odvijači dizajnirani za siguran hvat i dug vek.",
-  },
-  {
-    title: "Brusilice",
-    desc: "Ugaone brusilice za sečenje, brušenje i poliranje — snažne i balansirane.",
-  },
-  {
-    title: "Dijamantski alati",
-    desc: "Dijamantski diskovi i ploče koji precizno seku i najtvrđe materijale.",
-  },
-];
 
 export const STATS = [
   { value: "10.630+", label: "Veleprodajnih kupaca" },

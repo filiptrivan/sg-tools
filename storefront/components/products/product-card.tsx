@@ -9,14 +9,6 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, index }: ProductCardProps) => {
-  const hasDiscount =
-    product.sale_price !== null && product.sale_price < product.price;
-  const isOutOfStock = product.stock <= 0 && !product.aooso;
-  const displayPrice = hasDiscount ? product.sale_price! : product.price;
-  const discountPercent = hasDiscount
-    ? Math.round(((product.price - product.sale_price!) / product.price) * 100)
-    : 0;
-
   return (
     <Container delay={index * 0.05}>
       <div className="relative flex flex-col bg-foreground/5 border border-border/20 hover:border-border transition-all rounded-lg lg:rounded-xl overflow-hidden h-full">
@@ -27,9 +19,9 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
           <span className="sr-only">{product.title}</span>
         </Link>
         <div className="relative aspect-square w-full bg-foreground/5">
-          {product.poster_url && (
+          {product.imageUrl && (
             <Image
-              src={product.poster_url}
+              src={product.imageUrl}
               alt={product.title}
               fill
               className="object-contain p-4"
@@ -37,13 +29,13 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             />
           )}
 
-          {hasDiscount && (
+          {product.hasDiscount && (
             <span className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs font-semibold px-2 py-1 rounded">
-              {`-${discountPercent}%`}
+              {`-${product.discountPercentage}%`}
             </span>
           )}
 
-          {isOutOfStock && (
+          {!product.inStock && (
             <span className="absolute top-2 right-2 bg-muted text-muted-foreground text-xs font-semibold px-2 py-1 rounded">
               Nema na stanju
             </span>
@@ -51,9 +43,9 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
         </div>
 
         <div className="flex flex-col flex-1 p-3 sm:p-4">
-          {product.manufacturer?.name && (
+          {product.brandName && (
             <span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wider">
-              {product.manufacturer.name}
+              {product.brandName}
             </span>
           )}
 
@@ -70,11 +62,11 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
 
           <div className="flex items-baseline gap-2 mt-auto pt-3">
             <span className="text-base sm:text-lg font-bold">
-              {displayPrice.toLocaleString("sr-RS")} RSD
+              {product.displayPrice.toLocaleString("sr-RS")} RSD
             </span>
-            {hasDiscount && (
+            {product.hasDiscount && product.originalPrice && (
               <span className="text-xs sm:text-sm text-muted-foreground line-through">
-                {product.price.toLocaleString("sr-RS")} RSD
+                {product.originalPrice.toLocaleString("sr-RS")} RSD
               </span>
             )}
           </div>
@@ -84,12 +76,12 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             target="_blank"
             rel="noopener noreferrer"
             className={`relative z-20 mt-3 inline-flex items-center justify-center rounded-md text-sm font-medium h-9 px-4 ${
-              isOutOfStock
+              !product.inStock
                 ? "bg-muted text-muted-foreground pointer-events-none"
                 : "bg-primary text-primary-foreground hover:bg-primary/90"
             } transition-colors`}
           >
-            {isOutOfStock ? "Nema na stanju" : "Kupi online"}
+            {!product.inStock ? "Nema na stanju" : "Kupi online"}
           </a>
         </div>
       </div>

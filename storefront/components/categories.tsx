@@ -1,7 +1,6 @@
 import Container from "@/components/container";
 import CategoryCard from "@/components/products/category-card";
 import Wrapper from "@/components/wrapper";
-import { CATEGORIES } from "@/constants/content";
 import { getCategories } from "@/lib/categories";
 
 const Categories = async () => {
@@ -27,8 +26,8 @@ const Categories = async () => {
               <CategoryCard
                 key={category.slug}
                 category={category}
-                title={CATEGORIES[index].title}
-                description={CATEGORIES[index].desc}
+                title={category.name}
+                description={category.description}
                 index={index}
               />
             ))}

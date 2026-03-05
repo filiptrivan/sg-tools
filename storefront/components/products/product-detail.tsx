@@ -15,18 +15,6 @@ const ProductDetail = ({
   product,
   relatedProducts,
 }: ProductDetailProps) => {
-  const hasDiscount =
-    product.sale_price !== null && product.sale_price < product.price;
-  const isOutOfStock = product.stock <= 0 && !product.aooso;
-  const displayPrice = hasDiscount ? product.sale_price! : product.price;
-  const discountPercent = hasDiscount
-    ? Math.round(((product.price - product.sale_price!) / product.price) * 100)
-    : 0;
-
-  const firstCategory = product.categories?.[0];
-  const categorySlug = firstCategory?.slug || product.category;
-  const categoryName = firstCategory?.name || product.category;
-
   return (
     <Wrapper className="py-8 lg:py-12">
       {/* Breadcrumbs */}
@@ -38,14 +26,14 @@ const ProductDetail = ({
           >
             Svi proizvodi
           </Link>
-          {categorySlug && (
+          {product.categorySlug && (
             <>
               <ChevronRight className="size-3.5" />
               <Link
-                href={`/proizvodi/kategorije/${categorySlug}`}
+                href={`/proizvodi/kategorije/${product.categorySlug}`}
                 className="hover:text-foreground transition-colors"
               >
-                {categoryName}
+                {product.categoryName}
               </Link>
             </>
           )}
@@ -59,8 +47,8 @@ const ProductDetail = ({
         {/* Left: Gallery */}
         <Container>
           <ProductGallery
-            posterUrl={product.poster_url}
-            imageUrls={product.gallery?.map((g) => g.url) ?? []}
+            posterUrl={product.imageUrl}
+            imageUrls={product.productImageUrls}
             title={product.title}
           />
         </Container>
@@ -68,9 +56,9 @@ const ProductDetail = ({
         {/* Right: Product info */}
         <Container delay={1}>
           <div className="flex flex-col">
-            {product.manufacturer?.name && (
+            {product.brandName && (
               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                {product.manufacturer.name}
+                {product.brandName}
               </span>
             )}
 
@@ -88,15 +76,15 @@ const ProductDetail = ({
             {/* Price */}
             <div className="flex items-baseline gap-3 mt-6">
               <span className="text-2xl sm:text-3xl font-bold">
-                {displayPrice.toLocaleString("sr-RS")} RSD
+                {product.displayPrice.toLocaleString("sr-RS")} RSD
               </span>
-              {hasDiscount && (
+              {product.hasDiscount && product.originalPrice && (
                 <>
                   <span className="text-lg text-muted-foreground line-through">
-                    {product.price.toLocaleString("sr-RS")} RSD
+                    {product.originalPrice.toLocaleString("sr-RS")} RSD
                   </span>
                   <span className="bg-primary text-primary-foreground text-xs font-semibold px-2 py-1 rounded">
-                    {`-${discountPercent}%`}
+                    {`-${product.discountPercentage}%`}
                   </span>
                 </>
               )}
@@ -107,12 +95,12 @@ const ProductDetail = ({
               <Package className="size-4" />
               <span
                 className={
-                  isOutOfStock
+                  !product.inStock
                     ? "text-sm text-muted-foreground"
                     : "text-sm text-green-500"
                 }
               >
-                {isOutOfStock ? "Nema na stanju" : "Na stanju"}
+                {!product.inStock ? "Nema na stanju" : "Na stanju"}
               </span>
             </div>
 
@@ -122,31 +110,25 @@ const ProductDetail = ({
               target="_blank"
               rel="noopener noreferrer"
               className={`mt-6 inline-flex items-center justify-center gap-2 rounded-lg text-base font-semibold h-12 px-8 transition-colors ${
-                isOutOfStock
+                !product.inStock
                   ? "bg-muted text-muted-foreground pointer-events-none"
                   : "bg-primary text-primary-foreground hover:bg-primary/90"
               }`}
             >
-              {isOutOfStock ? "Nema na stanju" : "Kupi online"}
-              {!isOutOfStock && <ExternalLink className="size-4" />}
+              {!product.inStock ? "Nema na stanju" : "Kupi online"}
+              {product.inStock && <ExternalLink className="size-4" />}
             </a>
 
             {/* Metadata */}
             <div className="mt-8 pt-6 border-t border-border/20 space-y-2 text-sm">
-              {product.sku && (
-                <div className="flex gap-2">
-                  <span className="text-muted-foreground">Šifra:</span>
-                  <span>{product.sku}</span>
-                </div>
-              )}
-              {categorySlug && (
+              {product.categorySlug && (
                 <div className="flex gap-2">
                   <span className="text-muted-foreground">Kategorija:</span>
                   <Link
-                    href={`/proizvodi/kategorije/${categorySlug}`}
+                    href={`/proizvodi/kategorije/${product.categorySlug}`}
                     className="text-primary hover:underline"
                   >
-                    {categoryName}
+                    {product.categoryName}
                   </Link>
                 </div>
               )}
@@ -156,12 +138,12 @@ const ProductDetail = ({
       </div>
 
       {/* Product details / HTML content */}
-      {product.text && (
+      {product.htmlDescription && (
         <Container delay={2} className="mt-12 lg:mt-16">
           <h2 className="text-xl font-bold mb-6">Detalji</h2>
           <div
             className="product-text"
-            dangerouslySetInnerHTML={{ __html: product.text }}
+            dangerouslySetInnerHTML={{ __html: product.htmlDescription }}
           />
         </Container>
       )}

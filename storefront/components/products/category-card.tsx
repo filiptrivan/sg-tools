@@ -21,7 +21,7 @@ const CategoryCard = ({
       <Link href={`/proizvodi/kategorije/${category.slug}`}>
         <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
           <Image
-            src={category.image}
+            src={category.imageUrl}
             alt={title}
             width={500}
             height={1000}

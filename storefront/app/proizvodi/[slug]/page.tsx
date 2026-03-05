@@ -16,7 +16,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   try {
-    const allProducts = await getProducts();
+    const allProducts = await getProducts(0, 1000);
     return allProducts.map((p) => ({ slug: p.slug }));
   } catch {
     return [];
@@ -25,20 +25,19 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = await getProductBySlug(slug, "sr");
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return {};
   }
 
   return {
-    title:
-      product.seo?.title_tag || `${product.title} | SG Tools`,
-    description: product.seo?.description || product.description,
+    title: product.metaTitle || `${product.title} | SG Tools`,
+    description: product.metaDescription || product.description,
     openGraph: {
-      title: product.seo?.title || product.title,
-      description: product.seo?.description || product.description,
-      images: [{ url: product.seo?.image || product.poster_url }].filter(
+      title: product.metaTitle || product.title,
+      description: product.metaDescription || product.description,
+      images: [{ url: product.ogImageUrl || product.imageUrl }].filter(
         (img) => img.url,
       ),
     },
@@ -48,12 +47,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const ProductPage = async ({ params }: Props) => {
   const { slug } = await params;
 
-  const product = await getProductBySlug(slug, "sr");
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const categorySlug = product.categories?.[0]?.slug || product.category;
-  let relatedProducts = categorySlug
-    ? await getProductsByCategory(categorySlug, "sr")
+  let relatedProducts = product.categorySlug
+    ? await getProductsByCategory(product.categorySlug)
     : [];
   relatedProducts = relatedProducts
     .filter((p) => p.id !== product.id)

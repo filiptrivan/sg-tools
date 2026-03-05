@@ -1,22 +1,26 @@
+import { getCategories as fetchCategories } from "./api";
 import type { Category } from "@/types/categories";
 
-const CATEGORIES: Category[] = [
-  { slug: "elektricni-alati", image: "/categories/electric.jpg" },
-  { slug: "rucni-alati", image: "/categories/hand-tools.jpg" },
-  { slug: "brusilice", image: "/categories/grinder.jpg" },
-  { slug: "dijamantske-ploce-za-keramiku", image: "/categories/diamond.jpg" },
-];
-
 export async function getCategories(): Promise<Category[]> {
-  return CATEGORIES;
+  return fetchCategories();
 }
 
 export async function getCategoryBySlug(
   slug: string,
 ): Promise<Category | null> {
-  return CATEGORIES.find((c) => c.slug === slug) ?? null;
+  const categories = await fetchCategories();
+  for (const cat of categories) {
+    if (cat.slug === slug) return cat;
+    const sub = cat.subCategories?.find((s) => s.slug === slug);
+    if (sub) return sub;
+  }
+  return null;
 }
 
 export async function getCategorySlugs(): Promise<string[]> {
-  return CATEGORIES.map((c) => c.slug);
+  const categories = await fetchCategories();
+  return categories.flatMap((c) => [
+    c.slug,
+    ...c.subCategories.map((s) => s.slug),
+  ]);
 }

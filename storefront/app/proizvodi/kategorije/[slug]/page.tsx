@@ -2,13 +2,9 @@ import CTA from "@/components/cta";
 import HeroHeader from "@/components/hero-header";
 import ProductGrid from "@/components/products/product-grid";
 import Wrapper from "@/components/wrapper";
-import { CATEGORIES } from "@/constants/content";
 import { getProductsByCategory } from "@/lib/api";
-import {
-  getCategories,
-  getCategoryBySlug,
-  getCategorySlugs,
-} from "@/lib/categories";
+import { getCategoryBySlug, getCategorySlugs } from "@/lib/categories";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -22,20 +18,31 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const category = await getCategoryBySlug(slug);
+  if (!category) return {};
+  return {
+    title: category.metaTitle,
+    description: category.metaDescription,
+    openGraph: {
+      title: category.metaTitle,
+      description: category.metaDescription,
+      ...(category.ogImageUrl && { images: [{ url: category.ogImageUrl }] }),
+    },
+  };
+}
+
 const CategoryPage = async ({ params }: Props) => {
   const { slug } = await params;
 
   const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const categories = await getCategories();
-  const categoryIndex = categories.findIndex((c) => c.slug === slug);
-  const categoryName =
-    categoryIndex >= 0 ? CATEGORIES[categoryIndex].title : slug;
-  const categoryDesc =
-    categoryIndex >= 0 ? CATEGORIES[categoryIndex].desc : "";
+  const categoryName = category.name;
+  const categoryDesc = category.description;
 
-  const categoryProducts = await getProductsByCategory(slug, "sr");
+  const categoryProducts = await getProductsByCategory(slug);
 
   return (
     <div className="w-full relative flex flex-col pt-16">
