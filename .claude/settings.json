@@ -8,6 +8,7 @@
       "Bash(git status *)",
       "Bash(git diff *)",
       "Bash(git branch *)",
+      "Bash(git add *)",
       "Bash(git rev-list *)",
       "Bash(git rev-parse *)",
       "Bash(git fetch *)",
@@ -69,7 +70,9 @@
       "WebFetch(domain:www.fumadocs.dev)",
       "WebFetch(domain:fumadocs.dev)",
       "WebFetch(domain:www.npmjs.com)",
-      "WebFetch(domain:www.lightinject.net)"
+      "WebFetch(domain:www.lightinject.net)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:www.nuget.org)"
     ],
     "defaultMode": "plan"
   },
@@ -81,5 +84,19 @@
     "playwright@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/compound-bash-allow.js\"",
+            "timeout": 5000
+          }
+        ]
+      }
+    ]
   }
 }
