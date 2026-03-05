@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { getProducts } from "@/lib/api";
+import { getSitemapProducts } from "@/lib/api";
 import { getCategorySlugs } from "@/lib/categories";
 
 const BASE_URL = "https://sgtools.rs";
@@ -50,12 +50,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Dynamic product pages
   if (process.env.NODE_ENV !== "development")
     try {
-      const products = await getProducts(undefined, 0, 1000);
+      const products = await getSitemapProducts();
 
-      for (const product of products) {
+      for (const entry of products) {
         entries.push({
-          url: `${BASE_URL}/proizvodi/${product.slug}`,
-          lastModified,
+          url: `${BASE_URL}/proizvodi/${entry.slug}`,
+          lastModified: new Date(entry.modifiedAt),
           changeFrequency: "weekly",
           priority: 0.7,
         });

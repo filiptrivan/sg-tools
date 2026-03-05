@@ -1,72 +1,85 @@
-import type { ApiProductsResponse, Product } from "@/types/products";
+import type { Product, ProductsResult, SitemapEntry } from "@/types/products";
+import type { Category } from "@/types/categories";
 
-const API_URL = process.env.API_URL;
-const BEARER_TOKEN = process.env.BEARER_TOKEN;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const BRAND_SLUG = "sg-tools";
 
-const HIDE_PARAMS =
-  "&hide_seo=true&hide_tags=true&hide_attributes=true&hide_locations=true&hide_variations=true";
-
-async function apiFetch<T>(path: string, locale: string = "sr"): Promise<T> {
-  if (!API_URL || !BEARER_TOKEN) {
-    throw new Error(
-      "API_URL and BEARER_TOKEN environment variables are required",
-    );
-  }
-
-  const headers: Record<string, string> = {
-    Authorization: `Bearer ${BEARER_TOKEN}`,
-  };
-
-  if (locale) {
-    headers["Accept-Language"] = locale;
-  }
+async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
+  if (!API_URL) throw new Error("NEXT_PUBLIC_API_URL is required");
 
   const res = await fetch(`${API_URL}${path}`, {
-    headers,
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options?.headers as Record<string, string>),
+    },
     next: { revalidate: 3600 },
   });
 
-  if (!res.ok) {
-    throw new Error(`API request failed: ${res.status} ${res.statusText}`);
-  }
-
+  if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
   return res.json() as Promise<T>;
 }
 
 export async function getProducts(
-  locale?: string,
-  offset: number = 0,
-  limit: number = 20,
+  offset = 0,
+  limit = 20,
 ): Promise<Product[]> {
-  const response = await apiFetch<ApiProductsResponse>(
-    `/GET/products/?namespace=prodavnicaalata&limit=${offset},${limit}${HIDE_PARAMS}`,
-    locale,
+  const result = await apiFetch<ProductsResult>(
+    "/api/Storefront/FilteredProducts",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        brandSlugs: [BRAND_SLUG],
+        tagSlugs: [],
+        first: offset,
+        rows: limit,
+      }),
+    },
   );
-  return response.data.products;
+  return result.data;
 }
 
 export async function getProductBySlug(
   slug: string,
-  locale?: string,
 ): Promise<Product | null> {
-  const response = await apiFetch<ApiProductsResponse>(
-    `/GET/products/?namespace=prodavnicaalata&slug=${slug}&limit=0,1`,
-    locale,
-  );
-  return response.data.products[0] ?? null;
+  try {
+    return await apiFetch<Product>(
+      `/api/Storefront/ProductBySlug?slug=${encodeURIComponent(slug)}`,
+    );
+  } catch {
+    return null;
+  }
 }
 
 export async function getProductsByCategory(
   categorySlug: string,
-  locale?: string,
-  offset: number = 0,
-  limit: number = 20,
+  offset = 0,
+  limit = 20,
 ): Promise<Product[]> {
-  const response = await apiFetch<ApiProductsResponse>(
-    `/GET/products/?namespace=prodavnicaalata&limit=${offset},${limit}`,
-    locale,
+  const result = await apiFetch<ProductsResult>(
+    "/api/Storefront/FilteredProducts",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        brandSlugs: [BRAND_SLUG],
+        tagSlugs: [],
+        categorySlug,
+        first: offset,
+        rows: limit,
+      }),
+    },
   );
-  return response.data.products.filter((p) =>
-    p.categories.some((c) => c.slug === categorySlug),
+  return result.data;
+}
+
+export async function getCategories(): Promise<Category[]> {
+  return apiFetch<Category[]>(
+    `/api/Storefront/Categories?brandSlug=${BRAND_SLUG}`,
+  );
+}
+
+export async function getSitemapProducts(): Promise<SitemapEntry[]> {
+  return apiFetch<SitemapEntry[]>(
+    `/api/Storefront/SitemapProductsByBrand?brandSlug=${BRAND_SLUG}`,
   );
 }
