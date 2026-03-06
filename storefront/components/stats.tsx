@@ -6,7 +6,7 @@ const Stats = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full py-16 lg:py-24">
       <Wrapper>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 w-full">
           {STATS.map((stat, index) => (
             <Container key={index} delay={index}>
               <div className="flex flex-col items-center justify-center text-center">
