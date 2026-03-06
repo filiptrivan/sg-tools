@@ -1,8 +1,16 @@
+"use client";
+
 import Container from "@/components/container";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Wrapper from "@/components/wrapper";
 import { TESTIMONIALS } from "@/constants";
 import Image from "next/image";
-import { Marquee } from "./ui/marquee";
 
 type Testimonial = {
   name: string;
@@ -20,15 +28,20 @@ const Testimonials = () => {
   return (
     <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24">
       <Wrapper>
-        <div className="relative flex flex-col items-center justify-center overflow-hidden">
-          <Marquee className="[--duration:80s] gap-8">
+        <Carousel>
+          <CarouselContent>
             {TESTIMONIALS.map((item) => (
-              <Item key={item.name} item={item} />
+              <CarouselItem
+                key={item.name}
+                className="basis-full md:basis-1/2 lg:basis-1/3"
+              >
+                <Item item={item} />
+              </CarouselItem>
             ))}
-          </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-        </div>
+          </CarouselContent>
+          <CarouselPrevious className="-left-2" />
+          <CarouselNext className="-right-2" />
+        </Carousel>
       </Wrapper>
       <div className="absolute hidden lg:block top-1/4 left-1/4 w-1/8 h-16 rounded-full bg-primary/80 -z-10 blur-[6rem]"></div>
       <div className="absolute hidden lg:block top-1/4 right-1/4 w-1/8 h-16 rounded-full bg-primary/80 -z-10 blur-[6rem]"></div>
@@ -38,7 +51,7 @@ const Testimonials = () => {
 
 const Item = ({ item }: { item: Testimonial }) => (
   <Container>
-    <div className="flex flex-col bg-neutral-900/80 border border-border/50 rounded-lg lg:rounded-xl p-4 lg:p-6 w-full">
+    <div className="flex flex-col bg-neutral-900/80 border border-border/50 rounded-lg lg:rounded-xl p-4 lg:p-6 w-full h-full">
       <div className="flex items-center gap-x-3 w-full">
         <div className="w-10 h-10 flex-shrink-0 rounded-full">
           <Image
