@@ -7,13 +7,24 @@ import { base, heading } from "@/constants/fonts";
 import { pick } from "@/lib/pick";
 import { cn } from "@/lib/utils";
 import { ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import Link from "next/link";
 import "./globals.css";
 
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+
+  return {
+    title: t("not-found.title"),
+    description: t("not-found.description"),
+  };
+}
+
 async function NotFound() {
   const messages = await getMessages();
+  const t = await getTranslations();
 
   return (
     <html>
@@ -25,7 +36,7 @@ async function NotFound() {
         )}
       >
         <NextIntlClientProvider
-          messages={pick(messages, ["nav", "languageSwitcher", "whereToBuy"])}
+          messages={pick(messages, ["nav", "languageSwitcher", "not-found"])}
         >
           <Navbar />
 
@@ -34,20 +45,19 @@ async function NotFound() {
               <div className="h-[50vh] flex flex-col items-center justify-center w-full z-10">
                 <Container delay={0.1}>
                   <h2 className="text-balance leading-tight! text-center text-5xl md:text-6xl font-semibold tracking-tight w-full">
-                    Page Not Found!
+                    {t("not-found.title")}
                   </h2>
                 </Container>
 
                 <Container delay={0.2}>
                   <p className="text-base md:text-lg font-normal text-center text-balance text-muted-foreground max-w-3xl mx-auto mt-4">
-                    We couldn&apos;t find the page you were looking for. Check
-                    the URL to make sure it&apos;s correct and try again.
+                    {t("not-found.description")}
                   </p>
                 </Container>
                 <Container className="mt-4 sm:mt-6 md:mt-8" delay={0.3}>
                   <Button asChild variant={"secondary"}>
                     <Link href={"/"}>
-                      <ArrowLeft /> Back to homepage
+                      <ArrowLeft /> {t("not-found.cta")}
                     </Link>
                   </Button>
                 </Container>
