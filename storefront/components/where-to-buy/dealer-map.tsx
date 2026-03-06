@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -67,7 +67,13 @@ function createUserLocationIcon() {
   });
 }
 
-function MapController({ dealer }: { dealer: Dealer | undefined }) {
+function MapController({
+  dealer,
+  markerRefs,
+}: {
+  dealer: Dealer | undefined;
+  markerRefs: React.RefObject<Map<string, L.Marker>>;
+}) {
   const map = useMap();
 
   useEffect(() => {
@@ -75,8 +81,22 @@ function MapController({ dealer }: { dealer: Dealer | undefined }) {
       map.flyTo([dealer.coordinates.lat, dealer.coordinates.lng], 13, {
         duration: 1,
       });
+
+      const marker = markerRefs.current?.get(dealer.id);
+      if (marker) {
+        const onMoveEnd = () => {
+          marker.openPopup();
+          map.off("moveend", onMoveEnd);
+        };
+        map.on("moveend", onMoveEnd);
+        return () => {
+          map.off("moveend", onMoveEnd);
+        };
+      }
+    } else {
+      map.closePopup();
     }
-  }, [dealer, map]);
+  }, [dealer, map, markerRefs]);
 
   return null;
 }
@@ -110,6 +130,15 @@ export default function DealerMap({
   userLocation,
 }: DealerMapProps) {
   const selectedDealer = dealers.find((d) => d.id === selectedDealerId);
+  const markerRefs = useRef<Map<string, L.Marker>>(new Map());
+
+  const setMarkerRef = useCallback((dealerId: string, marker: L.Marker | null) => {
+    if (marker) {
+      markerRefs.current.set(dealerId, marker);
+    } else {
+      markerRefs.current.delete(dealerId);
+    }
+  }, []);
 
   return (
     <MapContainer
@@ -121,11 +150,12 @@ export default function DealerMap({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
       />
-      <MapController dealer={selectedDealer} />
+      <MapController dealer={selectedDealer} markerRefs={markerRefs} />
       {userLocation && <UserLocationMarker location={userLocation} />}
       {dealers.map((dealer) => (
         <Marker
           key={dealer.id}
+          ref={(marker) => setMarkerRef(dealer.id, marker as unknown as L.Marker | null)}
           position={[dealer.coordinates.lat, dealer.coordinates.lng]}
           icon={createMarkerIcon(dealer.id === selectedDealerId)}
           eventHandlers={{
