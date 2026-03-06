@@ -176,7 +176,7 @@ export default function WhereToBuyContent() {
           );
         }
       },
-      { enableHighAccuracy: false, timeout: 10000 },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
     );
   }
 
