@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import { base, heading } from "@/constants/fonts";
 import { getCategories } from "@/lib/categories";
 import { cn } from "@/lib/utils";
@@ -30,6 +31,7 @@ export default async function RootLayout({
         <Navbar categories={categories} />
         <main>{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );
