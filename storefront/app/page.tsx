@@ -11,7 +11,9 @@ const HomePage = () => {
     <div className="w-full relative flex flex-col pt-16">
       <Hero />
       <Companies />
+
       <Categories />
+
       <Features />
       <Stats />
       <Testimonials />
