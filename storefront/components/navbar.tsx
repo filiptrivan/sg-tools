@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { NAV_LINKS } from "@/constants/links";
+import type { Category } from "@/types/categories";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -17,7 +18,11 @@ import Container from "./container";
 import Wrapper from "./wrapper";
 const MobileMenu = dynamic(() => import("./mobile-menu"), { ssr: false });
 
-const Navbar = () => {
+interface NavbarProps {
+  categories: Category[];
+}
+
+const Navbar = ({ categories }: NavbarProps) => {
   const router = useRouter();
 
   return (
@@ -46,7 +51,7 @@ const Navbar = () => {
                     delay={0.1 * index}
                   >
                     <NavigationMenuItem>
-                      {link.children ? (
+                      {link.href === "/proizvodi/kategorije" ? (
                         <>
                           <NavigationMenuTrigger
                             className="text-sm font-medium cursor-pointer"
@@ -58,14 +63,14 @@ const Navbar = () => {
                           </NavigationMenuTrigger>
                           <NavigationMenuContent className="min-w-[200px]">
                             <ul className="flex flex-col gap-0.5 p-1">
-                              {link.children.map((child) => (
-                                <li key={child.slug}>
+                              {categories.map((cat) => (
+                                <li key={cat.slug}>
                                   <NavigationMenuLink asChild>
                                     <Link
-                                      href={`/proizvodi/kategorije/${child.slug}`}
+                                      href={`/proizvodi/kategorije/${cat.slug}`}
                                       className="flex select-none rounded-sm px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                                     >
-                                      {child.label}
+                                      {cat.name}
                                     </Link>
                                   </NavigationMenuLink>
                                 </li>
@@ -116,7 +121,7 @@ const Navbar = () => {
           <Container animation="fadeLeft" delay={0.1}>
             <div className="flex items-center gap-x-4">
               <div className="md:hidden">
-                <MobileMenu />
+                <MobileMenu categories={categories} />
               </div>
             </div>
           </Container>

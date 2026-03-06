@@ -1,6 +1,7 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { base, heading } from "@/constants/fonts";
+import { getCategories } from "@/lib/categories";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -12,7 +13,11 @@ export const metadata: Metadata = {
     "Električni alati, ručni alati, brusilice i dijamantski alati nastali iz decenija praktičnog znanja. Profesionalni kvalitet po cenama koje imaju smisla.",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: { children: ReactNode }) {
+  const categories = await getCategories();
+
   return (
     <html lang="sr">
       <body
@@ -22,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           heading.variable,
         )}
       >
-        <Navbar />
+        <Navbar categories={categories} />
         <main>{children}</main>
         <Footer />
       </body>

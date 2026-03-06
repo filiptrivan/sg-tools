@@ -16,10 +16,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { NAV_LINKS } from "@/constants/links";
+import type { Category } from "@/types/categories";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 
-const MobileMenu = () => {
+interface MobileMenuProps {
+  categories: Category[];
+}
+
+const MobileMenu = ({ categories }: MobileMenuProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -33,7 +38,7 @@ const MobileMenu = () => {
         </SheetHeader>
         <div className="flex flex-col gap-2 mt-8">
           {NAV_LINKS.map((link, index) =>
-            link.children ? (
+            link.href === "/proizvodi/kategorije" ? (
               <Accordion key={index} type="single" collapsible>
                 <AccordionItem value="categories" className="border-b-0">
                   <AccordionTrigger className="py-2 text-lg font-medium hover:no-underline">
@@ -49,13 +54,13 @@ const MobileMenu = () => {
                           Sve kategorije
                         </Link>
                       </SheetClose>
-                      {link.children.map((child) => (
-                        <SheetClose asChild key={child.slug}>
+                      {categories.map((cat) => (
+                        <SheetClose asChild key={cat.slug}>
                           <Link
-                            href={`/proizvodi/kategorije/${child.slug}`}
+                            href={`/proizvodi/kategorije/${cat.slug}`}
                             className="py-2 text-base text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            {child.label}
+                            {cat.name}
                           </Link>
                         </SheetClose>
                       ))}
