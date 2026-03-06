@@ -1,26 +1,27 @@
 import {
-  Clock,
-  CreditCard,
+  BadgePercent,
+  History,
   ShieldCheck,
-  Truck,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 import { FEATURES } from "@/constants/content";
 import Container from "./container";
+import Section from "./section";
 import Wrapper from "./wrapper";
 
 const FEATURE_STYLES = [
   {
-    icon: Truck,
-    color: "text-blue-400",
-    bg: "bg-blue-500/15",
-    border: "border-blue-500/30",
-  },
-  {
-    icon: Clock,
+    icon: History,
     color: "text-amber-400",
     bg: "bg-amber-500/15",
     border: "border-amber-500/30",
+  },
+  {
+    icon: Users,
+    color: "text-blue-400",
+    bg: "bg-blue-500/15",
+    border: "border-blue-500/30",
   },
   {
     icon: ShieldCheck,
@@ -29,7 +30,7 @@ const FEATURE_STYLES = [
     border: "border-emerald-500/30",
   },
   {
-    icon: CreditCard,
+    icon: BadgePercent,
     color: "text-violet-400",
     bg: "bg-violet-500/15",
     border: "border-violet-500/30",
@@ -38,12 +39,12 @@ const FEATURE_STYLES = [
 
 const Features = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full py-16 lg:py-24">
+    <Section>
       <Wrapper>
         <Container>
           <div className="flex flex-col items-start justify-start lg:items-center lg:justify-center">
             <h2 className="text-3xl lg:text-4xl font-semibold text-left lg:text-center tracking-tight">
-              Zašto kupovati kod nas?
+              Zašto SG Tools?
             </h2>
           </div>
         </Container>
@@ -64,7 +65,7 @@ const Features = () => {
           </div>
         </Container>
       </Wrapper>
-    </div>
+    </Section>
   );
 };
 

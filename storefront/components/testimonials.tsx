@@ -1,6 +1,7 @@
 "use client";
 
 import Container from "@/components/container";
+import Section from "@/components/section";
 import {
   Carousel,
   CarouselContent,
@@ -26,7 +27,7 @@ type Testimonial = {
 
 const Testimonials = () => {
   return (
-    <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24">
+    <Section className="relative">
       <Wrapper>
         <Carousel>
           <CarouselContent>
@@ -45,7 +46,7 @@ const Testimonials = () => {
       </Wrapper>
       <div className="absolute hidden lg:block top-1/4 left-1/4 w-1/8 h-16 rounded-full bg-primary/80 -z-10 blur-[6rem]"></div>
       <div className="absolute hidden lg:block top-1/4 right-1/4 w-1/8 h-16 rounded-full bg-primary/80 -z-10 blur-[6rem]"></div>
-    </div>
+    </Section>
   );
 };
 

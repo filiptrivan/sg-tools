@@ -1,8 +1,20 @@
 export const FEATURES = [
-  { title: "Besplatna dostava", desc: "Za kupovinu preko 15.000 RSD" },
-  { title: "Brza isporuka", desc: "Isporuka 1-5 radnih dana" },
-  { title: "Sigurna kupovina", desc: "Garancija na kupljene mašine" },
-  { title: "Čekovima građana", desc: "Na 4 rate bez kamate" },
+  {
+    title: "30 godina iskustva",
+    desc: "Naše znanje dolazi iz tri decenije rada sa alatima.",
+  },
+  {
+    title: "Napravljeni sa majstorima",
+    desc: "Svaki alat je testiran i usavršen sa profesionalcima na terenu.",
+  },
+  {
+    title: "Profesionalni kvalitet",
+    desc: "Materijali i dizajn za svakodnevnu profesionalnu upotrebu.",
+  },
+  {
+    title: "Pristupačne cene",
+    desc: "Profesionalni kvalitet bez profesionalne cene.",
+  },
 ];
 
 

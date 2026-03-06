@@ -1,53 +1,51 @@
-import { CheckCircle2 } from "lucide-react";
+import { CreditCard, ExternalLink, ShieldCheck, Truck, Zap } from "lucide-react";
 import Container from "./container";
+import Section from "./section";
 import { Button } from "./ui/button";
 import Wrapper from "./wrapper";
 
+const TRUST_BADGES = [
+  { icon: Truck, text: "Besplatna dostava za 15.000+ RSD" },
+  { icon: Zap, text: "Isporuka 1-5 dana" },
+  { icon: ShieldCheck, text: "Garancija na mašine" },
+  { icon: CreditCard, text: "Čekovi na 4 rate" },
+];
+
 const CTA = () => {
   return (
-    <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24 overflow-hidden">
+    <Section className="relative overflow-hidden">
       <div className="absolute bottom-0 lg:bottom-0 inset-x-0 mx-auto bg-primary/50 lg:bg-primary/70 rounded-full w-1/3 h-1/16 blur-[4rem]"></div>
 
       <Wrapper>
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-full py-8">
-          <div className="flex flex-col items-start justify-center w-full">
-            <Container className="w-max mx-auto">
-              <h2 className="text-3xl lg:text-5xl leading-tight text-transparent bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-400 font-semibold">
-                Pronađi pravi alat <br /> za svaki posao
-              </h2>
-              <div className="flex items-center gap-4 mt-6">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="size-4 text-primary" />
-                  <span className="text-sm font-medium">Brza dostava</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="size-4 text-primary" />
-                  <span className="text-sm font-medium">Proveren kvalitet</span>
-                </div>
-              </div>
-            </Container>
-          </div>
-          <div className="flex flex-col justify-center w-full mt-8 lg:mt-0">
-            <Container className="w-max mx-auto mb-0">
-              <div className="flex items-center gap-4 mt-6">
-                <a
-                  href="https://prodavnicaalata.rs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="lg">Pogledaj ponudu</Button>
-                </a>
-                <div className="flex flex-col">
-                  <span className="text-sm text-muted-foreground">
-                    4.8/5 <br /> Na osnovu 300+ recenzija kupaca
+        <Container className="mx-auto flex flex-col items-center gap-6 md:gap-8">
+          <h2 className="text-4xl lg:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-400 font-semibold text-center">
+            Pronađi pravi alat <br /> za svaki posao
+          </h2>
+          <a
+            href="https://prodavnicaalata.rs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg">
+              Pogledaj ponudu
+              <ExternalLink className="size-4" />
+            </Button>
+          </a>
+          <div className="flex flex-wrap justify-center items-center gap-2 lg:gap-3">
+            {TRUST_BADGES.map((badge, index) => (
+              <Container key={index} delay={0.2 * index}>
+                <div className="flex items-center gap-2 px-2 py-2 rounded-lg bg-foreground/[0.03 text-muted-foreground">
+                  <badge.icon className="size-3.5 shrink-0" strokeWidth={1.5} />
+                  <span className="text-xs font-medium whitespace-nowrap">
+                    {badge.text}
                   </span>
                 </div>
-              </div>
-            </Container>
+              </Container>
+            ))}
           </div>
-        </div>
+        </Container>
       </Wrapper>
-    </div>
+    </Section>
   );
 };
 

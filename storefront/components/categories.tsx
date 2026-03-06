@@ -1,13 +1,22 @@
 import Container from "@/components/container";
 import CategoryCard from "@/components/products/category-card";
+import Section from "@/components/section";
 import Wrapper from "@/components/wrapper";
 import { getCategories } from "@/lib/categories";
+import type { Category } from "@/types/categories";
 
 const Categories = async () => {
-  const categories = await getCategories();
+  let categories: Category[] = [];
+  try {
+    categories = await getCategories();
+  } catch {
+    return null;
+  }
+
+  if (!categories || categories.length === 0) return null;
 
   return (
-    <div className="flex flex-col items-center justify-center relative w-full py-16 lg:py-24">
+    <Section className="relative">
       <Wrapper>
         <Container>
           <div className="flex flex-col items-start justify-start lg:items-center lg:justify-center">
@@ -34,7 +43,7 @@ const Categories = async () => {
           </div>
         </div>
       </Wrapper>
-    </div>
+    </Section>
   );
 };
 

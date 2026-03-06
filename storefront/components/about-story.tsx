@@ -1,10 +1,11 @@
 import { ABOUT_MILESTONES } from "@/constants/content";
 import Container from "./container";
+import Section from "./section";
 import Wrapper from "./wrapper";
 
 const AboutStory = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full py-16 lg:py-24">
+    <Section>
       <Wrapper>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {ABOUT_MILESTONES.map((milestone, index) => (
@@ -33,7 +34,7 @@ const AboutStory = () => {
           ))}
         </div>
       </Wrapper>
-    </div>
+    </Section>
   );
 };
 
