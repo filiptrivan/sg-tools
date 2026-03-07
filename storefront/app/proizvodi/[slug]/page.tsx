@@ -24,6 +24,13 @@ export async function generateStaticParams() {
   }
 }
 
+function truncate(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text;
+  const truncated = text.slice(0, maxLength - 1);
+  const lastSpace = truncated.lastIndexOf(" ");
+  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : maxLength - 1)}…`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
@@ -32,15 +39,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
+  const description = truncate(
+    product.metaDescription || product.description || "",
+    155,
+  );
+
   return {
-    title: product.metaTitle || `${product.title} | SG Tools`,
-    description: product.metaDescription || product.description,
+    title: product.metaTitle || product.title,
+    description,
     alternates: {
       canonical: `https://prodavnicaalata.rs/proizvodi/${slug}/`,
     },
     openGraph: {
       title: product.metaTitle || product.title,
-      description: product.metaDescription || product.description,
+      description,
       images: [{ url: product.ogImageUrl || product.imageUrl }].filter(
         (img) => img.url,
       ),
@@ -67,7 +79,7 @@ const ProductPage = async ({ params }: Props) => {
     .slice(0, 4);
 
   return (
-    <div className="w-full relative flex flex-col pt-16">
+    <div>
       <ProductDetail product={product} relatedProducts={relatedProducts} />
       <CTA />
     </div>

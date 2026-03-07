@@ -15,8 +15,65 @@ const ProductDetail = ({
   product,
   relatedProducts,
 }: ProductDetailProps) => {
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description,
+    image: product.imageUrl,
+    brand: {
+      "@type": "Brand",
+      name: product.brandName || "SG Tools",
+    },
+    offers: {
+      "@type": "Offer",
+      url: `https://www.prodavnicaalata.rs/proizvodi/${product.slug}/`,
+      priceCurrency: "RSD",
+      price: product.displayPrice,
+      availability: product.inStock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Svi proizvodi",
+        item: "https://sgtools.rs/proizvodi/kategorije",
+      },
+      ...(product.categorySlug
+        ? [
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: product.categoryName,
+              item: `https://sgtools.rs/proizvodi/kategorije/${product.categorySlug}`,
+            },
+          ]
+        : []),
+      {
+        "@type": "ListItem",
+        position: product.categorySlug ? 3 : 2,
+        name: product.title,
+      },
+    ],
+  };
+
   return (
     <Wrapper className="py-8 lg:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Breadcrumbs */}
       <Container>
         <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-8 flex-wrap">

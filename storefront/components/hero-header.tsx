@@ -8,6 +8,7 @@ interface HeroHeaderProps {
   description: ReactNode;
   showSvgGrid?: boolean;
   children?: ReactNode;
+  as?: "h1" | "h2";
 }
 
 const HeroHeader = ({
@@ -15,6 +16,7 @@ const HeroHeader = ({
   description,
   showSvgGrid = false,
   children,
+  as: Heading = "h1",
 }: HeroHeaderProps) => {
   return (
     <div className="relative z-0 w-full h-full mb-4">
@@ -33,9 +35,9 @@ const HeroHeader = ({
       <Wrapper className="py-12 sm:py-24">
         <div className="flex flex-col items-center justify-center w-full z-10">
           <Container delay={0.1}>
-            <h2 className="text-balance leading-tight! text-center text-5xl md:text-6xl font-semibold tracking-tight w-full">
+            <Heading className="text-balance leading-tight! text-center text-5xl md:text-6xl font-semibold tracking-tight w-full">
               {title}
-            </h2>
+            </Heading>
           </Container>
 
           <Container delay={0.2}>
