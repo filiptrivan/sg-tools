@@ -64,6 +64,9 @@ export default async function RootLayout({
               sameAs: [
                 "https://www.prodavnicaalata.rs/",
                 "https://www.stridon.rs/",
+                "https://www.facebook.com/prodavnicaalataa",
+                "https://www.instagram.com/prodavnicaalata/",
+                "https://www.youtube.com/@prodavnicaalata5203",
               ],
             }),
           }}

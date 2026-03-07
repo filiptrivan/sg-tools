@@ -14,8 +14,6 @@ const TRUST_BADGES = [
 const CTA = () => {
   return (
     <Section className="relative overflow-hidden">
-      <div className="absolute bottom-0 lg:bottom-0 inset-x-0 mx-auto bg-primary/50 lg:bg-primary/70 rounded-full w-1/3 h-1/16 blur-[4rem]"></div>
-
       <Wrapper>
         <Container className="mx-auto flex flex-col items-center gap-6 md:gap-8">
           <h2 className="text-4xl lg:text-7xl leading-tight text-transparent bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-400 font-semibold text-center">
