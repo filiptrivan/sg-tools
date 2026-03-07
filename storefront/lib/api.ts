@@ -1,6 +1,17 @@
 import type { Product, ProductsResult, SitemapEntry } from "@/types/products";
 import type { Category } from "@/types/categories";
 
+export class ApiError extends Error {
+  constructor(
+    public status: number,
+    message: string,
+  ) {
+    super(message);
+    this.name = "ApiError";
+    Object.setPrototypeOf(this, ApiError.prototype);
+  }
+}
+
 const API_URL = process.env.API_URL;
 const BRAND_SLUG = "sg-tools";
 
@@ -16,7 +27,8 @@ async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
     next: { revalidate: 3600 },
   });
 
-  if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
+  if (!res.ok)
+    throw new ApiError(res.status, `API error: ${res.status} ${res.statusText}`);
   return res.json() as Promise<T>;
 }
 
@@ -46,8 +58,9 @@ export async function getProductBySlug(
     return await apiFetch<Product>(
       `/api/Storefront/ProductBySlug?slug=${encodeURIComponent(slug)}`,
     );
-  } catch {
-    return null;
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) return null;
+    throw error;
   }
 }
 
