@@ -61,8 +61,8 @@ export const heroData = {
       icon: <Briefcase className="h-5 w-5 text-primary" />,
     },
     {
-      value: "Resources",
-      label: "",
+      value: "50+",
+      label: "Countries",
       icon: <LinkIcon className="h-5 w-5 text-primary" />,
     },
   ],

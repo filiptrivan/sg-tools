@@ -3,6 +3,7 @@ import AboutStory from "@/components/about-story";
 import CTA from "@/components/cta";
 import HeroHeader from "@/components/hero-header";
 import HeroSectionDemo from "@/components/ui/HeroSection";
+import OurValues from "@/components/ui/OurValuesComp";
 import VerticalTimeLine from "@/components/VerticalTimeLine";
 import type { Metadata } from "next";
 
@@ -18,14 +19,13 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <div>
-      {/* <HeroHeader
-        title="O nama"
-        description="Upoznaj brend koji je nastao iz iskustva, znanja i potreba onih koji alat koriste svaki dan."
-      /> */}
       <HeroSectionDemo />
-      {/* <AboutStory /> */}
+
       <VerticalTimeLine />
-      <AboutContent />
+      <OurValues
+        sectionTitle="Our Values"
+        sectionSubtitle="A suite of powerful features engineered to deliver speed, security, and scalability."
+      />
       <CTA />
     </div>
   );
