@@ -1,47 +1,54 @@
 import { ValueItem } from "@/types/values";
-import { Cpu, Gauge, Lock, Settings, Shield, TrendingUp } from "lucide-react";
+import {
+  BadgeDollarSign,
+  CheckCircle,
+  Hand,
+  ShieldCheck,
+  Users,
+  Wrench,
+} from "lucide-react";
 
 export const valueItems: ValueItem[] = [
   {
-    id: "performance",
-    icon: Gauge,
-    title: "Blazing Performance",
+    id: "Durability",
+    title: "Durability",
     description:
-      "Built on optimized algorithms, our platform ensures sub-millisecond response times for even the most complex queries.",
+      "Built with carefully selected materials designed to withstand real working conditions and long-term professional use.",
+    icon: ShieldCheck,
   },
   {
-    id: "security",
-    icon: Lock,
-    title: "Zero-Trust Security",
+    id: "Ergonomics",
+    title: "Ergonomics",
     description:
-      "Comprehensive end-to-end encryption and compliance certifications to protect your sensitive enterprise data.",
+      "Tools designed to fit naturally in the hand, providing comfort, control, and reduced fatigue during extended work.",
+    icon: Hand,
   },
   {
-    id: "scalability",
-    icon: TrendingUp,
-    title: "Limitless Scalability",
+    id: "Functional Design",
+    title: "Functional Design",
     description:
-      "Effortlessly scale resources up or down to meet fluctuating demand without requiring manual configuration changes.",
+      "Every design choice serves a clear purpose, ensuring practicality, efficiency, and reliability in everyday tasks.",
+    icon: Wrench,
   },
   {
-    id: "automation",
-    icon: Cpu,
-    title: "Intelligent Automation",
+    id: "Fair Pricing",
+    title: "Fair Pricing",
     description:
-      "Leverage AI-driven workflows to automate repetitive tasks and free up your team for high-value strategic work.",
+      "Professional-grade tools offered at prices that remain accessible without compromising quality or performance.",
+    icon: BadgeDollarSign,
   },
   {
-    id: "config",
-    icon: Settings,
-    title: "Flexible Configuration",
+    id: "Customer Driven",
+    title: "Customer Driven",
     description:
-      "Easily customize every aspect of the platform through a unified, powerful, and intuitive management dashboard.",
+      "Our products evolve through real feedback from craftsmen, installers, and users who rely on tools every day.",
+    icon: Users,
   },
   {
-    id: "reliability",
-    icon: Shield,
-    title: "99.99% Uptime SLA",
+    id: "Reliability",
+    title: "Reliability",
     description:
-      "Our distributed architecture guarantees maximum reliability, backed by industry-leading service level agreements.",
+      "Tools you can depend on daily, engineered to deliver consistent performance in demanding environments.",
+    icon: CheckCircle,
   },
 ];

@@ -20,7 +20,7 @@ const OurValues: React.FC<OurValueProps> = ({
 
   return (
     <section
-      className={cn(" bg-background text-foreground", className)}
+      className={cn("pt-10 bg-background text-foreground", className)}
       role="region"
       aria-label={
         sectionTitle ? `Features: ${sectionTitle}` : "Product Features"
@@ -43,7 +43,6 @@ const OurValues: React.FC<OurValueProps> = ({
           </div>
         )}
 
-        {/* Features Grid */}
         <div
           className="grid gap-6 py-8 sm:px-4 sm:gap-8 md:grid-cols-2 lg:grid-cols-3"
           role="list"

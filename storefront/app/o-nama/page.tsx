@@ -24,7 +24,7 @@ const AboutPage = () => {
       <VerticalTimeLine />
       <OurValues
         sectionTitle="Our Values"
-        sectionSubtitle="A suite of powerful features engineered to deliver speed, security, and scalability."
+        sectionSubtitle="The principles that guide how we design, build, and deliver tools trusted by craftsmen, installers, and professionals."
       />
       <CTA />
     </div>
