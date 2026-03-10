@@ -2,6 +2,7 @@ import AboutContent from "@/components/about-content";
 import AboutStory from "@/components/about-story";
 import CTA from "@/components/cta";
 import HeroHeader from "@/components/hero-header";
+import HeroSectionDemo from "@/components/ui/HeroSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,11 +17,13 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <div>
-      <HeroHeader
+      {/* <HeroHeader
         title="O nama"
         description="Upoznaj brend koji je nastao iz iskustva, znanja i potreba onih koji alat koriste svaki dan."
-      />
+      /> */}
+      <HeroSectionDemo />
       <AboutStory />
+
       <AboutContent />
       <CTA />
     </div>
