@@ -195,7 +195,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         <Container delay={2} className="mt-12 lg:mt-16">
           <h2 className="text-xl font-bold mb-6">Detalji</h2>
           <div
-            className="product-text"
+            className="prose prose-sm prose-invert max-w-none prose-a:text-primary prose-a:hover:opacity-80"
             dangerouslySetInnerHTML={{ __html: product.htmlDescription }}
           />
         </Container>

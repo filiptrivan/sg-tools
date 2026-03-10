@@ -12,7 +12,7 @@ const RelatedProducts = async ({
   categorySlug,
   excludeProductId,
 }: RelatedProductsProps) => {
-  let products = await getProductsByCategory(categorySlug, 0, 6);
+  let products = await getProductsByCategory(categorySlug, 0, 4);
   products = products.filter((p) => p.id !== excludeProductId);
 
   if (products.length === 0) return null;

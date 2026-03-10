@@ -34,12 +34,6 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
               {`-${product.discountPercentage}%`}
             </span>
           )}
-
-          {!product.inStock && (
-            <span className="absolute top-2 right-2 bg-muted text-muted-foreground text-xs font-semibold px-2 py-1 rounded">
-              Nema na stanju
-            </span>
-          )}
         </div>
 
         <div className="flex flex-col flex-1 p-3 sm:p-4">

@@ -1,4 +1,3 @@
-import CTA from "@/components/cta";
 import ProductDetail from "@/components/products/product-detail";
 import RelatedProducts from "@/components/products/related-products";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
@@ -55,7 +54,6 @@ export default async function ProductPage({ params }: Props) {
           </Suspense>
         </SectionErrorBoundary>
       )}
-      <CTA />
     </div>
   );
 }

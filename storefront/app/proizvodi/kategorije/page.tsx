@@ -1,4 +1,3 @@
-import CTA from "@/components/cta";
 import HeroHeader from "@/components/hero-header";
 import CategoryCard from "@/components/products/category-card";
 import StatusMessage from "@/components/status-message";
@@ -47,8 +46,6 @@ const CategoriesPage = async () => {
           </div>
         )}
       </Wrapper>
-
-      <CTA />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import CTA from "@/components/cta";
 import HeroHeader from "@/components/hero-header";
 import { ListingPagination } from "@/components/products/listing-pagination";
 import ProductGrid from "@/components/products/product-grid";
@@ -106,8 +105,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           </Suspense>
         </SectionErrorBoundary>
       </Wrapper>
-
-      <CTA />
     </div>
   );
 }
