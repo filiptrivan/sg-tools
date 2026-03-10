@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  env: {
+    BUILD_YEAR: String(new Date().getFullYear()),
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

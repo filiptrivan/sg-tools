@@ -9,12 +9,8 @@ export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export async function generateStaticParams() {
-  try {
-    const products = await getSitemapProducts();
-    return products.map((p) => ({ slug: p.slug }));
-  } catch {
-    return [];
-  }
+  const products = await getSitemapProducts();
+  return products.map((p) => ({ slug: p.slug }));
 }
 
 export default async function Image({
@@ -24,13 +20,7 @@ export default async function Image({
 }) {
   const { slug } = await params;
   const fonts = await loadFonts();
-
-  let product;
-  try {
-    product = await getProductBySlug(slug);
-  } catch {
-    product = null;
-  }
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return new ImageResponse(<DefaultTemplate title="Proizvod" />, {

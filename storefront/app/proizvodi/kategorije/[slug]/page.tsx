@@ -4,8 +4,8 @@ import { ListingPagination } from "@/components/products/listing-pagination";
 import ProductGrid from "@/components/products/product-grid";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import Wrapper from "@/components/wrapper";
-import { SITE_URL } from "@/constants/links";
 import { PRODUCTS_PER_PAGE } from "@/constants/cache-tags";
+import { SITE_URL } from "@/constants/links";
 import {
   getCategoryBySlug,
   getFilteredProductsByCategory,
@@ -20,15 +20,9 @@ type Props = {
   searchParams: Promise<{ strana?: string }>;
 };
 
-export const dynamicParams = true;
-
 export async function generateStaticParams() {
-  try {
-    const categories = await getSitemapCategories();
-    return categories.map((c) => ({ slug: c.slug }));
-  } catch {
-    return [];
-  }
+  const categories = await getSitemapCategories();
+  return categories.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
@@ -40,36 +34,33 @@ export async function generateMetadata({
   const currentPage = Math.max(1, parseInt(strana ?? "1", 10) || 1);
   const pageSuffix = currentPage > 1 ? ` — Strana ${currentPage}` : "";
 
-  try {
-    const category = await getCategoryBySlug(slug);
-    if (!category) return {};
+  const category = await getCategoryBySlug(slug);
+  if (!category) return {};
 
-    const canonicalBase = `${SITE_URL}/proizvodi/kategorije/${slug}`;
-    const canonical =
-      currentPage > 1 ? `${canonicalBase}?strana=${currentPage}` : canonicalBase;
+  const canonicalBase = `${SITE_URL}/proizvodi/kategorije/${slug}`;
+  const canonical =
+    currentPage > 1 ? `${canonicalBase}?strana=${currentPage}` : canonicalBase;
 
-    return {
+  return {
+    title: `${category.metaTitle}${pageSuffix}`,
+    description: category.metaDescription,
+    alternates: { canonical },
+    openGraph: {
       title: `${category.metaTitle}${pageSuffix}`,
       description: category.metaDescription,
-      alternates: { canonical },
-      openGraph: {
-        title: `${category.metaTitle}${pageSuffix}`,
-        description: category.metaDescription,
-      },
-    };
-  } catch (error) {
-    console.error("Failed to fetch category metadata:", error);
-    return {};
-  }
+    },
+  };
 }
 
 async function CategoryProducts({
   slug,
-  currentPage,
+  searchParams,
 }: {
   slug: string;
-  currentPage: number;
+  searchParams: Promise<{ strana?: string }>;
 }) {
+  const { strana } = await searchParams;
+  const currentPage = Math.max(1, parseInt(strana ?? "1", 10) || 1);
   const offset = (currentPage - 1) * PRODUCTS_PER_PAGE;
   const products = await getFilteredProductsByCategory(
     slug,
@@ -99,11 +90,8 @@ async function CategoryProducts({
   );
 }
 
-const CategoryPage = async ({ params, searchParams }: Props) => {
+export default async function CategoryPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const { strana } = await searchParams;
-  const currentPage = Math.max(1, parseInt(strana ?? "1", 10) || 1);
-
   const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
@@ -114,7 +102,7 @@ const CategoryPage = async ({ params, searchParams }: Props) => {
       <Wrapper className="pb-16">
         <SectionErrorBoundary>
           <Suspense>
-            <CategoryProducts slug={slug} currentPage={currentPage} />
+            <CategoryProducts slug={slug} searchParams={searchParams} />
           </Suspense>
         </SectionErrorBoundary>
       </Wrapper>
@@ -122,6 +110,4 @@ const CategoryPage = async ({ params, searchParams }: Props) => {
       <CTA />
     </div>
   );
-};
-
-export default CategoryPage;
+}

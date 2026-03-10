@@ -9,12 +9,8 @@ export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export async function generateStaticParams() {
-  try {
-    const categories = await getSitemapCategories();
-    return categories.map((c) => ({ slug: c.slug }));
-  } catch {
-    return [];
-  }
+  const categories = await getSitemapCategories();
+  return categories.map((c) => ({ slug: c.slug }));
 }
 
 export default async function Image({
@@ -24,13 +20,7 @@ export default async function Image({
 }) {
   const { slug } = await params;
   const fonts = await loadFonts();
-
-  let category;
-  try {
-    category = await getCategoryBySlug(slug);
-  } catch {
-    category = null;
-  }
+  const category = await getCategoryBySlug(slug);
 
   if (!category) {
     return new ImageResponse(<DefaultTemplate title="Kategorija" />, {

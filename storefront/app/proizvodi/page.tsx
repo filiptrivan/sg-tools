@@ -3,8 +3,8 @@ import HeroHeader from "@/components/hero-header";
 import { ListingPagination } from "@/components/products/listing-pagination";
 import ProductGrid from "@/components/products/product-grid";
 import Wrapper from "@/components/wrapper";
-import { SITE_URL } from "@/constants/links";
 import { PRODUCTS_PER_PAGE } from "@/constants/cache-tags";
+import { SITE_URL } from "@/constants/links";
 import { getFilteredProducts } from "@/lib/api";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
@@ -34,7 +34,11 @@ export async function generateMetadata({
   };
 }
 
-const ProductsPage = async ({ searchParams }: Props) => {
+async function ProductsList({
+  searchParams,
+}: {
+  searchParams: Promise<{ strana?: string }>;
+}) {
   const { strana } = await searchParams;
   const currentPage = Math.max(1, parseInt(strana ?? "1", 10) || 1);
   const offset = (currentPage - 1) * PRODUCTS_PER_PAGE;
@@ -47,6 +51,28 @@ const ProductsPage = async ({ searchParams }: Props) => {
   }
 
   return (
+    <>
+      <ProductGrid
+        products={products.data}
+        totalRecords={products.totalRecords}
+        backLink={{
+          href: "/proizvodi/kategorije",
+          label: "Sve kategorije",
+        }}
+      />
+      <Suspense>
+        <ListingPagination
+          currentPage={currentPage}
+          totalRecords={products.totalRecords}
+          pageSize={PRODUCTS_PER_PAGE}
+        />
+      </Suspense>
+    </>
+  );
+}
+
+export default function ProductsPage({ searchParams }: Props) {
+  return (
     <div>
       <HeroHeader
         title="Svi proizvodi"
@@ -54,26 +80,12 @@ const ProductsPage = async ({ searchParams }: Props) => {
       />
 
       <Wrapper className="pb-16">
-        <ProductGrid
-          products={products.data}
-          totalRecords={products.totalRecords}
-          backLink={{
-            href: "/proizvodi/kategorije",
-            label: "Sve kategorije",
-          }}
-        />
         <Suspense>
-          <ListingPagination
-            currentPage={currentPage}
-            totalRecords={products.totalRecords}
-            pageSize={PRODUCTS_PER_PAGE}
-          />
+          <ProductsList searchParams={searchParams} />
         </Suspense>
       </Wrapper>
 
       <CTA />
     </div>
   );
-};
-
-export default ProductsPage;
+}

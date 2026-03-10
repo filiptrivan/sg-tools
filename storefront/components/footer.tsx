@@ -64,7 +64,7 @@ function FooterLinkColumn({
 }
 
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const year = process.env.BUILD_YEAR;
 
   return (
     <footer className="relative pt-16 w-full overflow-hidden">
