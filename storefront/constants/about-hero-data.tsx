@@ -53,17 +53,17 @@ export const heroData = {
     {
       value: "15,2K",
       label: "Active customers",
-      icon: <Users className="h-5 w-5 text-muted-foreground" />,
+      icon: <Users className="h-5 w-5 text-primary" />,
     },
     {
       value: "4,5K",
       label: "Suppliers",
-      icon: <Briefcase className="h-5 w-5 text-muted-foreground" />,
+      icon: <Briefcase className="h-5 w-5 text-primary" />,
     },
     {
       value: "Resources",
       label: "",
-      icon: <LinkIcon className="h-5 w-5 text-muted-foreground" />,
+      icon: <LinkIcon className="h-5 w-5 text-primary" />,
     },
   ],
   images: [
