@@ -3,18 +3,19 @@ import HeroHeader from "@/components/hero-header";
 import CategoryCard from "@/components/products/category-card";
 import Wrapper from "@/components/wrapper";
 import { getCategories } from "@/lib/categories";
+import { constructMetaData } from "@/lib/metadata";
 import type { Category } from "@/types/categories";
 import { Package } from "lucide-react";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Kategorije proizvoda",
-  description:
-    "Pregledaj kompletnu ponudu profesionalnog alata po kategorijama.",
-  alternates: {
+export function generateMetadata() {
+  return constructMetaData({
+    title: "Kategorije proizvoda",
+    description:
+      "Pregledaj kompletnu ponudu profesionalnog alata po kategorijama.",
     canonical: "https://prodavnicaalata.rs/proizvodi/kategorije/",
-  },
-};
+    path: "/proizvodi/kategorije",
+  });
+}
 
 const CategoriesPage = async () => {
   let categories: Category[] = [];

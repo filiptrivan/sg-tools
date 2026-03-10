@@ -5,6 +5,7 @@ import {
   getProducts,
   getProductsByCategory,
 } from "@/lib/api";
+import { constructMetaData } from "@/lib/metadata";
 import type { Product } from "@/types/products";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -45,17 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       155,
     );
 
-    return {
+    return constructMetaData({
       title: product.metaTitle || product.title,
       description,
-      alternates: {
-        canonical: `https://prodavnicaalata.rs/proizvodi/${slug}/`,
-      },
-      openGraph: {
-        title: product.metaTitle || product.title,
-        description,
-      },
-    };
+      path: `/proizvodi/${slug}/`,
+      canonical: `https://prodavnicaalata.rs/proizvodi/${slug}/`,
+    });
   } catch (error) {
     console.error("Failed to fetch product metadata:", error);
     return {};

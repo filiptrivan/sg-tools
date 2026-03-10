@@ -26,14 +26,6 @@ export function constructMetaData({
       locale,
       type: "website",
       url: "https://sgtools.rs" + path,
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "SG Tools",
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -41,5 +33,13 @@ export function constructMetaData({
     alternates: {
       canonical,
     },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+      ],
+      apple: "/apple-touch-icon.png",
+    },
+    manifest: "/site.webmanifest",
   };
 }

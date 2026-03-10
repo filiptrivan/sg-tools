@@ -4,6 +4,7 @@ import ProductGrid from "@/components/products/product-grid";
 import Wrapper from "@/components/wrapper";
 import { getProductsByCategory } from "@/lib/api";
 import { getCategoryBySlug, getCategorySlugs } from "@/lib/categories";
+import { constructMetaData } from "@/lib/metadata";
 import type { Product } from "@/types/products";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -28,17 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const category = await getCategoryBySlug(slug);
     if (!category) return {};
-    return {
+
+    return constructMetaData({
       title: category.metaTitle,
       description: category.metaDescription,
-      alternates: {
-        canonical: `https://prodavnicaalata.rs/proizvodi/kategorije/${slug}/`,
-      },
-      openGraph: {
-        title: category.metaTitle,
-        description: category.metaDescription,
-      },
-    };
+      canonical: `https://prodavnicaalata.rs/proizvodi/kategorije/${slug}/`,
+      path: `/proizvodi/kategorije/${slug}/`,
+    });
   } catch (error) {
     console.error("Failed to fetch category metadata:", error);
     return {};
