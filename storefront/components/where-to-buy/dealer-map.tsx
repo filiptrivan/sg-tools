@@ -89,8 +89,10 @@ export default function DealerMap({
   // Stable refs for callbacks to avoid stale closures in marker click handlers
   const onSelectDealerRef = useRef(onSelectDealer);
   const selectedDealerIdRef = useRef(selectedDealerId);
-  onSelectDealerRef.current = onSelectDealer;
-  selectedDealerIdRef.current = selectedDealerId;
+  useEffect(() => {
+    onSelectDealerRef.current = onSelectDealer;
+    selectedDealerIdRef.current = selectedDealerId;
+  }, [onSelectDealer, selectedDealerId]);
 
   // Effect 1: Map initialization
   useEffect(() => {
@@ -108,10 +110,11 @@ export default function DealerMap({
 
     mapRef.current = map;
 
+    const markers = markersRef.current;
     return () => {
       map.remove();
       mapRef.current = null;
-      markersRef.current.clear();
+      markers.clear();
       userMarkerRef.current = null;
     };
   }, []);

@@ -12,6 +12,7 @@ import { NAV_LINKS } from "@/constants/links";
 import { cn } from "@/lib/utils";
 import type { Category } from "@/types/categories";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import BuyOnlineButton from "./buy-online-button";
@@ -39,10 +40,12 @@ const Navbar = ({ categories }: NavbarProps) => {
           transition={{ duration: 0.2 }}
         >
           <Link href="/" className="flex items-center gap-2">
-            <img
-              src={"/sg-tools-logo.svg"}
+            <Image
+              src="/sg-tools-logo.svg"
               className="w-max h-3"
-              alt="Spiderly Logo"
+              alt="SG Tools Logo"
+              width={100}
+              height={12}
             />
           </Link>
         </motion.div>
