@@ -11,11 +11,13 @@ import {
   imageVariants,
   itemVariants,
 } from "@/constants/about-hero-data";
+import { cn } from "@/lib/utils";
 export function HeroSection({
   title,
   subtitle,
-  stats,
   images,
+  textClass,
+  imagesClass,
 }: HeroSectionProps) {
   return (
     <Section>
@@ -23,7 +25,7 @@ export function HeroSection({
         <div className="container mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
           {/* Left Column: Text Content */}
           <motion.div
-            className="flex flex-col items-center text-center lg:items-start lg:text-left"
+            className={cn("flex flex-col items-center text-center ", textClass)}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -47,28 +49,12 @@ export function HeroSection({
             <motion.div
               className="mt-12 flex flex-wrap justify-center gap-8 lg:justify-start"
               variants={itemVariants}
-            >
-              {stats?.map((stat, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">
-                    {stat.icon}
-                  </div>
-                  <div>
-                    <p className="text-xl font-bold text-foreground">
-                      {stat.value}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
+            ></motion.div>
           </motion.div>
 
           {/* Right Column: Image Collage */}
           <motion.div
-            className="relative h-100 w-full sm:h-125"
+            className={cn("relative h-100 w-full sm:h-125", imagesClass)}
             variants={containerVariants}
             initial="hidden"
             animate="visible"

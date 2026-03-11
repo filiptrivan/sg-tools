@@ -1,15 +1,24 @@
 import { HeroSection } from "./HeroComponent";
 
-import { heroData } from "@/constants/about-hero-data";
+import { heroData1, heroData2 } from "@/constants/about-hero-data";
+
 const HeroSectionDemo = () => {
   return (
-    <HeroSection
-      title={heroData.title}
-      subtitle={heroData.subtitle}
-      //   actions={heroData.actions}
-      stats={heroData.stats}
-      images={heroData.images}
-    />
+    <>
+      <HeroSection
+        title={heroData1.title}
+        subtitle={heroData1.subtitle}
+        images={heroData1.images}
+        textClass="lg:items-start lg:text-left"
+      />
+      <HeroSection
+        textClass="lg:order-2 lg:text-right lg:items-end"
+        imagesClass="lg:order-1 "
+        title={heroData2.title}
+        subtitle={heroData2.subtitle}
+        images={heroData2.images}
+      />
+    </>
   );
 };
 
