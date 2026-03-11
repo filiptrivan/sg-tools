@@ -3,29 +3,29 @@ import { Ear, Rocket, Wrench } from "lucide-react";
 
 export const timelineItems: TimelineItem[] = [
   {
-    title: "30 years in tools",
+    title: "30 godina u svetu alata",
     description:
-      "Three decades ago, our family stepped into the world of tools. Since then, we have been constantly learning, growing and following the needs of the market.",
+      "Pre tri decenije naša porodica je zakoračila u svet alata. Od tada neprestano učimo, rastemo i pratimo potrebe tržišta.",
     date: "1994",
-    category: "Foundation",
+    category: "Osnivanje",
     image: <Wrench className="w-8 h-8 text-primary sm:w-14 sm:h-14" />,
     status: "completed",
   },
   {
-    title: "We listened to customers.",
+    title: "Slušali smo kupce.",
     description:
-      "As the business evolved, we listened to what customers really needed — their suggestions became our guidelines.",
+      "Kako se posao razvijao, slušali smo šta kupcima zaista treba — njihove sugestije postale su naše smernice.",
     date: "2012",
-    category: "Product",
+    category: "Proizvod",
     image: <Ear className="w-8 h-8 text-primary sm:w-14 sm:h-14" />,
     status: "completed",
   },
   {
-    title: "SG Tools was born.",
+    title: "SG Tools je rođen.",
     description:
-      "7 years ago, we turned that knowledge into a brand. Today, we are expanding our range and creating new products with the same care.",
+      "Pre 7 godina pretvorili smo to znanje u brend. Danas širimo naš asortiman i stvaramo nove proizvode sa istom pažnjom.",
     date: "2019",
-    category: "Funding",
+    category: "Brend",
     image: <Rocket className="w-8 h-8 text-primary sm:w-14 sm:h-14" />,
     status: "completed",
   },

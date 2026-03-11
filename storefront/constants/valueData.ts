@@ -11,44 +11,44 @@ import {
 export const valueItems: ValueItem[] = [
   {
     id: "Durability",
-    title: "Durability",
+    title: "Izdržljivost",
     description:
-      "Built with carefully selected materials designed to withstand real working conditions and long-term professional use.",
+      "Izrađeni od pažljivo odabranih materijala koji mogu izdržati stvarne radne uslove i dugotrajnu profesionalnu upotrebu.",
     icon: ShieldCheck,
   },
   {
     id: "Ergonomics",
-    title: "Ergonomics",
+    title: "Ergonomija",
     description:
-      "Tools designed to fit naturally in the hand, providing comfort, control, and reduced fatigue during extended work.",
+      "Alati dizajnirani da prirodno leže u ruci, pružajući udobnost, kontrolu i smanjenje zamora tokom dugotrajnog rada.",
     icon: Hand,
   },
   {
     id: "Functional Design",
-    title: "Functional Design",
+    title: "Funkcionalni dizajn",
     description:
-      "Every design choice serves a clear purpose, ensuring practicality, efficiency, and reliability in everyday tasks.",
+      "Svaki izbor u dizajnu ima jasnu svrhu, obezbeđujući praktičnost, efikasnost i pouzdanost u svakodnevnim zadacima.",
     icon: Wrench,
   },
   {
     id: "Fair Pricing",
-    title: "Fair Pricing",
+    title: "Pravedne cene",
     description:
-      "Professional-grade tools offered at prices that remain accessible without compromising quality or performance.",
+      "Profesionalni alati po cenama koje ostaju pristupačne, bez kompromisa po pitanju kvaliteta i performansi.",
     icon: BadgeDollarSign,
   },
   {
     id: "Customer Driven",
-    title: "Customer Driven",
+    title: "Vođeni potrebama kupaca",
     description:
-      "Our products evolve through real feedback from craftsmen, installers, and users who rely on tools every day.",
+      "Naši proizvodi se razvijaju kroz stvarne povratne informacije majstora, instalatera i korisnika koji svakodnevno koriste alate.",
     icon: Users,
   },
   {
     id: "Reliability",
-    title: "Reliability",
+    title: "Pouzdanost",
     description:
-      "Tools you can depend on daily, engineered to deliver consistent performance in demanding environments.",
+      "Alati na koje možete računati svakog dana, projektovani da pružaju konstantne performanse u zahtevnim okruženjima.",
     icon: CheckCircle,
   },
 ];

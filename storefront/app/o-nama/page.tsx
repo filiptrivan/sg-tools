@@ -23,10 +23,7 @@ const AboutPage = () => {
       <HeroSectionDemo />
 
       <VerticalTimeLine />
-      <OurValues
-        sectionTitle="Our Values"
-        sectionSubtitle="The principles that guide how we design, build, and deliver tools trusted by craftsmen, installers, and professionals."
-      />
+      <OurValues />
       <StatsSection />
       <AboutContent />
       <CTA />

@@ -12,8 +12,8 @@ import { useRef } from "react";
 import Wrapper from "./wrapper";
 
 export function StatsSection({
-  title = "Our Impact in Numbers",
-  description = "The numbers behind our story reflect years of experience, dedication to quality, and the trust of professionals who rely on our tools every day.",
+  title = "Naš uticaj u brojkama",
+  description = "Brojevi koji stoje iza naše priče odražavaju godine iskustva, posvećenost kvalitetu i poverenje profesionalaca koji se svakodnevno oslanjaju na naše alate.",
 }: StatsGridProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });

@@ -11,8 +11,8 @@ import { valueItems as features } from "@/constants/valueData";
 import Container from "../container";
 
 const OurValues: React.FC<OurValueProps> = ({
-  sectionTitle,
-  sectionSubtitle,
+  sectionTitle = "Naše vrednosti",
+  sectionSubtitle = "Principi koji nas vode u dizajniranju, izradi i isporuci alata kojem veruju majstori, instalateri i profesionalci.",
   className,
 }) => {
   if (!features || features.length === 0) {

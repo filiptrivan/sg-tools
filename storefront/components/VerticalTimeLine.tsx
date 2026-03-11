@@ -6,12 +6,12 @@ export default function VerticalTimeLine() {
     <div className="min-h-screen bg-background">
       <header className="text-center py-10 sm:py-16 px-6">
         <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-          The Story Behind SG Tools
+          Priča iza SG Tools
         </h1>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          What started over 30 years ago as a family passion for tools has grown
-          into a brand dedicated to quality, innovation, and listening to the
-          needs of professionals and craftsmen.
+          Ono što je pre više od 30 godina počelo kao porodična strast prema
+          alatima, danas je preraslo u brend posvećen kvalitetu, inovacijama i
+          pažljivom osluškivanju potreba profesionalaca i majstora.
         </p>
       </header>
 
