@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import Wrapper from "@/components/wrapper";
 import { TESTIMONIALS } from "@/constants";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import Image from "next/image";
 
 type Testimonial = {
@@ -29,7 +30,7 @@ const Testimonials = () => {
   return (
     <Section className="relative">
       <Wrapper>
-        <Carousel>
+        <Carousel plugins={[WheelGesturesPlugin()]}>
           <CarouselContent>
             {TESTIMONIALS.map((item) => (
               <CarouselItem

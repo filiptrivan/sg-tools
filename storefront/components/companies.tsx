@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
 import Image from "next/image";
 import Container from "./container";
 import Wrapper from "./wrapper";
@@ -41,7 +42,7 @@ const Companies = () => {
 
         <Container delay={0.1}>
           <div className="mt-4 md:mt-8">
-            <Carousel>
+            <Carousel plugins={[WheelGesturesPlugin()]}>
               <CarouselContent>
                 {companies.map((company) => (
                   <CarouselItem
