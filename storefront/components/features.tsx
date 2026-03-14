@@ -5,7 +5,7 @@ import { Feature } from "./feature";
 import Section from "./section";
 import Wrapper from "./wrapper";
 
-const FEATURE_STYLES = [
+const BENEFIT_STYLES = [
   {
     icon: History,
     color: "text-amber-400",
@@ -51,10 +51,10 @@ const Features = () => {
                 key={index}
                 title={item.title}
                 desc={item.desc}
-                icon={FEATURE_STYLES[index].icon}
-                color={FEATURE_STYLES[index].color}
-                bg={FEATURE_STYLES[index].bg}
-                border={FEATURE_STYLES[index].border}
+                icon={BENEFIT_STYLES[index].icon}
+                color={BENEFIT_STYLES[index].color}
+                bg={BENEFIT_STYLES[index].bg}
+                border={BENEFIT_STYLES[index].border}
               />
             ))}
           </div>
