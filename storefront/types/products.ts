@@ -1,3 +1,8 @@
+export interface CategoryBreadcrumb {
+  name: string;
+  path: string;
+}
+
 export interface ProductMedia {
   url: string;
   mediaType: number;
@@ -30,6 +35,9 @@ export interface Product {
   tags: { name: string; color: string; orderNumber: number }[];
   categoryName: string;
   categorySlug: string;
+  categoryBreadcrumbs: CategoryBreadcrumb[];
+  weightKg: number | null;
+  heightCm: number | null;
   productMedia: ProductMedia[];
   averageRating: number | null;
   reviewCount: number;

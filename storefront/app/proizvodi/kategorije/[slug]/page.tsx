@@ -6,15 +6,11 @@ import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import Wrapper from "@/components/wrapper";
 import { PRODUCTS_PER_PAGE } from "@/constants/cache-tags";
 import {
-  getCategories,
   getCategoryBySlug,
   getFilteredProductsByCategory,
   getSitemapCategories,
 } from "@/lib/api";
-import {
-  buildBreadcrumbJsonLd,
-  buildCategoryBreadcrumbs,
-} from "@/lib/categories";
+import { buildBreadcrumbJsonLd, mapApiBreadcrumbs } from "@/lib/categories";
 import { createCategoryMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
@@ -89,13 +85,10 @@ async function CategoryProducts({
 
 export default async function CategoryPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const [category, categories] = await Promise.all([
-    getCategoryBySlug(slug),
-    getCategories(),
-  ]);
+  const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const allSegments = buildCategoryBreadcrumbs(categories, slug);
+  const allSegments = mapApiBreadcrumbs(category.categoryBreadcrumbs);
   const ancestorSegments = allSegments.slice(0, -1);
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(allSegments);
 

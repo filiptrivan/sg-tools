@@ -141,6 +141,18 @@ const ProductDetail = ({
                   </Link>
                 </div>
               )}
+              {product.weightKg != null && (
+                <div className="flex gap-2">
+                  <span className="text-muted-foreground">Težina:</span>
+                  <span>{product.weightKg} kg</span>
+                </div>
+              )}
+              {product.heightCm != null && (
+                <div className="flex gap-2">
+                  <span className="text-muted-foreground">Visina:</span>
+                  <span>{product.heightCm} cm</span>
+                </div>
+              )}
             </div>
           </div>
         </Container>

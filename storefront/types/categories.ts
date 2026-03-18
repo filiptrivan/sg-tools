@@ -1,3 +1,5 @@
+import type { CategoryBreadcrumb } from "./products";
+
 export interface Category {
   id: number;
   name: string;
@@ -8,4 +10,5 @@ export interface Category {
   metaTitle: string;
   metaDescription: string;
   subCategories: Category[];
+  categoryBreadcrumbs: CategoryBreadcrumb[];
 }
