@@ -29,7 +29,7 @@ const CategoryCard = ({
           />
           <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 flex flex-col mt-auto pt-4">
             <span className="text-base lg:text-xl font-semibold">{title}</span>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-1">
+            <p className="text-muted-foreground text-xs sm:text-sm mt-1 line-clamp-2">
               {description}
             </p>
           </div>

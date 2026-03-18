@@ -98,7 +98,10 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <HeroHeader title={category.name} description={category.description} />
+      <HeroHeader
+        title={category.name}
+        description={category.metaDescription}
+      />
 
       <Wrapper className="pb-16">
         <PageBreadcrumbs
@@ -110,6 +113,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             <CategoryProducts slug={slug} searchParams={searchParams} />
           </Suspense>
         </SectionErrorBoundary>
+
+        {category.description && (
+          <section className="mt-16 border-t border-border pt-10">
+            <h2 className="text-xl font-semibold mb-4">Opis kategorije</h2>
+            <div
+              className="prose prose-invert max-w-full whitespace-pre-line prose-p:text-neutral-400 prose-p:leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: category.description }}
+            />
+          </section>
+        )}
       </Wrapper>
     </div>
   );
