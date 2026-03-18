@@ -10,44 +10,17 @@ import {
 import { Rocket, Speech, Wrench } from "lucide-react";
 import { Feature } from "./feature";
 
-const timeline = [
-  {
-    year: "Pre 30+ godina",
-    title: "Početak u svetu alata",
-    description:
-      "Naša porodična priča počinje pre više od tri decenije ulaskom u industriju alata. Kroz svakodnevni rad sa profesionalcima i hobistima sticali smo iskustvo i razumevanje tržišta.",
-  },
-  {
-    year: "Godine rada sa kupcima",
-    title: "Slušanje potreba korisnika",
-    description:
-      "Radom sa majstorima, instalaterima i serviserima svakodnevno smo slušali njihove sugestije. Njihova iskustva i komentari postali su ključne smernice za razvoj budućih proizvoda.",
-  },
-  {
-    year: "Pre 7 godina",
-    title: "Nastanak brenda SG Tools",
-    description:
-      "Znanje i iskustvo koje smo godinama gradili pretvorili smo u sopstveni brend. Tako je nastao SG Tools — alat razvijen sa jasnim ciljem da ponudi profesionalni kvalitet po pristupačnoj ceni.",
-  },
-  {
-    year: "Danas",
-    title: "Širenje asortimana",
-    description:
-      "Danas nastavljamo da razvijamo nove proizvode i širimo asortiman, ostajući verni istoj filozofiji — kvalitet, pouzdanost i praktična rešenja za svakodnevni rad.",
-  },
-];
-
 const items = [
   {
-    date: "2019 - Present",
+    icon: Rocket,
+    color: "text-emerald-400",
+    bg: "bg-emerald-500/15",
+    border: "border-emerald-500/30",
+    date: "1994 - 2012",
     description:
-      "Naša porodična priča počinje pre više od tri decenije ulaskom u industriju alata. Kroz svakodnevni rad sa profesionalcima i hobistima sticali smo iskustvo i razumevanje tržišta.",
-    id: 1,
-    title: "Početak u svetu alata",
-    icon: Wrench,
-    color: "text-amber-400",
-    bg: "bg-amber-500/15",
-    border: "border-amber-500/30",
+      "Znanje i iskustvo koje smo godinama gradili pretvorili smo u sopstveni brend. Tako je nastao SG Tools — alat razvijen sa jasnim ciljem da ponudi profesionalni kvalitet po pristupačnoj ceni.",
+    id: 3,
+    title: "Nastanak brenda SG Tools",
   },
   {
     date: "2012 - 2019",
@@ -61,15 +34,15 @@ const items = [
     border: "border-blue-500/30",
   },
   {
-    icon: Rocket,
-    color: "text-emerald-400",
-    bg: "bg-emerald-500/15",
-    border: "border-emerald-500/30",
-    date: "1994 - 2012",
+    date: "2019 - Do sad",
     description:
-      "Znanje i iskustvo koje smo godinama gradili pretvorili smo u sopstveni brend. Tako je nastao SG Tools — alat razvijen sa jasnim ciljem da ponudi profesionalni kvalitet po pristupačnoj ceni.",
-    id: 3,
-    title: "Nastanak brenda SG Tools",
+      "Naša porodična priča počinje pre više od tri decenije ulaskom u industriju alata. Kroz svakodnevni rad sa profesionalcima i hobistima sticali smo iskustvo i razumevanje tržišta.",
+    id: 1,
+    title: "Početak u svetu alata",
+    icon: Wrench,
+    color: "text-amber-400",
+    bg: "bg-amber-500/15",
+    border: "border-amber-500/30",
   },
 ];
 
@@ -86,7 +59,7 @@ export default function CompanyTimeline() {
           </TimelineHeader>
           <TimelineContent className="h-full">
             <Feature
-              className="px-0!"
+              className="px-0! border-0!"
               bg={item.bg}
               border={item.border}
               color={item.color}

@@ -1,5 +1,9 @@
 "use cache";
 
+// Caching strategy: time-based expiry only (hours for structural data, minutes
+// for product details). No on-demand revalidation endpoint — this is a
+// display-only site so slight staleness is acceptable.
+
 import { TAGS } from "@/constants/cache-tags";
 import type { Category } from "@/types/categories";
 import type { Product, ProductsResult, SitemapEntry } from "@/types/products";

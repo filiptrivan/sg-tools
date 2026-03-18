@@ -35,7 +35,7 @@ const benefits = [
   {
     title: "Proveren kvalitet",
     description:
-      "Pouzdani i izdržljivi alati, napravljeni da traju i u najzahtevnijim uslovima.",
+      "Izdržljivi alati napravljeni da traju i u najzahtevnijim uslovima.",
   },
   {
     title: "Ergonomski dizajn",
@@ -43,14 +43,14 @@ const benefits = [
       "Prirodno leži u ruci, pruža siguran hvat i smanjuje zamor pri radu.",
   },
   {
-    title: "Razvijeno uz iskustvo korisnika",
+    title: "Iskustvo korisnika",
     description:
-      "Nastalo na osnovu sugestija profesionalaca i hobista koji svakodnevno koriste alat.",
+      "Razvijeno uz sugestije profesionalaca i hobista na terenu.",
   },
   {
-    title: "Profesionalni kvalitet po realnoj ceni",
+    title: "Realne cene",
     description:
-      "Kvalitetni alati po cenama koje imaju smisla za svakodnevni rad.",
+      "Profesionalni alati po cenama koje imaju smisla za svakodnevni rad.",
   },
 ];
 

@@ -10,7 +10,7 @@ const Stats = ({ stats }: StatsProps) => {
   return (
     <Section>
       <Wrapper>
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] sm:gap-8 w-full">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] sm:gap-8 gap-12 w-full">
           {stats.map((stat, index) => (
             <Container key={index} delay={index}>
               <div className="flex flex-col items-center justify-center text-center">

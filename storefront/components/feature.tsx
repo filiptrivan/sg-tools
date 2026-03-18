@@ -31,7 +31,9 @@ export const Feature = ({
         <Icon className={`size-5 lg:size-6 ${color}`} strokeWidth={1.5} />
       </div>
       <div>
-        <h3 className="text-base sm:text-lg font-semibold mt-4">{title}</h3>
+        <h3 className="text-base sm:text-lg font-semibold mt-4 text-foreground">
+          {title}
+        </h3>
         <p className="text-xs sm:text-sm text-muted-foreground mt-1">{desc}</p>
       </div>
     </div>

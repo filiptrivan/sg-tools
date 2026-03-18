@@ -14,12 +14,10 @@ function CompanyStats() {
   const stats = [
     {
       value: `${experience}+`,
-
       label: "Godina iskustva u alatima",
     },
     {
       value: `${years}+`,
-
       label: "Godina razvoja brenda SG Tools",
     },
     {
@@ -31,6 +29,7 @@ function CompanyStats() {
       label: "Zadovoljnih profesionalnih korisnika",
     },
   ];
+
   return (
     <div ref={ref}>
       <Stats stats={stats} />
