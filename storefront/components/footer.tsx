@@ -115,8 +115,8 @@ const Footer = () => {
                 Profesionalni alati nastali iz 30 godina iskustva.
               </p>
               <div className="mt-4 text-sm text-muted-foreground px-4 py-2 cursor-pointer rounded-full border border-border/40 bg-foreground/5 hover:bg-foreground/10 transition-colors duration-300">
-                <a href="tel:+381111234567">
-                  <p>+381 11 123 4567</p>
+                <a href="tel:+381114520171">
+                  <p>011-4520-171</p>
                 </a>
               </div>
               <div className="mt-6 flex items-center gap-3">
