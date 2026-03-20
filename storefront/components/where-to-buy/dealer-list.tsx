@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, formatTelHref } from "@/lib/utils";
 import type { Dealer, DealerCategory } from "@/types/dealers";
 import { ExternalLink, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -15,14 +15,16 @@ interface DealerListProps {
 
 const categoryColors: Record<DealerCategory, string> = {
   online: "bg-blue-500/20 text-blue-400",
+  dealer: "bg-purple-500/20 text-purple-400",
   service: "bg-green-500/20 text-green-400",
   outOfWarranty: "bg-amber-500/20 text-amber-400",
 };
 
 const categoryLabels: Record<DealerCategory, string> = {
-  online: "Online distributeri",
+  online: "Online prodavnice",
+  dealer: "Ovlašćene prodavnice i servisi",
   service: "Ovlašćeni servis",
-  outOfWarranty: "Servis van garancije",
+  outOfWarranty: "Servis van garantnog roka",
 };
 
 function CategoryBadge({ category }: { category: DealerCategory }) {
@@ -122,7 +124,7 @@ export default function DealerList({
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1.5">
                 <Phone className="h-3.5 w-3.5 shrink-0" />
                 <a
-                  href={`tel:${dealer.phone}`}
+                  href={formatTelHref(dealer.phone)}
                   onClick={(e) => e.stopPropagation()}
                   className="hover:text-foreground transition-colors"
                 >

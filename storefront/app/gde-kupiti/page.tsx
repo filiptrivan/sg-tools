@@ -6,7 +6,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Gde kupiti",
   description:
-    "Pronađi ovlašćene distributere, prodavnice i servisne centre SG Tools alata širom Srbije.",
+    "Pronađi ovlašćene prodavnice i servise SG Tools alata širom Srbije.",
   canonicalUrl: "/gde-kupiti",
 });
 
@@ -15,7 +15,7 @@ const WhereToBuyPage = () => {
     <div>
       <HeroHeader
         title="Gde kupiti"
-        description="Pronađi ovlašćene distributere, servisne centre i servise van garancije širom Srbije."
+        description="Pronađi ovlašćene prodavnice i servise SG Tools alata širom Srbije."
       />
       <WhereToBuyContent />
       <CTA />

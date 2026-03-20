@@ -1,4 +1,4 @@
-export type DealerCategory = "online" | "service" | "outOfWarranty";
+export type DealerCategory = "online" | "dealer" | "service" | "outOfWarranty";
 
 export interface Dealer {
   id: string;

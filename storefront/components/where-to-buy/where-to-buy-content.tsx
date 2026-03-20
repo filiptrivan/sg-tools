@@ -40,9 +40,10 @@ export default function WhereToBuyContent() {
 
   const categories: { key: CategoryFilter; label: string }[] = [
     { key: "all", label: "Sve" },
-    { key: "online", label: "Online distributeri" },
+    { key: "online", label: "Online prodavnice" },
+    { key: "dealer", label: "Ovlašćene prodavnice i servisi" },
     { key: "service", label: "Ovlašćeni servis" },
-    { key: "outOfWarranty", label: "Servis van garancije" },
+    { key: "outOfWarranty", label: "Servis van garantnog roka" },
   ];
 
   const distances = useMemo(() => {
