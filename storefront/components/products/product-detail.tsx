@@ -3,7 +3,6 @@ import Wrapper from "@/components/wrapper";
 import { type BreadcrumbSegment, buildBreadcrumbJsonLd } from "@/lib/categories";
 import type { Product } from "@/types/products";
 import { ExternalLink, Package } from "lucide-react";
-import Link from "next/link";
 import PageBreadcrumbs from "./page-breadcrumbs";
 import ProductGallery from "./product-gallery";
 import ProductTabs from "./product-tabs";
@@ -130,17 +129,6 @@ const ProductDetail = ({
 
             {/* Metadata */}
             <div className="mt-8 pt-6 border-t border-border/20 space-y-2 text-sm">
-              {product.categorySlug && (
-                <div className="flex gap-2">
-                  <span className="text-muted-foreground">Kategorija:</span>
-                  <Link
-                    href={`/proizvodi/kategorije/${product.categorySlug}`}
-                    className="text-primary hover:underline"
-                  >
-                    {product.categoryName}
-                  </Link>
-                </div>
-              )}
               {product.weightKg != null && (
                 <div className="flex gap-2">
                   <span className="text-muted-foreground">Težina:</span>
