@@ -7,17 +7,19 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { cn } from "@/lib/utils";
 import { Fragment } from "react";
 import Link from "next/link";
 
 interface PageBreadcrumbsProps {
   segments: BreadcrumbSegment[];
   currentPage: string;
+  className?: string;
 }
 
-const PageBreadcrumbs = ({ segments, currentPage }: PageBreadcrumbsProps) => {
+const PageBreadcrumbs = ({ segments, currentPage, className }: PageBreadcrumbsProps) => {
   return (
-    <Breadcrumb className="mb-8">
+    <Breadcrumb className={cn("mb-8", className)}>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>

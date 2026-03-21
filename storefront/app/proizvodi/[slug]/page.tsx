@@ -1,5 +1,6 @@
 import ProductDetail from "@/components/products/product-detail";
 import RelatedProducts from "@/components/products/related-products";
+import RelatedProductsSkeleton from "@/components/products/related-products-skeleton";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import { getProductBySlug, getSitemapProducts } from "@/lib/api";
 import { mapApiBreadcrumbs } from "@/lib/categories";
@@ -49,7 +50,7 @@ export default async function ProductPage({ params }: Props) {
       />
       {product.categorySlug && (
         <SectionErrorBoundary>
-          <Suspense fallback={null}>
+          <Suspense fallback={<RelatedProductsSkeleton />}>
             <RelatedProducts
               categorySlug={product.categorySlug}
               excludeProductId={product.id}

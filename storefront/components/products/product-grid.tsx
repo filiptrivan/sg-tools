@@ -30,7 +30,7 @@ const ProductGrid = ({
         />
       ) : (
         <>
-          <div className="flex items-center justify-end mb-6">
+          <div className="flex items-center mb-6">
             <span className="text-sm text-muted-foreground">
               {productsFoundText}
             </span>

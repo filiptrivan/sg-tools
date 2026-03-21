@@ -2,6 +2,7 @@ import HeroHeader from "@/components/hero-header";
 import { ListingPagination } from "@/components/products/listing-pagination";
 import PageBreadcrumbs from "@/components/products/page-breadcrumbs";
 import ProductGrid from "@/components/products/product-grid";
+import ProductGridSkeleton from "@/components/products/product-grid-skeleton";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import Wrapper from "@/components/wrapper";
 import { PRODUCTS_PER_PAGE } from "@/constants/cache-tags";
@@ -109,7 +110,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           currentPage={category.name}
         />
         <SectionErrorBoundary>
-          <Suspense>
+          <Suspense fallback={<ProductGridSkeleton />}>
             <CategoryProducts slug={slug} searchParams={searchParams} />
           </Suspense>
         </SectionErrorBoundary>

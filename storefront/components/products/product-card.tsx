@@ -62,7 +62,7 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             </span>
           </div>
 
-          <div className="flex items-baseline gap-2 pt-2">
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 pt-2">
             <span className="text-base sm:text-lg font-bold">
               {product.displayPrice.toLocaleString("sr-RS")} RSD
             </span>
@@ -77,7 +77,7 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             href={`https://www.prodavnicaalata.rs/proizvodi/${product.slug}/`}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-20 mt-3 inline-flex items-center justify-center gap-1.5 rounded-md text-sm font-medium h-9 px-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            className="relative z-20 mt-3 inline-flex items-center justify-center gap-1.5 rounded-md text-xs sm:text-sm font-medium h-8 px-2 sm:h-9 sm:px-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
           >
             Idi na prodavnicu
             <ExternalLink className="size-3.5" />

@@ -1,6 +1,7 @@
 import HeroHeader from "@/components/hero-header";
 import { ListingPagination } from "@/components/products/listing-pagination";
 import ProductGrid from "@/components/products/product-grid";
+import ProductGridSkeleton from "@/components/products/product-grid-skeleton";
 import Wrapper from "@/components/wrapper";
 import { PRODUCTS_PER_PAGE } from "@/constants/cache-tags";
 import { getFilteredProducts } from "@/lib/api";
@@ -63,7 +64,7 @@ export default function ProductsPage({ searchParams }: Props) {
       />
 
       <Wrapper className="pb-16">
-        <Suspense>
+        <Suspense fallback={<ProductGridSkeleton />}>
           <ProductsList searchParams={searchParams} />
         </Suspense>
       </Wrapper>

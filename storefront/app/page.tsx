@@ -1,7 +1,9 @@
 import Categories from "@/components/categories";
+import CategoriesSkeleton from "@/components/categories-skeleton";
 import Companies from "@/components/companies";
 import CTA from "@/components/cta";
 import FeaturedProducts from "@/components/featured-products";
+import FeaturedProductsSkeleton from "@/components/featured-products-skeleton";
 import Features from "@/components/features";
 import Hero from "@/components/hero";
 import Stats from "@/components/stats";
@@ -14,10 +16,10 @@ const HomePage = () => {
     <div>
       <Hero />
       <Companies />
-      <Suspense fallback={null}>
+      <Suspense fallback={<FeaturedProductsSkeleton />}>
         <FeaturedProducts />
       </Suspense>
-      <Suspense fallback={null}>
+      <Suspense fallback={<CategoriesSkeleton />}>
         <Categories />
       </Suspense>
       <Features />
