@@ -41,7 +41,7 @@ export default function WhereToBuyContent() {
   const categories: { key: CategoryFilter; label: string }[] = [
     { key: "all", label: "Sve" },
     { key: "online", label: "Online prodavnice" },
-    { key: "dealer", label: "Ovlašćene prodavnice i servisi" },
+    { key: "dealer", label: "Ovlašćene prodavnice" },
     { key: "service", label: "Ovlašćeni servis" },
     { key: "outOfWarranty", label: "Servis van garantnog roka" },
   ];

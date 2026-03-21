@@ -22,7 +22,7 @@ const categoryColors: Record<DealerCategory, string> = {
 
 const categoryLabels: Record<DealerCategory, string> = {
   online: "Online prodavnice",
-  dealer: "Ovlašćene prodavnice i servisi",
+  dealer: "Ovlašćene prodavnice",
   service: "Ovlašćeni servis",
   outOfWarranty: "Servis van garantnog roka",
 };
