@@ -1,5 +1,4 @@
 import { getFilteredProducts } from "@/lib/api";
-import Container from "./container";
 import ProductCard from "./products/product-card";
 import Section from "./section";
 import Wrapper from "./wrapper";
@@ -18,20 +17,18 @@ const FeaturedProducts = async () => {
   return (
     <Section>
       <Wrapper>
-        <Container>
-          <div className="flex flex-col items-start justify-start lg:items-center lg:justify-center">
-            <h2 className="text-3xl lg:text-4xl font-semibold text-left lg:text-center tracking-tight">
-              Izdvajamo iz ponude
-            </h2>
-            <p className="text-base text-muted-foreground mt-2 text-left lg:text-center">
-              Najpopularniji alati iz našeg asortimana
-            </p>
-          </div>
-        </Container>
+        <div className="flex flex-col items-start justify-start lg:items-center lg:justify-center">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-left lg:text-center tracking-tight">
+            Izdvajamo iz ponude
+          </h2>
+          <p className="text-base text-muted-foreground mt-2 text-left lg:text-center">
+            Najpopularniji alati iz našeg asortimana
+          </p>
+        </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mt-10">
-          {products.data.map((product, index) => (
-            <ProductCard key={product.slug} product={product} index={index} />
+          {products.data.map((product) => (
+            <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </Wrapper>

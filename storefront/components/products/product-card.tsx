@@ -1,4 +1,3 @@
-import Container from "@/components/container";
 import type { Product } from "@/types/products";
 import { ExternalLink, Package } from "lucide-react";
 import Image from "next/image";
@@ -6,13 +5,11 @@ import Link from "next/link";
 
 interface ProductCardProps {
   product: Product;
-  index: number;
 }
 
-const ProductCard = ({ product, index }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <Container delay={index * 0.05}>
-      <div className="relative flex flex-col bg-foreground/5 border border-border/20 hover:border-border transition-all rounded-lg lg:rounded-xl overflow-hidden h-full">
+    <div className="relative flex flex-col bg-foreground/5 border border-border/20 hover:border-border transition-all rounded-lg lg:rounded-xl overflow-hidden h-full">
         <Link
           href={`/proizvodi/${product.slug}`}
           className="absolute inset-0 z-10"
@@ -83,8 +80,7 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             <ExternalLink className="size-3.5" />
           </a>
         </div>
-      </div>
-    </Container>
+    </div>
   );
 };
 

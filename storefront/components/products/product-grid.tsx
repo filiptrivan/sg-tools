@@ -36,8 +36,8 @@ const ProductGrid = ({
             </span>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 lg:gap-6">
-            {productList.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+            {productList.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </>

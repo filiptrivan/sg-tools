@@ -1,4 +1,3 @@
-import Container from "@/components/container";
 import type { Category } from "@/types/categories";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,18 +5,12 @@ import Link from "next/link";
 interface CategoryCardProps {
   category: Category;
   title: string;
-  index: number;
 }
 
-const CategoryCard = ({
-  category,
-  title,
-  index,
-}: CategoryCardProps) => {
+const CategoryCard = ({ category, title }: CategoryCardProps) => {
   return (
-    <Container delay={Math.min(index * 0.05, 0.3)}>
-      <Link href={`/proizvodi/kategorije/${category.slug}`}>
-        <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
+    <Link href={`/proizvodi/kategorije/${category.slug}`}>
+      <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
           <Image
             src={category.imageUrl}
             alt={title}
@@ -31,8 +24,7 @@ const CategoryCard = ({
             </span>
           </div>
         </div>
-      </Link>
-    </Container>
+    </Link>
   );
 };
 
