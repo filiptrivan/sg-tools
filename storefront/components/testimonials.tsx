@@ -12,18 +12,14 @@ import {
 import Wrapper from "@/components/wrapper";
 import { TESTIMONIALS } from "@/constants";
 import { WheelGesturesPlugin } from "embla-carousel-wheel-gestures";
+import { Quote } from "lucide-react";
 import Image from "next/image";
 
 type Testimonial = {
-  name: string;
-  role: string;
-  company: string;
-  companyUrl: string;
-  image: string;
-  content: string;
-  time: string;
-  date: string;
-  highlighted?: boolean;
+  companyName: string;
+  personName: string;
+  quote: string;
+  logoSrc: string;
 };
 
 const Testimonials = () => {
@@ -34,7 +30,7 @@ const Testimonials = () => {
           <CarouselContent>
             {TESTIMONIALS.map((item) => (
               <CarouselItem
-                key={item.name}
+                key={item.companyName}
                 className="basis-full md:basis-1/2 lg:basis-1/3"
               >
                 <Item item={item} />
@@ -53,36 +49,27 @@ const Testimonials = () => {
 
 const Item = ({ item }: { item: Testimonial }) => (
   <Container>
-    <div className="flex flex-col bg-neutral-900/80 border border-border/50 rounded-lg lg:rounded-xl p-4 lg:p-6 w-full h-full">
-      <div className="flex items-center gap-x-3 w-full">
-        <div className="w-10 h-10 flex-shrink-0 rounded-full">
-          <Image
-            src={item.image}
-            alt={item.name}
-            width={1024}
-            height={1024}
-            className="rounded-full object-cover size-full"
-          />
-        </div>
-        <div className="flex flex-col">
-          <h4 className="font-semibold">{item.name}</h4>
-          <div className="text-muted-foreground text-sm">
-            {item.role}
-            {item.companyUrl ? (
-              <span className="text-primary ml-1">@{item.company}</span>
-            ) : (
-              <span className="ml-1">· {item.company}</span>
-            )}
-          </div>
-        </div>
+    <div className="flex flex-col justify-between bg-neutral-900/80 border border-border/50 rounded-lg lg:rounded-xl p-4 lg:p-6 w-full h-full">
+      <div>
+        <Quote className="size-5 text-primary/60 mb-3" strokeWidth={1.5} />
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {item.quote}
+        </p>
       </div>
-      <div className="text-muted-foreground max-w-xs mt-2">
-        &quot;{item.content}&quot;
-      </div>
-      <div className="text-xs text-muted-foreground mt-4 flex gap-2">
-        <span>{item.time}</span>
-        <span>·</span>
-        <span>{item.date}</span>
+      <div className="flex items-center gap-3 mt-5 pt-4 border-t border-border/30">
+        <Image
+          src={item.logoSrc}
+          alt={item.companyName}
+          width={90}
+          height={90}
+          className="object-contain shrink-0"
+        />
+        <div className="min-w-0">
+          <p className="text-sm font-semibold truncate">{item.companyName}</p>
+          <p className="text-xs text-muted-foreground truncate">
+            {item.personName}
+          </p>
+        </div>
       </div>
     </div>
   </Container>

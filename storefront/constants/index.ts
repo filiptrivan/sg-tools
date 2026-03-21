@@ -26,58 +26,59 @@ export const CONTACT_INFO = {
 
 export const TESTIMONIALS = [
   {
-    name: "Dragan Milovanović",
-    role: "Električar",
-    company: "Beograd",
-    companyUrl: "",
-    image: "/testimonials/avatar-1.png",
-    content:
-      "Koristim SG Tools brusilice na terenu već preko dve godine. Izdržavaju svakodnevnu upotrebu bez problema — solidna gradnja, dobar balans, a cena je fer za ono što dobiješ.",
-    time: "8:15",
-    date: "5. okt 2025.",
+    companyName: "TERMO TIM",
+    personName: "Goran Sobić",
+    quote:
+      "Jednostavna i brza svakodnevna saradnja. Ljudi koji su uvek spremni da izađu u susret potrebama kupaca.",
+    logoSrc: "/companies/svgs/termotim.svg",
   },
   {
-    name: "Jelena Marković",
-    role: "Dizajner enterijera",
-    company: "Novi Sad",
-    companyUrl: "",
-    image: "/testimonials/avatar-2.png",
-    content:
-      "Kupila sam SG Tools set bušilica za renoviranje. Iskreno sam iznenađena kvalitetom za ovu cenu — lepo leži u ruci i baterija traje ceo radni dan.",
-    time: "15:30",
-    date: "12. nov 2025.",
+    companyName: "SILMAX doo",
+    personName: "Sladimir Ilić",
+    quote:
+      "Odličan lager alata i poznavanje potreba kupaca. Takođe, veliki broj brendova koje Stridon uvozi, čini ih nezaobilaznim svakodnevnim dobavljačem!",
+    logoSrc: "/companies/svgs/silmaxlogo.svg",
   },
   {
-    name: "Nikola Jović",
-    role: "Instalater grejanja",
-    company: "Niš",
-    companyUrl: "",
-    image: "/testimonials/avatar-3.png",
-    content:
-      "Ono što mi se sviđa kod SG Tools-a je to što očito slušaju ljude koji zaista koriste alat. Hvat je udoban, težina je prava i ne raspadaju se posle par meseci. Konačno domaći brend u koji mogu da se pouzdam.",
-    time: "11:45",
-    date: "8. dec 2025.",
+    companyName: "MBM RAD",
+    personName: "Goran Šotra",
+    quote:
+      "Saveti profesionalnih prodavaca Stridona doveli su do skraćenja rada naše firme na pojedinim delovima projekata i do 50%!",
+    logoSrc: "/companies/svgs/mbmrad.svg",
   },
   {
-    name: "Milan Stošić",
-    role: "Građevinski izvođač",
-    company: "Kragujevac",
-    companyUrl: "",
-    image: "/testimonials/avatar-4.png",
-    content:
-      "Kompletnu ekipu opremamo SG Tools-om. Dijamantski diskovi seku čisto, brusilice su pouzdane, a ako ti ikad zatreba garancija — brzo i bez komplikacija. Za ovu cenu ne možeš tražiti više.",
-    time: "7:00",
-    date: "20. jan 2026.",
+    companyName: "Galens",
+    personName: "Miodrag Pećanac",
+    quote:
+      "Koliki god da projekat počinjete, Stridon uvek ima dovoljno alata za vas. Isporuka sutradan, alati kvalitetni, a želja da se kupcu istinski pomogne - nemerljiva!",
+    logoSrc: "/companies/svgs/galens.svg",
   },
   {
-    name: "Ivana Petrović",
-    role: "Hobi majstor",
-    company: "Subotica",
-    companyUrl: "",
-    image: "/testimonials/avatar-5.png",
-    content:
-      "Nisam profesionalac, samo neko ko voli da radi stvari po kući. SG Tools ručni alati su savršeni — dobar kvalitet bez preterane cene. Muž mi stalno uzima set ključeva!",
-    time: "17:20",
-    date: "14. feb 2026.",
+    companyName: "COLLIGO ARS",
+    personName: "Dragan Ćeranić",
+    quote:
+      "Verni saradnik na svim našim projektima. U dugogodišnjoj saradnji nas ni jednom nisu izneverili. Preporuke za firmu Stridon!",
+    logoSrc: "/companies/svgs/coligoars.svg",
+  },
+  {
+    companyName: "IN GRADNJA",
+    personName: "Miloš Veselinović",
+    quote:
+      "Veliki profesionalci i dobri ljudi, uvek spremni da ispune zahteve i rokove. Sve preporuke za bilo koju vrstu saradnje.",
+    logoSrc: "/companies/svgs/ingradnja.svg",
+  },
+  {
+    companyName: "ENTERIJER JANKOVIC",
+    personName: "Jelena Simić",
+    quote:
+      "Vrlo dobro iskustvo u radu sa firmom Stridon Group. Odlični u komunikaciji, drže se rokova, uvek imaju dobar profesionalni savet i alat na lageru!",
+    logoSrc: "/companies/svgs/enterijerjankovic.svg",
+  },
+  {
+    companyName: "HIDRO INA",
+    personName: "Zoran Aćimović",
+    quote:
+      "Firma koja uvek zna šta našoj firmi treba. Neprocenjivi prijateljski saveti i rešenja koja samo veliki profesionalci u svom poslu znaju. Sve preporuke za Stridon!",
+    logoSrc: "/companies/svgs/hidroina.svg",
   },
 ];
