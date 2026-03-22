@@ -43,6 +43,7 @@ export interface Product {
   reviewCount: number;
   maxOrderQuantity: number | null;
   ogImageUrl: string | null;
+  relatedProducts?: Product[];
 }
 
 export interface ProductsResult {

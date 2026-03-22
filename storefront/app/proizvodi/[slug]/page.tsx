@@ -1,6 +1,7 @@
 import ProductDetail from "@/components/products/product-detail";
 import RelatedProducts from "@/components/products/related-products";
 import RelatedProductsSkeleton from "@/components/products/related-products-skeleton";
+import SimilarProducts from "@/components/products/similar-products";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import { getProductBySlug, getSitemapProducts } from "@/lib/api";
 import { mapApiBreadcrumbs } from "@/lib/categories";
@@ -42,18 +43,24 @@ export default async function ProductPage({ params }: Props) {
     ? mapApiBreadcrumbs([product.categoryBreadcrumbs[0]])
     : [];
 
+  const relatedProducts = product.relatedProducts ?? [];
+  const relatedProductIds = relatedProducts.map((p) => p.id);
+
   return (
     <div>
       <ProductDetail
         product={product}
         categoryBreadcrumbs={categoryBreadcrumbs}
       />
+      {relatedProducts.length > 0 && (
+        <RelatedProducts products={relatedProducts} />
+      )}
       {product.categorySlug && (
         <SectionErrorBoundary>
           <Suspense fallback={<RelatedProductsSkeleton />}>
-            <RelatedProducts
+            <SimilarProducts
               categorySlug={product.categorySlug}
-              excludeProductId={product.id}
+              excludeProductIds={[product.id, ...relatedProductIds]}
             />
           </Suspense>
         </SectionErrorBoundary>
