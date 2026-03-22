@@ -50,7 +50,7 @@ export const TESTIMONIALS = [
     companyName: "Galens",
     personName: "Miodrag Pećanac",
     quote:
-      "Koliki god da projekat počinjete, Stridon uvek ima dovoljno alata za vas. Isporuka sutradan, alati kvalitetni, a želja da se kupcu istinski pomogne - nemerljiva!",
+      "Stridon uvek ima dovoljno alata za vas. Isporuka sutradan, alati kvalitetni, a želja da se kupcu pomogne - nemerljiva!",
     logoSrc: "/companies/svgs/galens.svg",
   },
   {
@@ -78,7 +78,7 @@ export const TESTIMONIALS = [
     companyName: "HIDRO INA",
     personName: "Zoran Aćimović",
     quote:
-      "Firma koja uvek zna šta našoj firmi treba. Neprocenjivi prijateljski saveti i rešenja koja samo veliki profesionalci u svom poslu znaju. Sve preporuke za Stridon!",
+      "Firma koja uvek zna šta nam treba. Neprocenjivi saveti i rešenja koja samo veliki profesionalci znaju. Sve preporuke!",
     logoSrc: "/companies/svgs/hidroina.svg",
   },
 ];
