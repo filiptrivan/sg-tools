@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: Props) {
     ? mapApiBreadcrumbs([product.categoryBreadcrumbs[0]])
     : [];
 
-  const relatedProducts = product.relatedProducts ?? [];
+  const relatedProducts = product.relatedProducts;
   const relatedProductIds = relatedProducts.map((p) => p.id);
 
   return (
