@@ -17,69 +17,10 @@ export const FEATURES = [
   },
 ];
 
-
 export const STATS = [
   { value: "10.630+", label: "Veleprodajnih kupaca" },
   { value: "120+", label: "Dilera širom Srbije" },
   { value: "100%", label: "Zadovoljstvo uslugom" },
-];
-
-export const FAQ_ITEMS = [
-  {
-    question: "Kako funkcioniše dostava?",
-    answer:
-      "Isporuku vršimo na teritoriji Republike Srbije u roku od 1 do 3 radna dana od momenta potvrde porudžbine. Za proizvode koji trenutno nisu na lageru, rok isporuke može biti duži, o čemu ćeš biti blagovremeno obavešten/a. Troškovi dostave zavise od težine paketa i destinacije — tačan iznos biće prikazan prilikom finalizacije porudžbine. Za porudžbine iznad određenog iznosa dostava je besplatna. Isporuka van teritorije Srbije trenutno nije dostupna — za kupce van Srbije, kontaktiraj nas kako bismo razmotrili mogućnosti.",
-  },
-  {
-    question: "Kolika je garancija na proizvode?",
-    answer:
-      "Garancija zavisi od proizvoda i proizvođača. Većina proizvoda ima garanciju od 12 do 24 meseca. Detalji o garanciji navedeni su na stranici svakog proizvoda i u garantnom listu koji dobijaš uz kupovinu.",
-  },
-  {
-    question: "Kako ostvariti garanciju?",
-    answer:
-      "Za ostvarivanje garancije potrebno je da nas kontaktiraš putem telefona ili e-maila uz podatke o proizvodu i opis problema. Potrebno je sačuvati račun i garantni list koji si dobio/la prilikom kupovine.",
-  },
-  {
-    question: "Kako mogu da vratim proizvod?",
-    answer:
-      "Imaš pravo da vratiš proizvod u roku od 14 dana od dana prijema, bez navođenja razloga. Proizvod mora biti nekorišćen, u originalnom pakovanju i sa svom pratećom dokumentacijom. Troškove povratne pošiljke snosi kupac.",
-  },
-  {
-    question: "Koje je radno vreme prodavnice alata?",
-    answer:
-      'Prodavnica radi radnim danima od 08:00 do 17:00 i subotom od 08:00 do 14:00. Nedeljom i praznicima ne radimo. Online porudžbine možeš praviti 24/7.',
-  },
-  {
-    question: "Kako da znam da je sigurno kupovati od vas?",
-    answer:
-      "Naša prodavnica je registrovana i posluje u skladu sa zakonima Republike Srbije. Svi podaci o kupovini su zaštićeni, a plaćanje se vrši pouzećem ili uplatom na račun. Tvoji lični podaci se koriste isključivo u svrhu obrade porudžbine.",
-  },
-  {
-    question: "Da li je porez uključen u cenu?",
-    answer:
-      "Da, sve cene na sajtu su maloprodajne i uključuju PDV. Cena koju vidiš na stranici proizvoda je konačna cena koju plaćaš, bez skrivenih troškova.",
-  },
-  {
-    question: "Koje su prednosti registracije?",
-    answer:
-      "Registrovani korisnici mogu pratiti status svojih porudžbina, imati uvid u istoriju kupovine, brže popunjavati podatke pri narednim kupovinama i primati obaveštenja o akcijama i popustima.",
-  },
-  {
-    question: "Da li mogu da otkažem porudžbinu nakon poručivanja?",
-    answer:
-      "Porudžbinu možeš otkazati sve dok nije poslata. Kontaktiraj nas telefonom ili e-mailom što pre sa brojem porudžbine. Ukoliko je pošiljka već predata kurirskoj službi, možeš odbiti prijem paketa.",
-  },
-  {
-    question: "Da li su svi proizvodi stalno raspoloživi?",
-    answer:
-      "Trudimo se da svi proizvodi budu stalno dostupni, ali ponekad može doći do privremenog nedostatka pojedinih artikala. Dostupnost svakog proizvoda prikazana je na njegovoj stranici, a možeš nas kontaktirati za dodatne informacije.",
-  },
-  {
-    question: "Da li mogu da preuzmem proizvode u objektu?",
-    answer:
-      "Da, lično preuzimanje je moguće u našoj prodavnici. Prilikom poručivanja izaberi opciju ličnog preuzimanja i sačekaj potvrdu da je tvoja porudžbina spremna.",
-  },
 ];
 
 export const ABOUT_MILESTONES = [

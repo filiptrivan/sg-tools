@@ -9,7 +9,6 @@ export interface NavLink {
 export const NAV_LINKS: readonly NavLink[] = [
   { label: "Kategorije", href: "/proizvodi/kategorije" },
   { label: "O nama", href: "/o-nama" },
-  { label: "Česta pitanja", href: "/cesta-pitanja" },
   { label: "Gde kupiti", href: "/gde-kupiti" },
   { label: "Kontakt", href: "/kontakt" },
 ];
@@ -34,11 +33,6 @@ export const COMPANY_FOOTER_LINKS: readonly NavLink[] = [
     href: "https://www.stridon.rs",
     external: true,
   },
-];
-
-export const SUPPORT_FOOTER_LINKS: readonly NavLink[] = [
-  { label: "Česta pitanja", href: "/cesta-pitanja" },
-  { label: "Garancija i servis", href: "/cesta-pitanja" },
 ];
 
 export const SOCIAL_LINKS = [
