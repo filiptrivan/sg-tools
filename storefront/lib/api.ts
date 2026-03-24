@@ -65,14 +65,6 @@ export async function getSitemapProducts(): Promise<SitemapEntry[]> {
   );
 }
 
-export async function getSitemapCategories(): Promise<SitemapEntry[]> {
-  cacheLife("hours");
-  cacheTag(TAGS.categories);
-  return apiFetch<SitemapEntry[]>(
-    `/api/Storefront/SitemapCategoriesByBrand?brandSlug=${BRAND_SLUG}`,
-  );
-}
-
 //#endregion
 
 //#region Minutes profile — product/detail data

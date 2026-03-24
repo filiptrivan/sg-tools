@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { SITE_URL } from "@/constants/links";
-import { getSitemapCategories, getSitemapProducts } from "@/lib/api";
+import { getLeafCategories, getSitemapProducts } from "@/lib/api";
 
 const staticPages = [
   { path: "/", changeFrequency: "weekly" as const, priority: 1.0 },
@@ -34,27 +34,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // Dynamic category pages
-  try {
-    const categories = await getSitemapCategories();
+  const [categoriesResult, productsResult] = await Promise.allSettled([
+    getLeafCategories(),
+    getSitemapProducts(),
+  ]);
 
-    for (const category of categories) {
+  if (categoriesResult.status === "fulfilled") {
+    for (const category of categoriesResult.value) {
       entries.push({
         url: `${SITE_URL}/proizvodi/kategorije/${category.slug}`,
-        lastModified: new Date(category.modifiedAt),
+        lastModified,
         changeFrequency: "weekly",
         priority: 0.8,
       });
     }
-  } catch (error) {
-    console.error("Failed to fetch category slugs for sitemap:", error);
+  } else {
+    console.error("Failed to fetch category slugs for sitemap:", categoriesResult.reason);
   }
 
-  // Dynamic product pages
-  try {
-    const products = await getSitemapProducts();
-
-    for (const entry of products) {
+  if (productsResult.status === "fulfilled") {
+    for (const entry of productsResult.value) {
       entries.push({
         url: `${SITE_URL}/proizvodi/${entry.slug}`,
         lastModified: new Date(entry.modifiedAt),
@@ -62,8 +61,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       });
     }
-  } catch (error) {
-    console.error("Failed to fetch product slugs for sitemap:", error);
+  } else {
+    console.error("Failed to fetch product slugs for sitemap:", productsResult.reason);
   }
 
   return entries;

@@ -9,7 +9,7 @@ import { PRODUCTS_PER_PAGE } from "@/constants/cache-tags";
 import {
   getCategoryBySlug,
   getFilteredProductsByCategory,
-  getSitemapCategories,
+  getLeafCategories,
 } from "@/lib/api";
 import { buildBreadcrumbJsonLd } from "@/lib/categories";
 import { createCategoryMetadata } from "@/lib/metadata";
@@ -23,7 +23,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const categories = await getSitemapCategories();
+  const categories = await getLeafCategories();
   return categories.map((c) => ({ slug: c.slug }));
 }
 

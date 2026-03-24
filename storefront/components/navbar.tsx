@@ -71,8 +71,8 @@ const Navbar = ({ categories }: NavbarProps) => {
                           >
                             {link.label}
                           </NavigationMenuTrigger>
-                          <NavigationMenuContent className="min-w-[200px]">
-                            <ul className="flex flex-col gap-0.5 p-1">
+                          <NavigationMenuContent className="min-w-[420px]">
+                            <ul className="grid grid-cols-2 gap-0.5 p-1">
                               {categories.map((cat) => (
                                 <li key={cat.slug}>
                                   <NavigationMenuLink asChild>
@@ -85,18 +85,17 @@ const Navbar = ({ categories }: NavbarProps) => {
                                   </NavigationMenuLink>
                                 </li>
                               ))}
-                              <li>
-                                <hr className="my-1 border-border" />
-                                <NavigationMenuLink asChild>
-                                  <Link
-                                    href="/proizvodi/kategorije"
-                                    className="flex select-none rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                                  >
-                                    Sve kategorije
-                                  </Link>
-                                </NavigationMenuLink>
-                              </li>
                             </ul>
+                            <div className="border-t border-border mx-1 mb-1">
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href="/proizvodi/kategorije"
+                                  className="flex select-none rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                                >
+                                  Sve kategorije
+                                </Link>
+                              </NavigationMenuLink>
+                            </div>
                           </NavigationMenuContent>
                         </>
                       ) : (
