@@ -74,23 +74,9 @@ const Footer = () => {
         </Container>
 
         <div className="grid gap-10 grid-cols-2 md:grid-cols-3 xl:gap-8">
-          {/* Link columns */}
-          <FooterLinkColumn
-            title="Proizvodi"
-            links={PRODUCTS_FOOTER_LINKS}
-            animation="fadeUp"
-            delay={0.5}
-          />
-          <FooterLinkColumn
-            title="Kompanija"
-            links={COMPANY_FOOTER_LINKS}
-            animation="fadeUp"
-            delay={0.6}
-          />
-
-          {/* Logo column */}
+          {/* Brand column */}
           <Container
-            animation="fadeRight"
+            animation="fadeLeft"
             delay={0.4}
             className="col-span-2 md:col-span-1"
           >
@@ -131,6 +117,20 @@ const Footer = () => {
               </div>
             </div>
           </Container>
+
+          {/* Link columns */}
+          <FooterLinkColumn
+            title="Proizvodi"
+            links={PRODUCTS_FOOTER_LINKS}
+            animation="fadeUp"
+            delay={0.5}
+          />
+          <FooterLinkColumn
+            title="Kompanija"
+            links={COMPANY_FOOTER_LINKS}
+            animation="fadeUp"
+            delay={0.6}
+          />
         </div>
 
         {/* Copyright bar */}
