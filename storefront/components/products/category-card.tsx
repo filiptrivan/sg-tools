@@ -9,7 +9,7 @@ interface CategoryCardProps {
 const CategoryCard = ({ category }: CategoryCardProps) => {
   return (
     <Link href={`/proizvodi/kategorije/${category.slug}`}>
-      <div className="relative bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
+      <div className="bg-foreground/5 border border-border/20 hover:border-border transition-all cursor-pointer rounded-lg lg:rounded-xl overflow-hidden">
           <Image
             src={category.imageUrl}
             alt={category.name}
@@ -17,8 +17,8 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
             height={1000}
             className="object-contain w-full"
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-2 pb-2 pt-10 sm:px-3 sm:pb-3 sm:pt-14">
-            <span className="text-sm sm:text-base lg:text-lg font-semibold text-white line-clamp-2">
+          <div className="px-2 py-1.5 sm:px-3 sm:py-2">
+            <span className="text-xs sm:text-sm lg:text-base font-semibold line-clamp-2">
               {category.name}
             </span>
           </div>
