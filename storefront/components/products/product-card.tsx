@@ -21,8 +21,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
             <Image
               src={product.imageUrl}
               alt={product.title}
-              fill
-              className="object-contain p-4"
+              {...(product.imageWidth && product.imageHeight
+                ? { width: product.imageWidth, height: product.imageHeight, className: "object-contain w-full h-full p-4" }
+                : { fill: true, className: "object-contain p-4" }
+              )}
               sizes="(max-width: 640px) 50vw, 25vw"
             />
           )}

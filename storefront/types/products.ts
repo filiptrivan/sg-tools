@@ -28,6 +28,8 @@ export interface Product {
   discountPercentage: number | null;
   hasDiscount: boolean;
   imageUrl: string;
+  imageWidth: number | null;
+  imageHeight: number | null;
   brandName: string;
   brandSlug: string;
   brandImageUrl: string;
