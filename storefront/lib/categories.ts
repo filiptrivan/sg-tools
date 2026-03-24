@@ -1,18 +1,21 @@
 import { SITE_URL } from "@/constants/links";
-import type { CategoryBreadcrumb } from "@/types/products";
+import type { Category } from "@/types/categories";
 
 export type BreadcrumbSegment = { label: string; href: string };
 
 /**
- * Maps API-provided category breadcrumbs to BreadcrumbSegment format.
+ * Recursively collects leaf categories (those with no sub-categories).
  */
-export function mapApiBreadcrumbs(
-  apiBreadcrumbs: CategoryBreadcrumb[],
-): BreadcrumbSegment[] {
-  return apiBreadcrumbs.map((b) => ({
-    label: b.name,
-    href: b.path,
-  }));
+export function flattenToLeafCategories(categories: Category[]): Category[] {
+  const leaves: Category[] = [];
+  for (const cat of categories) {
+    if (cat.subCategories.length === 0) {
+      leaves.push(cat);
+    } else {
+      leaves.push(...flattenToLeafCategories(cat.subCategories));
+    }
+  }
+  return leaves;
 }
 
 /**
@@ -21,7 +24,7 @@ export function mapApiBreadcrumbs(
  * appended as the final non-linked item.
  */
 export function buildBreadcrumbJsonLd(
-  segments: BreadcrumbSegment[],
+  segments: BreadcrumbSegment[] = [],
   currentPage?: string,
 ) {
   const items: Record<string, unknown>[] = [

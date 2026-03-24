@@ -4,7 +4,7 @@ import RelatedProductsSkeleton from "@/components/products/related-products-skel
 import SimilarProducts from "@/components/products/similar-products";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import { getProductBySlug, getSitemapProducts } from "@/lib/api";
-import { mapApiBreadcrumbs } from "@/lib/categories";
+import type { BreadcrumbSegment } from "@/lib/categories";
 import { createProductMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -39,8 +39,8 @@ export default async function ProductPage({ params }: Props) {
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const categoryBreadcrumbs = product.categoryBreadcrumbs.length > 0
-    ? mapApiBreadcrumbs([product.categoryBreadcrumbs[0]])
+  const categoryBreadcrumbs: BreadcrumbSegment[] = product.categorySlug
+    ? [{ label: product.categoryName, href: `/proizvodi/kategorije/${product.categorySlug}` }]
     : [];
 
   const relatedProducts = product.relatedProducts;

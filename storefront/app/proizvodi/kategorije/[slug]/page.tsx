@@ -11,7 +11,7 @@ import {
   getFilteredProductsByCategory,
   getSitemapCategories,
 } from "@/lib/api";
-import { buildBreadcrumbJsonLd, mapApiBreadcrumbs } from "@/lib/categories";
+import { buildBreadcrumbJsonLd } from "@/lib/categories";
 import { createCategoryMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
@@ -89,9 +89,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const allSegments = mapApiBreadcrumbs(category.categoryBreadcrumbs);
-  const ancestorSegments = allSegments.slice(0, -1);
-  const breadcrumbJsonLd = buildBreadcrumbJsonLd(allSegments);
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([], category.name);
 
   return (
     <div>
@@ -105,10 +103,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       />
 
       <Wrapper className="pb-16">
-        <PageBreadcrumbs
-          segments={ancestorSegments}
-          currentPage={category.name}
-        />
+        <PageBreadcrumbs currentPage={category.name} />
         <SectionErrorBoundary>
           <Suspense fallback={<ProductGridSkeleton />}>
             <CategoryProducts slug={slug} searchParams={searchParams} />

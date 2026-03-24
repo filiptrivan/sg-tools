@@ -12,12 +12,12 @@ import { Fragment } from "react";
 import Link from "next/link";
 
 interface PageBreadcrumbsProps {
-  segments: BreadcrumbSegment[];
+  segments?: BreadcrumbSegment[];
   currentPage: string;
   className?: string;
 }
 
-const PageBreadcrumbs = ({ segments, currentPage, className }: PageBreadcrumbsProps) => {
+const PageBreadcrumbs = ({ segments = [], currentPage, className }: PageBreadcrumbsProps) => {
   return (
     <Breadcrumb className={cn("mb-8", className)}>
       <BreadcrumbList>

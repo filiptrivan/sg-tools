@@ -3,6 +3,7 @@ import CategoryCard from "@/components/products/category-card";
 import StatusMessage from "@/components/status-message";
 import Wrapper from "@/components/wrapper";
 import { getCategories } from "@/lib/api";
+import { flattenToLeafCategories } from "@/lib/categories";
 import { createPageMetadata } from "@/lib/metadata";
 import { Package } from "lucide-react";
 
@@ -14,7 +15,8 @@ export const metadata = createPageMetadata({
 });
 
 const CategoriesPage = async () => {
-  const categories = await getCategories();
+  const allCategories = await getCategories();
+  const categories = flattenToLeafCategories(allCategories);
 
   return (
     <div>
