@@ -1,13 +1,13 @@
 import CategoryCard from "@/components/products/category-card";
 import Section from "@/components/section";
 import Wrapper from "@/components/wrapper";
-import { getCategories } from "@/lib/api";
+import { getLeafCategories } from "@/lib/api";
 import type { Category } from "@/types/categories";
 
 const Categories = async () => {
   let categories: Category[] = [];
   try {
-    categories = await getCategories();
+    categories = await getLeafCategories();
   } catch (error) {
     console.error("Failed to fetch categories", error);
     return null;
@@ -33,7 +33,6 @@ const Categories = async () => {
               <CategoryCard
                 key={category.slug}
                 category={category}
-                title={category.name}
               />
             ))}
           </div>

@@ -2,8 +2,7 @@ import HeroHeader from "@/components/hero-header";
 import CategoryCard from "@/components/products/category-card";
 import StatusMessage from "@/components/status-message";
 import Wrapper from "@/components/wrapper";
-import { getCategories } from "@/lib/api";
-import { flattenToLeafCategories } from "@/lib/categories";
+import { getLeafCategories } from "@/lib/api";
 import { createPageMetadata } from "@/lib/metadata";
 import { Package } from "lucide-react";
 
@@ -15,8 +14,7 @@ export const metadata = createPageMetadata({
 });
 
 const CategoriesPage = async () => {
-  const allCategories = await getCategories();
-  const categories = flattenToLeafCategories(allCategories);
+  const categories = await getLeafCategories();
 
   return (
     <div>
@@ -38,7 +36,6 @@ const CategoriesPage = async () => {
               <CategoryCard
                 key={category.slug}
                 category={category}
-                title={category.name}
               />
             ))}
           </div>

@@ -52,6 +52,11 @@ export async function getCategories(): Promise<Category[]> {
   );
 }
 
+export async function getLeafCategories(): Promise<Category[]> {
+  const { flattenToLeafCategories } = await import("@/lib/categories");
+  return flattenToLeafCategories(await getCategories());
+}
+
 export async function getSitemapProducts(): Promise<SitemapEntry[]> {
   cacheLife("hours");
   cacheTag(TAGS.products);
