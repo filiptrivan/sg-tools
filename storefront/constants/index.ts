@@ -26,25 +26,11 @@ export const CONTACT_INFO = {
 
 export const TESTIMONIALS = [
   {
-    companyName: "TERMO TIM",
-    personName: "Goran Sobić",
+    companyName: "ENTERIJER JANKOVIC",
+    personName: "Jelena Simić",
     quote:
-      "Jednostavna i brza svakodnevna saradnja. Ljudi koji su uvek spremni da izađu u susret potrebama kupaca.",
-    logoSrc: "/companies/svgs/termotim.svg",
-  },
-  {
-    companyName: "SILMAX doo",
-    personName: "Sladimir Ilić",
-    quote:
-      "Odličan lager alata i poznavanje potreba kupaca. Takođe, veliki broj brendova koje Stridon uvozi, čini ih nezaobilaznim svakodnevnim dobavljačem!",
-    logoSrc: "/companies/svgs/silmaxlogo.svg",
-  },
-  {
-    companyName: "MBM RAD",
-    personName: "Goran Šotra",
-    quote:
-      "Saveti profesionalnih prodavaca Stridona doveli su do skraćenja rada naše firme na pojedinim delovima projekata i do 50%!",
-    logoSrc: "/companies/svgs/mbmrad.svg",
+      "Vrlo dobro iskustvo u radu sa firmom Stridon Group. Odlični u komunikaciji, drže se rokova, uvek imaju dobar profesionalni savet i alat na lageru!",
+    logoSrc: "/companies/svgs/enterijerjankovic.svg",
   },
   {
     companyName: "Galens",
@@ -54,11 +40,25 @@ export const TESTIMONIALS = [
     logoSrc: "/companies/svgs/galens.svg",
   },
   {
-    companyName: "COLLIGO ARS",
-    personName: "Dragan Ćeranić",
+    companyName: "TERMO TIM",
+    personName: "Goran Sobić",
     quote:
-      "Verni saradnik na svim našim projektima. U dugogodišnjoj saradnji nas ni jednom nisu izneverili. Preporuke za firmu Stridon!",
-    logoSrc: "/companies/svgs/coligoars.svg",
+      "Jednostavna i brza svakodnevna saradnja. Ljudi koji su uvek spremni da izađu u susret potrebama kupaca.",
+    logoSrc: "/companies/svgs/termotim.svg",
+  },
+  {
+    companyName: "MBM RAD",
+    personName: "Goran Šotra",
+    quote:
+      "Saveti profesionalnih prodavaca Stridona doveli su do skraćenja rada naše firme na pojedinim delovima projekata i do 50%!",
+    logoSrc: "/companies/svgs/mbmrad.svg",
+  },
+  {
+    companyName: "HIDRO INA",
+    personName: "Zoran Aćimović",
+    quote:
+      "Firma koja uvek zna šta nam treba. Neprocenjivi saveti i rešenja koja samo veliki profesionalci znaju. Sve preporuke!",
+    logoSrc: "/companies/svgs/hidroina.svg",
   },
   {
     companyName: "IN GRADNJA",
@@ -68,17 +68,17 @@ export const TESTIMONIALS = [
     logoSrc: "/companies/svgs/ingradnja.svg",
   },
   {
-    companyName: "ENTERIJER JANKOVIC",
-    personName: "Jelena Simić",
+    companyName: "SILMAX doo",
+    personName: "Sladimir Ilić",
     quote:
-      "Vrlo dobro iskustvo u radu sa firmom Stridon Group. Odlični u komunikaciji, drže se rokova, uvek imaju dobar profesionalni savet i alat na lageru!",
-    logoSrc: "/companies/svgs/enterijerjankovic.svg",
+      "Odličan lager alata i poznavanje potreba kupaca. Takođe, veliki broj brendova koje Stridon uvozi, čini ih nezaobilaznim svakodnevnim dobavljačem!",
+    logoSrc: "/companies/svgs/silmaxlogo.svg",
   },
   {
-    companyName: "HIDRO INA",
-    personName: "Zoran Aćimović",
+    companyName: "COLLIGO ARS",
+    personName: "Dragan Ćeranić",
     quote:
-      "Firma koja uvek zna šta nam treba. Neprocenjivi saveti i rešenja koja samo veliki profesionalci znaju. Sve preporuke!",
-    logoSrc: "/companies/svgs/hidroina.svg",
+      "Verni saradnik na svim našim projektima. U dugogodišnjoj saradnji nas ni jednom nisu izneverili. Preporuke za firmu Stridon!",
+    logoSrc: "/companies/svgs/coligoars.svg",
   },
 ];

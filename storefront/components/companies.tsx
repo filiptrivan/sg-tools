@@ -13,19 +13,19 @@ import Container from "./container";
 import Wrapper from "./wrapper";
 
 const companies = [
-  { src: "/companies/svgs/coligoars.svg", alt: "Coligoars" },
   { src: "/companies/svgs/enterijerjankovic.svg", alt: "Enterijer Jankovic" },
   { src: "/companies/svgs/galens.svg", alt: "Galens" },
-  { src: "/companies/svgs/hidroina.svg", alt: "Hidroina" },
-  { src: "/companies/svgs/ingradnja.svg", alt: "Ingradnja" },
-  { src: "/companies/svgs/kokreator.svg", alt: "Kokreator" },
-  { src: "/companies/svgs/lokring.svg", alt: "Lokring" },
-  { src: "/companies/svgs/mbmrad.svg", alt: "MBM Rad" },
-  { src: "/companies/svgs/mimiz.svg", alt: "Mimiz" },
-  { src: "/companies/svgs/nobili.svg", alt: "Nobili" },
-  { src: "/companies/svgs/silmaxlogo.svg", alt: "Silmax" },
   { src: "/companies/svgs/termotim.svg", alt: "Termotim" },
   { src: "/companies/svgs/vitorog.svg", alt: "Vitorog" },
+  { src: "/companies/svgs/nobili.svg", alt: "Nobili" },
+  { src: "/companies/svgs/mbmrad.svg", alt: "MBM Rad" },
+  { src: "/companies/svgs/hidroina.svg", alt: "Hidroina" },
+  { src: "/companies/svgs/ingradnja.svg", alt: "Ingradnja" },
+  { src: "/companies/svgs/silmaxlogo.svg", alt: "Silmax" },
+  { src: "/companies/svgs/coligoars.svg", alt: "Coligoars" },
+  { src: "/companies/svgs/kokreator.svg", alt: "Kokreator" },
+  { src: "/companies/svgs/lokring.svg", alt: "Lokring" },
+  { src: "/companies/svgs/mimiz.svg", alt: "Mimiz" },
 ];
 
 const Companies = () => {
