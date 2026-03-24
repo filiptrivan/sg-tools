@@ -1,8 +1,11 @@
 import CategoryCard from "@/components/products/category-card";
 import Section from "@/components/section";
+import { Button } from "@/components/ui/button";
 import Wrapper from "@/components/wrapper";
 import { getLeafCategories } from "@/lib/api";
 import type { Category } from "@/types/categories";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const Categories = async () => {
   let categories: Category[] = [];
@@ -25,6 +28,12 @@ const Categories = async () => {
           <p className="text-base lg:text-lg font-normal text-muted-foreground text-left lg:text-center mt-2 max-w-md">
             Istraži naš širok izbor profesionalnog alata za svaku potrebu.
           </p>
+          <Button variant="link" asChild className="mt-2">
+            <Link href="/proizvodi/kategorije">
+              Pogledaj sve
+              <ArrowRight />
+            </Link>
+          </Button>
         </div>
 
         <div className="w-full mt-10">

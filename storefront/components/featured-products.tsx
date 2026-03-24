@@ -1,6 +1,9 @@
 import { getFilteredProducts } from "@/lib/api";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import ProductCard from "./products/product-card";
 import Section from "./section";
+import { Button } from "./ui/button";
 import Wrapper from "./wrapper";
 
 const FeaturedProducts = async () => {
@@ -24,6 +27,12 @@ const FeaturedProducts = async () => {
           <p className="text-base text-muted-foreground mt-2 text-left lg:text-center">
             Najpopularniji alati iz našeg asortimana
           </p>
+          <Button variant="link" asChild className="mt-2">
+            <Link href="/proizvodi">
+              Pogledaj sve
+              <ArrowRight />
+            </Link>
+          </Button>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mt-10">
