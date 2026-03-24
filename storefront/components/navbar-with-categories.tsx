@@ -1,11 +1,11 @@
-import { getCategories } from "@/lib/api";
+import { getLeafCategories } from "@/lib/api";
 import type { Category } from "@/types/categories";
 import Navbar from "./navbar";
 
 const NavbarWithCategories = async () => {
   let categories: Category[] = [];
   try {
-    categories = await getCategories();
+    categories = await getLeafCategories();
   } catch (error) {
     console.error("Failed to fetch categories for navigation:", error);
     categories = [];
