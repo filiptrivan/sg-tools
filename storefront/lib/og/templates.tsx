@@ -231,7 +231,7 @@ export function ProductTemplate({
           padding: "60px 60px 0 60px",
         }}
       >
-        <Logo width={120} />
+        <Logo width={140} />
       </div>
 
       <div
