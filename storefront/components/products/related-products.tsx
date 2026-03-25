@@ -1,9 +1,9 @@
 import Wrapper from "@/components/wrapper";
-import type { Product } from "@/types/products";
+import type { ProductCardData } from "@/types/products";
 import ProductCard from "./product-card";
 
 interface RelatedProductsProps {
-  products: Product[];
+  products: ProductCardData[];
 }
 
 const RelatedProducts = ({ products }: RelatedProductsProps) => {

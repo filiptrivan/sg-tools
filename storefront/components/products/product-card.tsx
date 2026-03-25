@@ -1,10 +1,10 @@
-import type { Product } from "@/types/products";
+import type { ProductCardData } from "@/types/products";
 import { ExternalLink, Package } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 interface ProductCardProps {
-  product: Product;
+  product: ProductCardData;
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
@@ -40,13 +40,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <h3 className="text-sm sm:text-base font-semibold line-clamp-2">
             {product.title}
           </h3>
-
-          {product.description && (
-            <p
-              className="text-xs sm:text-sm text-muted-foreground mt-1 line-clamp-2"
-              dangerouslySetInnerHTML={{ __html: product.description }}
-            />
-          )}
 
           <div className="flex items-center gap-1.5 mt-auto pt-3">
             <Package className="size-3.5" />

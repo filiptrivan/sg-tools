@@ -1,5 +1,5 @@
 import Wrapper from "@/components/wrapper";
-import { getProductsByCategory } from "@/lib/api";
+import { getFilteredProductsByCategory } from "@/lib/api";
 import ProductCard from "./product-card";
 
 interface SimilarProductsProps {
@@ -11,8 +11,8 @@ const SimilarProducts = async ({
   categorySlug,
   excludeProductIds,
 }: SimilarProductsProps) => {
-  let products = await getProductsByCategory(categorySlug, 0, 4 + excludeProductIds.length);
-  products = products.filter((p) => !excludeProductIds.includes(p.id)).slice(0, 4);
+  const { data } = await getFilteredProductsByCategory(categorySlug, 0, 4 + excludeProductIds.length);
+  const products = data.filter((p) => !excludeProductIds.includes(p.id)).slice(0, 4);
 
   if (products.length === 0) return null;
 

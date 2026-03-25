@@ -12,17 +12,12 @@ export interface ProductMedia {
   durationSeconds: number | null;
 }
 
-export interface Product {
+/** Lightweight DTO for product cards in lists, grids, and carousels. */
+export interface ProductCardData {
   id: number;
   defaultProductVariantId: number;
   title: string;
-  description: string;
   slug: string;
-  htmlDescription: string;
-  specification: string | null;
-  countryName: string | null;
-  metaTitle: string;
-  metaDescription: string;
   displayPrice: number;
   originalPrice: number | null;
   discountPercentage: number | null;
@@ -31,25 +26,38 @@ export interface Product {
   imageWidth: number | null;
   imageHeight: number | null;
   brandName: string;
-  brandSlug: string;
   brandImageUrl: string;
+  brandWarrantyImageUrl: string | null;
   inStock: boolean;
+  isBackorder: boolean;
   tags: { name: string; color: string; orderNumber: number }[];
-  categoryName: string;
-  categorySlug: string;
-  categoryBreadcrumbs: CategoryBreadcrumb[];
-  weightKg: number | null;
-  heightCm: number | null;
-  productMedia: ProductMedia[];
   averageRating: number | null;
   reviewCount: number;
   maxOrderQuantity: number | null;
-  ogImageUrl: string | null;
-  relatedProducts: Product[];
 }
 
-export interface ProductsResult {
-  data: Product[];
+/** Full product DTO for product detail pages. */
+export interface Product extends ProductCardData {
+  description: string;
+  htmlDescription: string;
+  specification: string | null;
+  countryName: string | null;
+  metaTitle: string;
+  metaDescription: string;
+  brandSlug: string;
+  brandWarrantyImageWidth: number | null;
+  brandWarrantyImageHeight: number | null;
+  categoryName: string;
+  categorySlug: string;
+  categoryBreadcrumbs: CategoryBreadcrumb[];
+  productMedia: ProductMedia[];
+  weightKg: number | null;
+  heightCm: number | null;
+  relatedProducts: ProductCardData[];
+}
+
+export interface ProductCardsResult {
+  data: ProductCardData[];
   totalRecords: number;
 }
 

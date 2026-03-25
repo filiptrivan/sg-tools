@@ -6,7 +6,11 @@
 
 import { TAGS } from "@/constants/cache-tags";
 import type { Category } from "@/types/categories";
-import type { Product, ProductsResult, SitemapEntry } from "@/types/products";
+import type {
+  Product,
+  ProductCardsResult,
+  SitemapEntry,
+} from "@/types/products";
 import { cacheLife, cacheTag } from "next/cache";
 
 class ApiError extends Error {
@@ -100,10 +104,10 @@ export async function getCategoryBySlug(
 export async function getFilteredProducts(
   offset: number,
   limit: number,
-): Promise<ProductsResult> {
+): Promise<ProductCardsResult> {
   cacheLife("minutes");
   cacheTag(TAGS.products);
-  return apiFetch<ProductsResult>("/api/Storefront/FilteredProducts", {
+  return apiFetch<ProductCardsResult>("/api/Storefront/FilteredProducts", {
     method: "POST",
     body: JSON.stringify({
       brandSlugs: [BRAND_SLUG],
@@ -118,10 +122,10 @@ export async function getFilteredProductsByCategory(
   categorySlug: string,
   offset: number,
   limit: number,
-): Promise<ProductsResult> {
+): Promise<ProductCardsResult> {
   cacheLife("minutes");
   cacheTag(TAGS.products);
-  return apiFetch<ProductsResult>("/api/Storefront/FilteredProducts", {
+  return apiFetch<ProductCardsResult>("/api/Storefront/FilteredProducts", {
     method: "POST",
     body: JSON.stringify({
       brandSlugs: [BRAND_SLUG],
@@ -131,29 +135,6 @@ export async function getFilteredProductsByCategory(
       rows: limit,
     }),
   });
-}
-
-export async function getProductsByCategory(
-  categorySlug: string | null,
-  offset: number | null = 0,
-  limit: number | null = 20,
-): Promise<Product[]> {
-  cacheLife("minutes");
-  cacheTag(TAGS.products);
-  const result = await apiFetch<ProductsResult>(
-    "/api/Storefront/FilteredProducts",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        brandSlugs: [BRAND_SLUG],
-        tagSlugs: [],
-        categorySlug,
-        first: offset,
-        rows: limit,
-      }),
-    },
-  );
-  return result.data;
 }
 
 //#endregion

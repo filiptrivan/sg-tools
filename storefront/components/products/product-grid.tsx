@@ -1,10 +1,10 @@
 import StatusMessage from "@/components/status-message";
-import type { Product } from "@/types/products";
+import type { ProductCardData } from "@/types/products";
 import { Package } from "lucide-react";
 import ProductCard from "./product-card";
 
 interface ProductGridProps {
-  products: Product[];
+  products: ProductCardData[];
   totalRecords?: number;
 }
 
