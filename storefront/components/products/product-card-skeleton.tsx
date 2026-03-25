@@ -11,11 +11,6 @@ const ProductCardSkeleton = () => {
           <Skeleton className="h-4 sm:h-5 w-3/5" />
         </div>
 
-        <div className="space-y-1.5 mt-2">
-          <Skeleton className="h-3 sm:h-4 w-full" />
-          <Skeleton className="h-3 sm:h-4 w-4/5" />
-        </div>
-
         <div className="flex items-center gap-1.5 mt-auto pt-3">
           <Skeleton className="size-3.5 rounded-full" />
           <Skeleton className="h-3 w-16" />

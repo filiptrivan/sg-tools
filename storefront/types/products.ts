@@ -23,8 +23,6 @@ export interface ProductCardData {
   discountPercentage: number | null;
   hasDiscount: boolean;
   imageUrl: string;
-  imageWidth: number | null;
-  imageHeight: number | null;
   brandName: string;
   brandImageUrl: string;
   brandWarrantyImageUrl: string | null;
