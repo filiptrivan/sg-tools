@@ -26,7 +26,7 @@ function OgBackground({ children }: { children: React.ReactNode }) {
           bottom: 0,
           display: "flex",
           background:
-            "radial-gradient(ellipse at 100% 130%, rgba(180,42,55,0.85) 0%, transparent 75%)",
+            "radial-gradient(ellipse at 0% -50%, rgba(180,42,55,0.85) 0%, transparent 75%)",
         }}
       />
       {/* Vertical grid lines */}
@@ -231,7 +231,7 @@ export function ProductTemplate({
           padding: "60px 60px 0 60px",
         }}
       >
-        <Logo width={140} />
+        <Logo width={220} />
       </div>
 
       <div
@@ -244,122 +244,109 @@ export function ProductTemplate({
           padding: "0 60px 60px 60px",
         }}
       >
-       <div
-        style={{
-          display: "flex",
-          alignItems: "flex-start",
-          gap: 50,
-        }}
-       >
-        {/* Left side: text content */}
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            flex: 1,
-            paddingTop: 20,
+            alignItems: "center",
+            gap: 50,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              fontFamily: "Space Grotesk",
-              fontSize: truncatedTitle.length > 40 ? 44 : 52,
-              color: colors.foreground,
-              marginBottom: 24,
-              lineHeight: 1.2,
-            }}
-          >
-            {truncatedTitle}
-          </div>
+          {/* Left side: product image */}
+          {imageUrl && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                width: 450,
+                height: 450,
+                flexShrink: 0,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={imageUrl}
+                alt=""
+                width={450}
+                height={450}
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+          )}
 
+          {/* Right side: text content */}
           <div
             style={{
               display: "flex",
-              alignItems: "center",
-              gap: 16,
+              flexDirection: "column",
+              flex: 1,
+              paddingTop: 20,
             }}
           >
             <div
               style={{
                 display: "flex",
                 fontFamily: "Space Grotesk",
-                fontSize: 52,
-                color: colors.primaryBright,
+                fontSize: truncatedTitle.length > 40 ? 44 : 52,
+                color: colors.foreground,
+                marginBottom: 24,
+                lineHeight: 1.2,
               }}
             >
-              {formattedPrice}
+              {truncatedTitle}
             </div>
-            {hasDiscount && discountPercentage != null && (
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+              }}
+            >
               <div
                 style={{
                   display: "flex",
                   fontFamily: "Space Grotesk",
-                  fontSize: 24,
-                  fontWeight: 600,
-                  color: "#ffffff",
-                  backgroundColor: colors.primaryBright,
-                  padding: "6px 18px",
-                  borderRadius: 6,
+                  fontSize: 52,
+                  color: colors.primaryBright,
                 }}
               >
-                -{discountPercentage}%
+                {formattedPrice}
+              </div>
+              {hasDiscount && discountPercentage != null && (
+                <div
+                  style={{
+                    display: "flex",
+                    fontFamily: "Space Grotesk",
+                    fontSize: 24,
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    backgroundColor: colors.primaryBright,
+                    padding: "6px 18px",
+                    borderRadius: 6,
+                  }}
+                >
+                  -{discountPercentage}%
+                </div>
+              )}
+            </div>
+            {hasDiscount && formattedOriginal && (
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Inter",
+                  fontSize: 28,
+                  color: colors.muted,
+                  textDecoration: "line-through",
+                  marginTop: 6,
+                }}
+              >
+                {formattedOriginal}
               </div>
             )}
           </div>
-          {hasDiscount && formattedOriginal && (
-            <div
-              style={{
-                display: "flex",
-                fontFamily: "Inter",
-                fontSize: 28,
-                color: colors.muted,
-                textDecoration: "line-through",
-                marginTop: 6,
-              }}
-            >
-              {formattedOriginal}
-            </div>
-          )}
         </div>
-
-        {/* Right side: product image */}
-        {imageUrl && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              position: "relative",
-              width: 400,
-              height: 400,
-              flexShrink: 0,
-            }}
-          >
-            {/* Radial glow behind image */}
-            <div
-              style={{
-                position: "absolute",
-                top: -20,
-                left: -20,
-                right: -20,
-                bottom: -20,
-                display: "flex",
-                background:
-                  "radial-gradient(circle, rgba(180,42,55,0.15) 0%, transparent 70%)",
-              }}
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageUrl}
-              alt=""
-              width={380}
-              height={380}
-              style={{ objectFit: "contain" }}
-            />
-          </div>
-        )}
-       </div>
       </div>
     </OgBackground>
   );
