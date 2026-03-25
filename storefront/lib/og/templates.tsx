@@ -170,7 +170,7 @@ export function DefaultTemplate({
             style={{
               display: "flex",
               fontFamily: "Space Grotesk",
-              fontSize: 56,
+              fontSize: 72,
               color: colors.foreground,
               lineHeight: 1.2,
               maxWidth: 900,
@@ -183,7 +183,7 @@ export function DefaultTemplate({
               style={{
                 display: "flex",
                 fontFamily: "Inter",
-                fontSize: 22,
+                fontSize: 30,
                 color: colors.muted,
                 marginTop: 20,
                 lineHeight: 1.5,
@@ -205,7 +205,6 @@ export function DefaultTemplate({
 
 export function ProductTemplate({
   title,
-  categoryName,
   displayPrice,
   originalPrice,
   hasDiscount,
@@ -213,7 +212,6 @@ export function ProductTemplate({
   imageUrl,
 }: {
   title: string;
-  categoryName?: string;
   displayPrice: number;
   originalPrice?: number | null;
   hasDiscount: boolean;
@@ -262,42 +260,11 @@ export function ProductTemplate({
             paddingTop: 20,
           }}
         >
-          {categoryName && (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                marginBottom: 16,
-                gap: 6,
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  fontFamily: "Inter",
-                  fontSize: 15,
-                  color: colors.muted,
-                  letterSpacing: 2,
-                }}
-              >
-                {categoryName}
-              </div>
-              <div
-                style={{
-                  width: 40,
-                  height: 2,
-                  backgroundColor: colors.primaryBright,
-                  display: "flex",
-                }}
-              />
-            </div>
-          )}
-
           <div
             style={{
               display: "flex",
               fontFamily: "Space Grotesk",
-              fontSize: truncatedTitle.length > 40 ? 32 : 40,
+              fontSize: truncatedTitle.length > 40 ? 44 : 52,
               color: colors.foreground,
               marginBottom: 24,
               lineHeight: 1.2,
@@ -317,7 +284,7 @@ export function ProductTemplate({
               style={{
                 display: "flex",
                 fontFamily: "Space Grotesk",
-                fontSize: 40,
+                fontSize: 52,
                 color: colors.primaryBright,
               }}
             >
@@ -328,11 +295,11 @@ export function ProductTemplate({
                 style={{
                   display: "flex",
                   fontFamily: "Space Grotesk",
-                  fontSize: 18,
+                  fontSize: 24,
                   fontWeight: 600,
                   color: "#ffffff",
                   backgroundColor: colors.primaryBright,
-                  padding: "4px 14px",
+                  padding: "6px 18px",
                   borderRadius: 6,
                 }}
               >
@@ -345,7 +312,7 @@ export function ProductTemplate({
               style={{
                 display: "flex",
                 fontFamily: "Inter",
-                fontSize: 22,
+                fontSize: 28,
                 color: colors.muted,
                 textDecoration: "line-through",
                 marginTop: 6,
@@ -364,8 +331,8 @@ export function ProductTemplate({
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
-              width: 380,
-              height: 380,
+              width: 400,
+              height: 400,
               flexShrink: 0,
             }}
           >
@@ -382,29 +349,14 @@ export function ProductTemplate({
                   "radial-gradient(circle, rgba(180,42,55,0.15) 0%, transparent 70%)",
               }}
             />
-            {/* Translucent card */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 370,
-                height: 370,
-                borderRadius: 16,
-                backgroundColor: "rgba(255,255,255,0.04)",
-                border: `1px solid ${colors.border}`,
-                position: "relative",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={imageUrl}
-                alt=""
-                width={330}
-                height={330}
-                style={{ objectFit: "contain" }}
-              />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageUrl}
+              alt=""
+              width={380}
+              height={380}
+              style={{ objectFit: "contain" }}
+            />
           </div>
         )}
        </div>
@@ -457,7 +409,7 @@ export function CategoryTemplate({
             style={{
               display: "flex",
               fontFamily: "Inter",
-              fontSize: 15,
+              fontSize: 22,
               color: colors.primaryBright,
               letterSpacing: 3,
             }}
@@ -471,7 +423,7 @@ export function CategoryTemplate({
           style={{
             display: "flex",
             fontFamily: "Space Grotesk",
-            fontSize: 56,
+            fontSize: 72,
             color: colors.foreground,
             lineHeight: 1.2,
             maxWidth: 800,
@@ -485,7 +437,7 @@ export function CategoryTemplate({
             style={{
               display: "flex",
               fontFamily: "Inter",
-              fontSize: 22,
+              fontSize: 30,
               color: colors.muted,
               marginTop: 20,
               lineHeight: 1.5,
