@@ -228,7 +228,7 @@ export function ProductTemplate({
       <div
         style={{
           display: "flex",
-          padding: "60px 80px 0 80px",
+          padding: "60px 60px 0 60px",
         }}
       >
         <Logo width={120} />
@@ -241,14 +241,14 @@ export function ProductTemplate({
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "0 80px 60px 80px",
+          padding: "0 60px 60px 60px",
         }}
       >
        <div
         style={{
           display: "flex",
           alignItems: "flex-start",
-          gap: 60,
+          gap: 50,
         }}
        >
         {/* Left side: text content */}
